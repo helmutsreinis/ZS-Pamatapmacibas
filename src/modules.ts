@@ -2,7 +2,7 @@ import { drillSource } from './drill';
 import type { QuestionSource } from './exam/model';
 import { plural, upper } from './lv';
 import { ak4 } from './weapons/ak4';
-import { g36c } from './weapons/g36c';
+import { g36 } from './weapons/g36';
 import { weaponQuestionSource } from './weapons/questions';
 import type { WeaponModule } from './weapons/types';
 
@@ -21,7 +21,7 @@ export type ModuleCard = {
   links: { label: string; href: string; primary?: boolean }[];
 };
 
-export const weapons: Record<string, WeaponModule> = { g36c, ak4 };
+export const weapons: Record<string, WeaponModule> = { g36, ak4 };
 
 const questionCount = (source: QuestionSource) => source.topics.reduce((sum, topic) => sum + topic.count, 0);
 const questionsFact = (source: QuestionSource) => {
@@ -34,10 +34,10 @@ const sourceOf = (weapon: WeaponModule) => weaponSources.find((source) => source
 
 export const modules: ModuleCard[] = [
   {
-    id: 'g36c', group: 'weapon', status: 'ready', kicker: 'TRIECIENŠAUTENE', title: 'G36C',
+    id: 'g36', group: 'weapon', status: 'ready', kicker: 'TRIECIENŠAUTENE', title: 'G36',
     summary: 'Nepilnā izjaukšana un salikšana ar reālu detaļu fotoattēliem. Katra kustība atbilst Bundesvēra rokasgrāmatai.',
-    facts: [{ value: String(g36c.steps.length), label: 'POSMI' }, { value: '2', label: 'VIRZIENI' }, questionsFact(sourceOf(g36c))],
-    links: [{ label: 'Mācību režīms', href: '#/g36c/macibas', primary: true }, { label: 'Pašpārbaude', href: '#/g36c/parbaude' }],
+    facts: [{ value: String(g36.steps.length), label: 'POSMI' }, { value: '2', label: 'VIRZIENI' }, questionsFact(sourceOf(g36))],
+    links: [{ label: 'Mācību režīms', href: '#/g36/macibas', primary: true }, { label: 'Pašpārbaude', href: '#/g36/parbaude' }],
   },
   {
     id: 'ak4', group: 'weapon', status: 'ready', kicker: 'TRIECIENŠAUTENE', title: 'AK-4',

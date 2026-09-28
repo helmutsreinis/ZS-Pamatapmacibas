@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { steps } from './g36c/content';
+import { steps } from './g36/content';
 import { makeQuestions, scoreAnswers, scoreOrder, shuffle } from './quiz';
 
 describe('quiz rules', () => {

@@ -336,7 +336,7 @@ kbd{display:inline-block;min-width:22px;padding:1px 6px;border:1px solid #6b7f63
 .source-list dd a,.source-list dd span{border:1px solid #687956;padding:8px 10px;color:#1b281d;font-size:9px;font-weight:900;letter-spacing:.09em;text-transform:uppercase;text-decoration:none}
 .source-list dd a:hover{background:#c5d19b;border-color:#3f5236}
 @media(max-width:720px){.overview-photos{grid-auto-rows:200px}.source-list dt{width:100%}}
-/* Hero: one fanned card per weapon, held like a hand of cards; the first (G36C) on top */
+/* Hero: one fanned card per weapon, held like a hand of cards; the first (G36) on top */
 .hero-cards{display:grid;width:100%;max-width:860px;margin:56px 0 28px}
 .hero-card{grid-area:1/1;z-index:var(--z);width:72%;display:block;color:inherit;text-decoration:none;transform-origin:50% 100%;transform:translate(calc(var(--i) * 36%),calc(var(--i) * -7%)) rotate(calc(var(--i) * 8deg - 4deg));transition:transform .4s ease,filter .4s ease}
 .hero-card:not(:first-child){filter:brightness(.82) saturate(.92)}
@@ -360,3 +360,4 @@ kbd{display:inline-block;min-width:22px;padding:1px 6px;border:1px solid #6b7f63
   .hero-card .plate-top>span:last-child,.hero-card .plate-bottom>span:first-child{display:none}
   .hero-card .plate-bottom{justify-content:flex-end}
 }
+.advice-note{margin-top:12px;padding:10px 12px;border-left:3px solid #e2cf82;background:#5a4a1e33;color:#eadca0;font-size:11px;font-weight:700;line-height:1.5;letter-spacing:.02em}

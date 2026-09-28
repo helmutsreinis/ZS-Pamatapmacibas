@@ -18,6 +18,22 @@ describe.each(Object.values(weapons))('$name weapon module', (weapon) => {
     }
   });
 
+  it('stows every removed pin in its own storage hole of the close-up', () => {
+    const { stash, disassembly, partById } = weapon.scene;
+    const stows = disassembly.flatMap((segment) => segment.stow);
+    if (!stash) {
+      expect(stows).toHaveLength(0);
+      return;
+    }
+    expect(new Set(stows.map((stow) => stow.hole)).size).toBe(stows.length);
+    expect(new Set(stows.map((stow) => stow.part)).size).toBe(stows.length);
+    for (const stow of stows) {
+      expect(partById[stow.part]?.kind, stow.part).toBe('pin');
+      expect(stash.holes[stow.hole], `${stow.part}: hole ${stow.hole}`).toBeDefined();
+      expect(stow.t[0], stow.part).toBeLessThan(stow.t[1]);
+    }
+  });
+
   it('has unique steps and look-alike groups of existing steps', () => {
     const stepIds = weapon.steps.map((step) => step.id);
     expect(new Set(stepIds).size).toBe(stepIds.length);
@@ -47,9 +63,11 @@ describe('routes', () => {
   it.each([
     ['', { page: 'home' }],
     ['#/', { page: 'home' }],
-    ['#/g36c', { page: 'weapon-learn', weapon: 'g36c' }],
-    ['#/g36c/macibas', { page: 'weapon-learn', weapon: 'g36c' }],
-    ['#/g36c/parbaude', { page: 'weapon-test', weapon: 'g36c' }],
+    ['#/g36', { page: 'weapon-learn', weapon: 'g36' }],
+    ['#/g36/macibas', { page: 'weapon-learn', weapon: 'g36' }],
+    ['#/g36/parbaude', { page: 'weapon-test', weapon: 'g36' }],
+    ['#/g36c/macibas', { page: 'weapon-learn', weapon: 'g36' }],
+    ['#/g36c/parbaude', { page: 'weapon-test', weapon: 'g36' }],
     ['#/ak4/macibas', { page: 'weapon-learn', weapon: 'ak4' }],
     ['#/ak4/parbaude', { page: 'weapon-test', weapon: 'ak4' }],
     ['#/ak47/macibas', { page: 'home' }],
@@ -63,12 +81,12 @@ describe('routes', () => {
   });
 
   it('turns routes back into the same links and marks their section', () => {
-    for (const hash of ['#/g36c/macibas', '#/g36c/parbaude', '#/ierinda', '#/ierinda/tema-07', '#/ierinda/parbaude', '#/parbaude', '#/']) {
+    for (const hash of ['#/g36/macibas', '#/g36/parbaude', '#/ierinda', '#/ierinda/tema-07', '#/ierinda/parbaude', '#/parbaude', '#/']) {
       expect(routeHref(parseRoute(hash, ids))).toBe(hash);
     }
     expect(routeSection(parseRoute('#/ierinda/parbaude', ids))).toBe('ierinda');
     expect(routeSection(parseRoute('#/parbaude', ids))).toBe('kopeja');
-    expect(routeSection(parseRoute('#/g36c/parbaude', ids))).toBe('g36c');
+    expect(routeSection(parseRoute('#/g36/parbaude', ids))).toBe('g36');
   });
 });
 

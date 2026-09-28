@@ -7,8 +7,9 @@ describe.each(Object.values(weapons))('$name Latvian content', (weapon) => {
   const { steps, prep, finalCheck, theory = [] } = weapon;
   const texts = [
     ...steps.flatMap((step) => [step.label, step.assemblyLabel, step.part, step.function, step.explanation, step.action, step.assemblyAction,
-      step.hint, step.assemblyHint, step.direction ?? '', step.tip ?? '', step.assemblyTip ?? '', step.term ?? '']),
+      step.hint, step.assemblyHint, step.direction ?? '', step.tip ?? '', step.assemblyTip ?? '', step.advice ?? '', step.assemblyAdvice ?? '', step.term ?? '']),
     prep.label, prep.action, prep.explanation, finalCheck.label, finalCheck.action, finalCheck.explanation,
+    weapon.note ?? '', weapon.scene.stash?.title ?? '',
     ...theory.flatMap((item) => [item.prompt, item.correct, ...item.wrong, item.explanation]),
   ];
 
@@ -32,7 +33,7 @@ describe.each(Object.values(weapons))('$name Latvian content', (weapon) => {
 
   it('writes sentences with a capital letter and a final full stop', () => {
     for (const step of steps) {
-      for (const sentence of [step.function, step.explanation, step.action, step.assemblyAction, step.tip, step.assemblyTip]) {
+      for (const sentence of [step.function, step.explanation, step.action, step.assemblyAction, step.tip, step.assemblyTip, step.advice, step.assemblyAdvice]) {
         if (sentence) expect(sentence, step.id).toMatch(SENTENCE);
       }
     }

@@ -17,6 +17,8 @@ export type Key = { t: number; pose: Pose; ease: Ease };
 export type Track = { part: string; keys: Key[] };
 /** Direction marks drawn over the scene; `out` = towards the viewer (⊙), `in` = away (⊗). */
 export type Arrow = { kind: 'line' | 'arc' | 'out' | 'in'; points: [number, number][]; t: [number, number]; on?: string };
+/** A removed pin put into storage hole `hole` of the stash close-up during t (segment progress). */
+export type Stow = { part: string; hole: number; t: [number, number] };
 
 export type Segment = {
   id: string;
@@ -24,6 +26,7 @@ export type Segment = {
   duration: number;
   tracks: Track[];
   arrows: Arrow[];
+  stow: Stow[];
   /** X-ray windows (segment progress) per key, see PartDef.xray. */
   xray: Partial<Record<string, [number, number]>>;
   focus: string[];
@@ -89,6 +92,13 @@ export class SegmentBuilder {
     this.seg.arrows.push({ kind, points, t, on });
     return this;
   }
+
+  /** Show a removed pin going into a storage hole of the stash close-up (the recommended place). */
+  stow(part: string, hole: number, t: [number, number]): this {
+    if (this.ctx.partById[part]?.kind !== 'pin') throw new Error(`Uzglabāt var tikai tapas: ${part}`);
+    this.seg.stow.push({ part, hole, t });
+    return this;
+  }
 }
 
 /** Pose offset that puts a part on its mat position. Child parts are relative to their parent. */
@@ -116,14 +126,14 @@ export function timeline(ctx: TimelineContext) {
   return {
     segments,
     segment(meta: SegmentMeta, body: (b: SegmentBuilder) => void): void {
-      const builder = new SegmentBuilder(ctx, state, { ...meta, xray: meta.xray ?? {}, tracks: [], arrows: [] });
+      const builder = new SegmentBuilder(ctx, state, { ...meta, xray: meta.xray ?? {}, tracks: [], arrows: [], stow: [] });
       body(builder);
       segments.push(builder.seg);
     },
     /** A segment played on the assembled weapon, independent of the disassembly state. */
     standalone(meta: SegmentMeta, body: (b: SegmentBuilder) => void): Segment {
       const assembled = new Map<string, Pose>(ctx.parts.map((part) => [part.id, { ...REST }]));
-      const builder = new SegmentBuilder(ctx, assembled, { ...meta, xray: meta.xray ?? {}, tracks: [], arrows: [] });
+      const builder = new SegmentBuilder(ctx, assembled, { ...meta, xray: meta.xray ?? {}, tracks: [], arrows: [], stow: [] });
       body(builder);
       return builder.seg;
     },

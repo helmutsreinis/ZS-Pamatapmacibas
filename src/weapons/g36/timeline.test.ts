@@ -1,14 +1,15 @@
 import { describe, expect, it } from 'vitest';
 import { REST, posesAt, type Pose } from '../../scene/timeline';
 import { steps } from './content';
-import { assetFiles, partById, parts, sprites } from './parts';
+import { g36 } from './index';
+import { assetFiles, partById, parts, sprites, stockHoles } from './parts';
 import { TRAY, check, disassembly } from './timeline';
 
 const SEGMENTS = disassembly.length;
 const close = (a: Pose, b: Pose) => (Object.keys(a) as (keyof Pose)[]).every((key) => Math.abs(a[key] - b[key]) < 1e-6);
 const at = (time: number) => posesAt(disassembly, time);
 
-describe('G36C disassembly timeline', () => {
+describe('G36 disassembly timeline', () => {
   it('has the safety check followed by one segment per course step, in the course order', () => {
     expect(SEGMENTS).toBe(steps.length + 1);
     expect(disassembly[0].kind).toBe('prep');
@@ -54,7 +55,30 @@ describe('G36C disassembly timeline', () => {
   });
 });
 
-describe('G36C part images', () => {
+describe('G36 pin storage close-up', () => {
+  it('puts the rear and centre pins, then the front pin, into the three holes near the butt', () => {
+    const stows = disassembly.flatMap((segment) => segment.stow.map((stow) => [segment.id, stow.part, stow.hole]));
+    expect(stows).toEqual([['rear-pins', 'pinRear', 1], ['rear-pins', 'pinCentre', 2], ['front-pin', 'pinFront', 0]]);
+  });
+
+  it('shows holes that lie on the stock picture, inside the close-up', () => {
+    const stock = sprites.stock;
+    const view = g36.scene.stash!.view;
+    expect(stockHoles).toHaveLength(3);
+    for (const [x, y] of stockHoles) {
+      expect(x).toBeGreaterThan(stock.x + stock.w * 0.6);
+      expect(x).toBeLessThan(stock.x + stock.w);
+      expect(y).toBeGreaterThan(stock.y);
+      expect(y).toBeLessThan(stock.y + stock.h);
+      expect(x - view.x).toBeGreaterThan(10);
+      expect(view.x + view.w - x).toBeGreaterThan(10);
+      expect(y - view.y).toBeGreaterThan(10);
+      expect(view.y + view.h - y).toBeGreaterThan(10);
+    }
+  });
+});
+
+describe('G36 part images', () => {
   it('has an image file for every sprite a part draws, with its shadow and glow', () => {
     const files = new Set(assetFiles);
     const names = new Set(parts.flatMap((part) => [...part.sprites, ...(part.pin ? [part.pin.side, part.pin.end] : [])]));

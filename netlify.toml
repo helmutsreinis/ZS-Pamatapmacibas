@@ -6,7 +6,7 @@
 [build.environment]
   NODE_VERSION = "22"
 
-# Every page is a hash route of index.html (#/g36c/macibas), so no rewrites are needed.
+# Every page is a hash route of index.html (#/g36/macibas), so no rewrites are needed.
 # A mistyped path is sent to the home page instead of a 404.
 [[redirects]]
   from = "/*"

@@ -2,11 +2,14 @@ import manifest from './parts.json';
 import type { PartDef, Sprite } from '../../scene/model';
 
 /**
- * G36C parts. World units are pixels of the source field-strip photo (about 1 mm);
- * every part is drawn where it sits in the assembled rifle, left side view.
+ * G36 parts. World units are pixels of the source field-strip photo of a G36C (about 1 mm);
+ * every part is drawn where it sits in the assembled rifle, left side view. The adjustable
+ * stock comes from a second photo, scaled to the same units.
  */
 export const sprites = manifest.sprites as Record<string, Sprite>;
 export const holes = manifest.pins as Record<'rear' | 'centre' | 'front' | 'cam' | 'retainer', [number, number]>;
+/** Pin storage holes in the stock near the butt: front, rear and lower (left side, stock unfolded). */
+export const stockHoles = manifest.stockHoles as [number, number][];
 export const BORE_Y = manifest.boreY;
 export const GAS_Y = manifest.gasY;
 
@@ -62,8 +65,9 @@ export const parts: G36Part[] = [
 
 export const partById = Object.fromEntries(parts.map((part) => [part.id, part])) as Record<PartId, G36Part>;
 
-// The sling is drawn as a textured strap along two cubic Bézier segments (7 control points).
+// The sling is drawn as a textured strap along two cubic Bézier segments (7 control points). It is
+// hooked to the front swivel under the handguard and to the sling loop at the rear of the receiver.
 export const SLING = {
-  on: [[56, 298], [66, 430], [190, 520], [380, 526], [560, 532], [668, 470], [686, 338]] as [number, number][],
+  on: [[56, 298], [64, 430], [160, 522], [300, 526], [420, 530], [488, 440], [482, 274]] as [number, number][],
   mat: [[-40, 846], [150, 842], [360, 836], [468, 856], [520, 882], [280, 884], [60, 878]] as [number, number][],
 };

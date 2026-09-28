@@ -2,7 +2,7 @@
 
 Latvian-language static learning website with separate modules behind one hub page:
 
-- **G36C** – field strip and assembly animated on a photographic model of the rifle, and a self-test (16-step ordering task plus one function question per part).
+- **G36** – field strip and assembly animated on a photographic model of the rifle with the adjustable stock (a close-up shows the stock's pin storage holes while the pins are removed), and a self-test (16-step ordering task plus one function question per part). The module was first published as G36C; old `#/g36c/...` links still open it.
 - **AK-4** – the same for the AK-4 (Swedish licence build of the HK G3): 8 steps in the order of the Jaunsargs' handbook, movements from the G3 service manual, parts cut from a CC BY-SA photo.
 - **Ierinda** – the drill-training material: ten topics with explanations and a flash-card mode, and a configurable test.
 - **Kopējā pārbaude** – one test across every ready module: weapon questions generated from the module content (part functions, part photos, movement directions, step order) and each weapon's technical-data questions, plus the drill question bank.
@@ -24,7 +24,7 @@ node node_modules/vite/bin/vite.js build
 node node_modules/vitest/vitest.mjs run
 ```
 
-The deployable output is `dist/`. Vite uses a relative base path and the pages use hash routes (`#/g36c/macibas`), so the same build works on any static host, at the root or in a subfolder.
+The deployable output is `dist/`. Vite uses a relative base path and the pages use hash routes (`#/g36/macibas`), so the same build works on any static host, at the root or in a subfolder.
 
 ### Netlify
 
@@ -55,7 +55,7 @@ Both tests share one engine (`src/exam/`): topic selection, 20 / 40 / 60 / all q
 
 - `src/modules.ts` – the registry: hub cards, weapons and exam definitions.
 - `src/weapons/types.ts` – what a weapon module provides (`WeaponModule`).
-- `src/weapons/g36c/` – the G36C module: `content.ts` (Latvian texts; the supplied step labels are the order-test answer key; technical-data questions), `parts.ts` + `parts.json` (photo sprites), `timeline.ts` (the movements), `index.ts` (the module), `assets/` (sprites).
+- `src/weapons/g36/` – the G36 module: `content.ts` (Latvian texts; the supplied step labels are the order-test answer key; technical-data questions), `parts.ts` + `parts.json` (photo sprites), `timeline.ts` (the movements), `index.ts` (the module), `assets/` (sprites).
 - `src/weapons/ak4/` – the AK-4 module, same structure; step labels follow the Jaunsargs' handbook.
 - `src/weapons/learn-view.ts`, `test-view.ts`, `questions.ts` – weapon-independent learning page, self-test and exam questions (part functions, part photos, movement directions, step order).
 - `src/scene/` – the animation engine: `engine.ts` draws the SVG scene from a `SceneModel`, `timeline.ts` evaluates keyframes, `player.ts` handles playback, `thumb.ts` draws part pictures.
@@ -65,26 +65,27 @@ Both tests share one engine (`src/exam/`): topic selection, 20 / 40 / 60 / all q
 
 ## Adding a weapon
 
-1. Create `src/weapons/<id>/` with the same files as the G36C and AK-4 folders: `content.ts` (steps in the course order, with `label`, `assemblyLabel`, `part`, `function`, `explanation`, directions and sources; optional `theory` questions), part sprites and `parts.json`, a `timeline.ts` with one segment per step, and an `index.ts` that exports a `WeaponModule`.
+1. Create `src/weapons/<id>/` with the same files as the G36 and AK-4 folders: `content.ts` (steps in the course order, with `label`, `assemblyLabel`, `part`, `function`, `explanation`, directions and sources; optional `theory` questions), part sprites and `parts.json`, a `timeline.ts` with one segment per step, and an `index.ts` that exports a `WeaponModule`.
 2. Register it in `src/modules.ts`: add it to `weapons` and add a `ready` card with the links `#/<id>/macibas` and `#/<id>/parbaude`.
 
 The routes, header navigation, weapon self-test, exam question topics and the combined test pick the new module up from the registry. `src/modules.test.ts` and `src/weapons/questions.test.ts` check every registered weapon (timeline matches the steps, parts exist, generated questions are valid).
 
 ## Part images
 
-### G36C
+### G36
 
-`tools/build_part_images.py` builds every sprite in `src/weapons/g36c/assets/` and the placement file `src/weapons/g36c/parts.json` (needs Python with `numpy` and `opencv-python`):
+`tools/build_part_images.py` builds every sprite in `src/weapons/g36/assets/` and the placement file `src/weapons/g36/parts.json` (needs Python with `numpy` and `opencv-python`):
 
 ```powershell
 python tools/build_part_images.py
 ```
 
-- **Photographs:** stock, receiver, carrying handle, grip with trigger mechanism, recoil spring with end piece, bolt carrier, bolt head front, cam-pin and firing-pin retaining-pin heads, magazine well, magazine catch, handguard, flash hider and magazine are cut from `src/assets/g36-reference-parts.png` (a left-side field-strip photo), so they share light, colour and scale.
+- **Photographs:** receiver, carrying handle, grip with trigger mechanism, recoil spring with end piece, bolt carrier, bolt head front, cam-pin and firing-pin retaining-pin heads, magazine well, magazine catch, handguard, flash hider and magazine are cut from `src/assets/g36-reference-parts.png` (a left-side field-strip photo of a G36C), so they share light, colour and scale.
+- **Adjustable stock:** cut from `src/assets/g36ka4-reference.webp`, [a photo of a Bundeswehr G36K A4](https://commons.wikimedia.org/wiki/File:German_Army_-_HK_G36K_A4_-_EOtech_holographic_sight_-_red_dot_magnifier_G33%E2%84%A2.webp) by Pierre Courtejoie (US Army / DVIDS, public domain; credited on the learning page and in the footer). The photo shows the right side, so the stock is mirrored, scaled so that its hinge matches the rear of the receiver (0.99 world units per photo pixel) and given the grip's tone. The tool also writes the positions of its three pin storage holes to `parts.json` (`stockHoles`); the learning page shows them in a close-up while the pins are removed.
 - **Rebuilt:** the photo lacks the middle of the receiver; the tool rebuilds that 75 px section from the receiver's own side texture.
 - **Renders:** the parts that are never visible in the photo – the three grip and handguard pins, firing pin, gas piston, operating rod and spring, and the barrel with its gas block – are shaded renders in the photo's colours. Any of them can be replaced with a real photo: put a left-side photo with a transparent background in the assets folder under the same name and adjust its size in `parts.json`.
 
-Confirm that you may publish the G36C reference photos in `src/assets/` before deploying the site publicly.
+Confirm that you may publish the G36C field-strip photos in `src/assets/` before deploying the site publicly.
 
 ### AK-4
 
@@ -103,7 +104,7 @@ python tools/build_ak4_images.py            # add --debug <folder> for fitting a
 ## Sources
 
 - [Bundeswehr, Zentralrichtlinie A2-222/0-0-4741 “Das Gewehr G36”](http://bundzone.bplaced.net/images//dokumente/Zentralrichtlinie_GewehrG36.pdf), sections 331–336 (field strip, bolt, assembly and function check)
-- [Heckler & Koch G36 technical data PDF](https://hk-manuals.s3.amazonaws.com/files/Military/G36/G36_Technical_Data.pdf) (G36C: 716 / 500 mm, 228 mm barrel)
+- [Heckler & Koch G36 technical data PDF](https://hk-manuals.s3.amazonaws.com/files/Military/G36/G36_Technical_Data.pdf) (G36: 1002 / 755 mm, 480 mm barrel, about 3630 g)
 - [Heckler & Koch G36 product page](https://www.hecklerkoch.eu/en/Products/Military%20and%20Law%20Enforcement/Assault%20rifles/G36)
 - [HKParts G36/SL8 catalog](https://hkparts.net/hk-rifle-smg-parts/g36-sl8-series/)
 - [Jaunsarga rokasgrāmata](https://rojasvidusskola.lv/wp-content/uploads/2015/03/Jaunsarga-rokasgramata.pdf), chapter 12 (AK-4: parts, technical data, daļējā izjaukšana), based on “Triecienšautene AK-4 (G-3)”, Rīga 2005

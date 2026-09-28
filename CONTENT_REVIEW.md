@@ -1,6 +1,6 @@
 # Instructor content review
 
-## G36C
+## G36
 
 The 16-step order supplied for the course is the answer key of the order test. Every step has been checked against the Bundeswehr manual A2-222/0-0-4741 “Das Gewehr G36” (§331 field strip, §333 bolt, §336 assembly and function check); the part identities and movement directions below are confirmed there.
 
@@ -29,7 +29,9 @@ The 16-step order supplied for the course is the answer key of the order test. E
 
 1. **Order.** The manual removes the magazine well before folding the stock and does not unscrew the flash hider during a field strip. The course order is mechanically possible; confirm that it is the intended one.
 2. **Unscored stages.** The learning mode adds the manual's safety check (remove the magazine, check the chamber) before disassembly and the function check after assembly. They are not part of the test.
-3. **Pictures.** The scene is built from a field-strip photograph of a G36C that appears to be a replica with a two-piece receiver. The middle of the receiver is rebuilt from its own texture, and the pins, firing pin, gas piston, operating rod and barrel section are renders. The movements are correct; small details of the replica may differ from the service rifle.
+3. **Pin storage.** The adjustable stock of the course rifle has three storage holes near the butt for the rear, centre and front pins. The tutorial recommends putting each removed pin there straight away: an "IETEIKUMS" note at both pin steps and beside the stage, and a close-up of the stock in the corner of the stage during the two pin steps only, where the rear and centre pins go into the rear and lower hole and the front pin into the front hole (the stock is folded behind the receiver then, so it cannot be shown in place). The animation lays the pins on the mat only as a visual cue. Which pin goes into which hole is a suggestion; the manual only says "in eine der Bohrungen".
+4. **Sling.** The sling is hooked to the front swivel under the handguard and to the sling loop at the rear of the receiver, as on the course rifles.
+5. **Pictures.** The course rifle is the G36 (first published here as G36C). The receiver, handguard, barrel and all other parts come from a field-strip photograph of a G36C that appears to be a replica with a two-piece receiver, so the front of the pictured rifle is shorter than on the G36 and it has the G36C carrying handle with a rail. The middle of the receiver is rebuilt from its own texture, and the pins, firing pin, gas piston, operating rod and barrel section are renders. Only the adjustable stock comes from a photograph of a Bundeswehr G36K A4, mirrored and scaled to fit. The field strip is the same on all G36 variants; small details of the pictured parts may differ from the course rifles.
 
 ## AK-4
 
@@ -78,7 +80,7 @@ The handbook's step 6 (“Atvienot šaušanas mehānismu no korpusa”) is split
 
 ## Theory questions (both weapons)
 
-Each weapon now has a “Tehniskie dati un darbība” topic in the tests: 10 questions for the G36C from the Heckler & Koch G36 technical data (G36C column: 5,56 × 45 mm, 30 rounds, gas operation with a rotating bolt, 228 mm barrel, 716 / 500 mm, about 750 rounds/min and 750 m/s, about 2988 g) and 16 for the AK-4 from the sources above. Wrong answers use the other weapon's figures where they make good distractors (e.g. the G36's gas operation for the AK-4 and the other way round).
+Each weapon now has a “Tehniskie dati un darbība” topic in the tests: 10 questions for the G36 from the Heckler & Koch G36 technical data (G36 column: 5,56 × 45 mm, 30 rounds, gas operation with a rotating bolt, 480 mm barrel, 1002 / 755 mm, about 750 rounds/min and 920 m/s, about 3630 g; the length and mass are for the standard folding stock, so confirm them for the course rifles with the adjustable stock) and 16 for the AK-4 from the sources above. Wrong answers use the other weapon's figures where they make good distractors (e.g. the G36's gas operation for the AK-4 and the other way round).
 
 ## Drill question bank (Ierinda)
 

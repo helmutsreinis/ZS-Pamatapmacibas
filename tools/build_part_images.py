@@ -1,8 +1,9 @@
-"""Build the photographic part sprites used by the G36C learning scene.
+"""Build the photographic part sprites used by the G36 learning scene.
 
 Source photo: src/assets/g36-reference-parts.png (field-stripped G36C, left side view,
 white background). Every large part is cut out of that single photo, so all sprites share
-the same light, colour and scale (1 world unit = 1 source pixel, roughly 1 mm).
+the same light, colour and scale (1 world unit = 1 source pixel, roughly 1 mm). Only the
+adjustable stock comes from a second photo (src/assets/g36ka4-reference.webp, see below).
 
 The photo does not show the parts hidden inside the rifle (pins, firing pin, gas piston,
 operating rod, barrel under the handguard). Those are rendered here as shaded cylinders
@@ -10,8 +11,8 @@ in the photo's colours. Any render can be replaced by a real photo with the same
 name and roughly the same pixel size.
 
 Outputs
-  src/weapons/g36c/assets/<name>.png   RGBA sprites
-  src/weapons/g36c/parts.json          placement of every sprite in the assembled rifle
+  src/weapons/g36/assets/<name>.png    RGBA sprites
+  src/weapons/g36/parts.json           placement of every sprite in the assembled rifle
 
 Run:  python tools/build_part_images.py
 Needs numpy and opencv-python.
@@ -26,8 +27,8 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / 'src' / 'assets' / 'g36-reference-parts.png'
-OUT = ROOT / 'src' / 'weapons' / 'g36c' / 'assets'
-MANIFEST = ROOT / 'src' / 'weapons' / 'g36c' / 'parts.json'
+OUT = ROOT / 'src' / 'weapons' / 'g36' / 'assets'
+MANIFEST = ROOT / 'src' / 'weapons' / 'g36' / 'parts.json'
 
 BORE_Y = 258          # barrel axis in world units
 GAS_Y = 236           # gas piston and operating rod axis
@@ -354,18 +355,70 @@ CENTRE_PIN = (482 + GRIP_DX, 306 + GRIP_DY)
 receiver = pin_holes(receiver, [REAR_PIN], 3)
 save('receiver', receiver, 0, 0)
 
-# Stock (folds on the hinge seam). Remove the two pins stored in its lower strut.
-stock_mask = STOCK_UNIT & poly_mask([(686, 190), (930, 190), (930, 400), (697, 400), (697, 283), (686, 236)])
+# Stock: the course rifle has the adjustable stock, with three holes near the butt for keeping the
+# pins. It is cut from a second photo, src/assets/g36ka4-reference.webp: a Bundeswehr G36K A4 seen
+# from the right (US Army / DVIDS photo, public domain). The cut-out is mirrored into a left-side
+# view, scaled so that its hinge column matches the rear end of the receiver (0.99 world units per
+# photo pixel, the same as the spacing of the grip pins) and given the tone of the grip, which is
+# the same black polymer.
+A4_SRC = ROOT / 'src' / 'assets' / 'g36ka4-reference.webp'
+A4_BOX = (124, 282, 362, 480)               # stock and hinge, right side view (photo pixels)
+A4_KNUCKLES = (341, 308, 358, 388)          # hinge column: kept with the stock, the receiver lies beyond
+A4_HINGE = (349, 308)                       # hinge axis at the top of the hinge column
+A4_SCALE = 0.99
+STOCK_HINGE = (BOX_SEAM + BOX_DX, 238)      # where that point sits in the world
+A4_HOLES = [(175.7, 393.3), (166.7, 393.3), (166.7, 403.3)]   # storage holes: front, rear, lower
 
 
-def stock_fix(rgba: np.ndarray) -> np.ndarray:
-    window = rect_mask(732, 246, 764, 274) | rect_mask(732, 286, 764, 306)
-    rgba[..., 3] = np.where(window > 0, 0, rgba[..., 3])
-    strut = rect_mask(732, 274, 764, 286) & (rgba[..., 3] > 0).astype(np.uint8)
-    return inpaint(rgba, strut, 3)
+def adjustable_stock() -> tuple[np.ndarray, float, float, list[list[float]]]:
+    photo = cv2.imread(str(A4_SRC), cv2.IMREAD_COLOR).astype(np.float32)
+    x0, y0, x1, y1 = A4_BOX
+    roi = photo[y0:y1, x0:x1]
+    b, g, r = roi[..., 0], roi[..., 1], roi[..., 2]
+    hi, lo = roi.max(axis=2), roi.min(axis=2)
+    # The polymer is blue-black; the table and its shadows are reddish, the floor green, the tape white.
+    gc = np.full(lo.shape, cv2.GC_PR_BGD, np.uint8)
+    polymer = (b - r > 3) & (hi < 100)
+    gc[polymer] = cv2.GC_PR_FGD
+    gc[polymer & (hi < 70)] = cv2.GC_FGD
+    gc[(r - b > 8) | ((g > r + 10) & (g > b + 10)) | (lo > 160)] = cv2.GC_BGD
+    kx0, ky0, kx1, ky1 = A4_KNUCKLES
+    gc[:, kx1 - x0:] = cv2.GC_BGD
+    gc[ky0 - y0:ky1 - y0, kx0 - x0:kx1 - x0 - 1] = cv2.GC_FGD
+    cv2.grabCut(np.clip(roi, 0, 255).astype(np.uint8), gc, None, np.zeros((1, 65)), np.zeros((1, 65)), 8,
+                cv2.GC_INIT_WITH_MASK)
+    mask = ((gc == cv2.GC_FGD) | (gc == cv2.GC_PR_FGD)).astype(np.uint8)
+    count, labels, stats, _ = cv2.connectedComponentsWithStats(mask, connectivity=8)
+    mask = (labels == 1 + int(np.argmax(stats[1:, cv2.CC_STAT_AREA]))).astype(np.uint8)
+    # Close pinholes (screw heads, highlights), keep the gap between cheek rest and body.
+    count, labels, stats, _ = cv2.connectedComponentsWithStats(1 - mask, connectivity=4)
+    for i in range(1, count):
+        if stats[i, cv2.CC_STAT_AREA] < 600:
+            mask[labels == i] = 1
+    alpha = np.clip((cv2.GaussianBlur(mask.astype(np.float32), (0, 0), 0.7) - 0.25) / 0.5, 0, 1)
+    solid = cv2.erode(mask, np.ones((3, 3), np.uint8))
+    edge = (((mask > 0) | (alpha > 0)) & (solid == 0)).astype(np.uint8)
+    rgb = cv2.inpaint(np.clip(roi, 0, 255).astype(np.uint8), edge, 2, cv2.INPAINT_TELEA).astype(np.float32)
+    rgb = np.where(solid[..., None] > 0, roi, rgb)
+    grip = matte(component((595, 370)))
+    inside = grip[..., 3] > 250
+    grip_lum = grip[..., :3][inside].mean(axis=1)
+    tint = grip[..., :3][inside].mean(axis=0) / grip_lum.mean()
+    lum = rgb.mean(axis=2)
+    own = lum[solid > 0]
+    lum = (lum - own.mean()) * (grip_lum.std() / own.std()) + grip_lum.mean()
+    rgba = np.ascontiguousarray(np.dstack([lum[..., None] * tint, alpha * 255])[:, ::-1])
+    hinge = (x1 - 1 - A4_HINGE[0], A4_HINGE[1] - y0)                    # in the mirrored cut-out
+    h, w = rgba.shape[:2]
+    rgba = cv2.resize(rgba, (round(w * A4_SCALE), round(h * A4_SCALE)), interpolation=cv2.INTER_AREA)
+    world_x, world_y = STOCK_HINGE[0] - hinge[0] * A4_SCALE, STOCK_HINGE[1] - hinge[1] * A4_SCALE
+    holes = [[round(STOCK_HINGE[0] + (x1 - 1 - px - hinge[0]) * A4_SCALE, 1),
+              round(STOCK_HINGE[1] + (py - A4_HINGE[1]) * A4_SCALE, 1)] for px, py in A4_HOLES]
+    return rgba, world_x, world_y, holes
 
 
-save_photo('stock', stock_mask, BOX_DX, BOX_DY, fix=stock_fix, pivot=[BOX_SEAM + BOX_DX, 260 + BOX_DY])
+stock_rgba, stock_x, stock_y, STOCK_HOLES = adjustable_stock()
+save('stock', stock_rgba, stock_x, stock_y, pivot=[STOCK_HINGE[0], 278])
 
 save_photo('rail', component((300, 100)), -29, 118)
 save_photo('grip', component((595, 370)), GRIP_DX, GRIP_DY)
@@ -525,7 +578,7 @@ MANIFEST.write_text(json.dumps({'boreY': BORE_Y, 'gasY': GAS_Y,
                                 'pins': {'rear': REAR_PIN, 'centre': CENTRE_PIN, 'front': FRONT_PIN,
                                          'cam': [CAM_PIN[0] + CARRIER_DX, CAM_PIN[1] + CARRIER_DY],
                                          'retainer': [RETAINER[0] + CARRIER_DX, RETAINER[1] + CARRIER_DY]},
-                                'sprites': manifest}, indent=2), encoding='utf-8')
+                                'stockHoles': STOCK_HOLES, 'sprites': manifest}, indent=2), encoding='utf-8')
 print(f'wrote {len(manifest)} sprites to {OUT}')
 for name, entry in manifest.items():
     print(f"  {name:18s} {entry['w']:6.1f} x {entry['h']:<6.1f} at ({entry['x']:.0f}, {entry['y']:.0f})")

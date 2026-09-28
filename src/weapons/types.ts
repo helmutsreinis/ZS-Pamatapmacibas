@@ -22,6 +22,9 @@ export type Step = {
   assemblyAction: string;
   tip?: string;
   assemblyTip?: string;
+  /** Recommended practice shown as "IETEIKUMS" (e.g. where to keep removed pins). */
+  advice?: string;
+  assemblyAdvice?: string;
   /** Terminology note for the instructor: the term in the official manual. */
   term?: string;
   source: string;
@@ -47,6 +50,8 @@ export type WeaponModule = {
   cover?: string;
   /** Credit for photos that require attribution. */
   credit?: { text: string; url: string };
+  /** Extra note next to the learning stage (what the animation simplifies). */
+  note?: string;
   /** Which side of the weapon the pictures show, e.g. "SKATS NO KREISĀS PUSES". */
   view: string;
   steps: Step[];

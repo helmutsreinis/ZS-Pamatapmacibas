@@ -29,6 +29,21 @@ export type PartDef = {
   xray?: string;
 };
 
+/**
+ * Close-up of the place where removed pins are kept (the storage holes in the stock), shown in a
+ * corner of the stage while a segment stows pins there, because that place is out of sight then.
+ */
+export type Stash = {
+  kicker: string;
+  title: string;
+  /** Picture of the storage place, and the part of it that the close-up shows (world units). */
+  sprite: string;
+  view: Box;
+  /** Storage holes; a pin goes in from the viewer's side, as into its holes in the weapon. */
+  holes: [number, number][];
+  pin: Pick<PinSpec, 'side' | 'end'>;
+};
+
 /** Everything the scene engine needs to draw and animate one weapon. */
 export type SceneModel = {
   id: string;
@@ -49,6 +64,7 @@ export type SceneModel = {
   pinOut: [number, number];
   pinDepth: number;
   sling?: { on: [number, number][]; mat: [number, number][] };
+  stash?: Stash;
   /** Narrowest camera shot in world units (default 480), so photos are not enlarged past their resolution. */
   cameraMin?: number;
 };

@@ -6,9 +6,13 @@ export type Route =
   | { page: 'drill'; chapter?: string }
   | { page: 'exam'; exam: 'ierinda' | 'kopeja' };
 
+/** Old weapon ids that still open their module (the G36 module was first published as G36C). */
+const ALIASES: Record<string, string> = { g36c: 'g36' };
+
 export function parseRoute(hash: string, weapons: readonly string[]): Route {
   const parts = hash.replace(/^#\/?/, '').split('/').filter(Boolean);
-  const [first, second] = parts;
+  const [id, second] = parts;
+  const first = id && (ALIASES[id] ?? id);
   if (first && weapons.includes(first)) {
     return second === 'parbaude' ? { page: 'weapon-test', weapon: first } : { page: 'weapon-learn', weapon: first };
   }

@@ -1,7 +1,7 @@
 """Helpers shared by the part-sprite pipelines: matting on a light background, rendering
 small hidden parts, writing sprites with their world placement, shadows and glows.
 
-The G36C pipeline (build_part_images.py) predates this module and keeps its own copy."""
+The G36 pipeline (build_part_images.py) predates this module and keeps its own copy."""
 from __future__ import annotations
 
 import json

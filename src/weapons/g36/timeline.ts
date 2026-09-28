@@ -14,7 +14,7 @@ export const MAT = { x: -70, y: 525, w: 900, h: 380 };
 const ctx: TimelineContext = { sprites, sling: SLING, tray: TRAY, parts, partById };
 
 /**
- * G36C field strip, one segment per course step. Movements follow Bundeswehr
+ * G36 field strip, one segment per course step. Movements follow Bundeswehr
  * Zentralrichtlinie A2-222/0-0-4741, §331 and §333.
  */
 const t = timeline(ctx);
@@ -33,20 +33,22 @@ t.segment({ id: 'prep', kind: 'prep', duration: 3.8, focus: ['magazine', 'carrie
 t.segment({ id: 'sling', kind: 'step', duration: 3.0, focus: ['sling'] }, (b) => {
   b.to('sling', 0.12, { press: 1 }, 'out').to('sling', 1, { v: 1 }, 'inOut');
   b.arrow('line', [[60, 300], [60, 340]], [0.02, 0.2]);
-  b.arrow('line', [[686, 340], [686, 380]], [0.02, 0.2]);
+  b.arrow('line', [[482, 278], [482, 318]], [0.02, 0.2]);
 });
 
 // 02 Stock folds to the right side, i.e. away from the viewer, round the hinge.
 t.segment({ id: 'stock', kind: 'step', duration: 2.8, focus: ['stock'] }, (b) => {
   b.hold('stock', 0.12).to('stock', 0.92, { fold: 180 }, 'inOut');
-  b.arrow('in', [[618, 290]], [0.05, 0.9]);
+  b.arrow('in', [[640, 316]], [0.05, 0.9], 'stock');
   b.arrow('arc', [[690, 250], [600, 200], [510, 250]], [0.12, 0.9]);
 });
 
-// 03 Both grip pins are pushed out to the left (towards the viewer).
+// 03 Both grip pins are pushed out to the left (towards the viewer). The close-up shows where
+// they belong: the storage holes in the stock (the mat only keeps them in view).
 t.segment({ id: 'rear-pins', kind: 'step', duration: 3.2, focus: ['pinRear', 'pinCentre'] }, (b) => {
   b.to('pinRear', 0.4, { z: 1 }, 'inOut').hold('pinCentre', 0.08).to('pinCentre', 0.48, { z: 1 }, 'inOut');
   b.tray('pinRear', 0.5, 0.92).tray('pinCentre', 0.56, 1);
+  b.stow('pinRear', 1, [0.5, 0.9]).stow('pinCentre', 2, [0.56, 0.98]);
   b.arrow('out', [[470, 300]], [0, 0.42]).arrow('out', [[356, 322]], [0.06, 0.5]);
 });
 
@@ -76,9 +78,10 @@ t.segment({ id: 'magwell', kind: 'step', duration: 3.0, focus: ['magwell'] }, (b
   b.arrow('arc', [[380, 318], [392, 350], [372, 380]], [0.12, 0.46]);
 });
 
-// 08 Front pin: pushed out to the left.
+// 08 Front pin: pushed out to the left; it belongs in the front storage hole.
 t.segment({ id: 'front-pin', kind: 'step', duration: 2.6, focus: ['pinFront'] }, (b) => {
   b.to('pinFront', 0.45, { z: 1 }, 'inOut').tray('pinFront', 0.5, 1);
+  b.stow('pinFront', 0, [0.5, 0.95]);
   b.arrow('out', [[255, 285]], [0, 0.46]);
 });
 

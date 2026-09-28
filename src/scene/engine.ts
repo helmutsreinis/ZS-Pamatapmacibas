@@ -1,6 +1,6 @@
 import { apply, clamp, ease, fitAspect, lerp, lerpBox, matrixAttr, multiply, poseMatrix, transformBox, unionBox, window01, type Box, type Matrix } from './math';
-import { partBox, spriteUrl, type LayerId, type PartDef, type SceneModel } from './model';
-import { REST, evalTrack, posesAt, type Arrow, type Pose, type Segment } from './timeline';
+import { partBox, spriteUrl, type LayerId, type PartDef, type SceneModel, type Stash } from './model';
+import { REST, evalTrack, posesAt, type Arrow, type Pose, type Segment, type Stow } from './timeline';
 
 const NS = 'http://www.w3.org/2000/svg';
 const CAMERA_SAMPLES = 24;
@@ -22,6 +22,8 @@ export type SceneOptions = {
   /** Direction arrows (off for static pictures). */
   arrows?: boolean;
   label?: (info: ActiveSegment) => { title: string; hint?: string } | null;
+  /** Show the model's pin-storage close-up while a segment stows pins (learning view). */
+  stash?: boolean;
   ariaLabel?: string;
 };
 
@@ -69,11 +71,8 @@ type PartView = {
   body?: SVGImageElement;
   lifted: boolean;
   // pins
-  pinBody?: SVGGElement;
-  pinEnd?: SVGImageElement;
-  pinClip?: SVGRectElement;
+  pin?: PinGraphic;
   pinRing?: SVGCircleElement;
-  pinLength?: number;
   // special parts
   spring?: SVGImageElement;
   shade?: SVGImageElement;
@@ -82,6 +81,9 @@ type PartView = {
 };
 
 type ArrowView = { arrow: Arrow; segment: Segment; g: SVGGElement; path: SVGPathElement; head: SVGPathElement; mark?: SVGGElement };
+type StashView = { root: HTMLDivElement; rings: SVGCircleElement[]; pins: Map<string, { g: SVGGElement; pin: PinGraphic }> };
+/** A pin seen end-on: its shank (clipped to the part outside the hole) and its end. */
+type PinGraphic = { body: SVGGElement; clip: SVGRectElement; end: SVGImageElement; length: number };
 
 function el<K extends keyof SVGElementTagNameMap>(name: K, attrs: Record<string, string | number> = {}, parent?: Element): SVGElementTagNameMap[K] {
   const node = document.createElementNS(NS, name);
@@ -100,6 +102,34 @@ function image(model: SceneModel, name: string, parent: Element, extra: Record<s
   }, parent);
 }
 
+function pinGraphic(model: SceneModel, parent: SVGGElement, spec: { side: string; end: string }, clipId: string): PinGraphic {
+  const side = model.sprites[spec.side];
+  const end = model.sprites[spec.end];
+  const clipPath = el('clipPath', { id: clipId, clipPathUnits: 'userSpaceOnUse' }, parent);
+  const clip = el('rect', { x: -4, y: side.y - 1, width: 0, height: side.h + 2 }, clipPath);
+  const body = el('g', { class: 'pin-body' }, parent);
+  el('image', { href: spriteUrl(model, spec.side), x: side.x, y: side.y, width: side.w, height: side.h, 'clip-path': `url(#${clipId})`, preserveAspectRatio: 'none' }, body);
+  const endImage = el('image', { href: spriteUrl(model, spec.end), x: -end.w / 2, y: -end.h / 2, width: end.w, height: end.h, class: 'pin-end', preserveAspectRatio: 'none' }, parent);
+  return { body, clip, end: endImage, length: side.length ?? side.w };
+}
+
+/** Pose a pin pushed out of its hole by z (0..1) and turned flat by v (0..1); returns its head position. */
+function placePin(model: SceneModel, pin: PinGraphic, z: number, v: number): [number, number] {
+  const { pinOut, pinDepth } = model;
+  const out = z * pin.length * pinDepth * (1 - v);
+  const hx = pinOut[0] * out, hy = pinOut[1] * out;
+  // The shank points back into the hole, opposite to the direction the pin comes out.
+  const inward = Math.atan2(-pinOut[1], -pinOut[0]) * 180 / Math.PI;
+  const angle = inward * (1 - v);
+  const foreshorten = lerp(pinDepth, 1, v);
+  pin.body.setAttribute('transform', `translate(${hx.toFixed(2)} ${hy.toFixed(2)}) rotate(${angle.toFixed(2)}) scale(${foreshorten.toFixed(3)} 1)`);
+  const visible = v > 0 ? pin.length + 6 : 2 + z * pin.length;
+  pin.clip.setAttribute('width', String(visible + 4));
+  pin.end.setAttribute('transform', `translate(${hx.toFixed(2)} ${hy.toFixed(2)})`);
+  pin.end.setAttribute('opacity', String(clamp(1 - v * 1.4)));
+  return [hx, hy];
+}
+
 export class Scene {
   readonly root: HTMLDivElement;
   readonly svg: SVGSVGElement;
@@ -107,6 +137,9 @@ export class Scene {
   private readonly views = new Map<string, PartView>();
   private readonly layers = new Map<LayerId | 'lifted', SVGGElement>();
   private readonly arrows: ArrowView[] = [];
+  private stash?: StashView;
+  /** Pins already stowed when each disassembly segment starts. */
+  private readonly stowed: Stow[][] = [];
   private readonly camPaths: Box[][] = [];
   private readonly subjects: string[][][] = [];
   private readonly resize: ResizeObserver;
@@ -118,6 +151,7 @@ export class Scene {
   private highlightOverride: string[] | null = null;
   private cameraIndex = 0;
   private labelWidth = 0;
+  private labelHeight = 0;
 
   constructor(host: HTMLElement, private readonly model: SceneModel, private readonly options: SceneOptions) {
     this.cameraMode = options.camera ?? 'auto';
@@ -132,6 +166,7 @@ export class Scene {
     this.root.appendChild(this.label);
     host.replaceChildren(this.root);
     this.build();
+    if (options.stash && model.stash) this.buildStash(model.stash);
     this.computeCameras();
     this.resize = new ResizeObserver(() => this.measure());
     this.resize.observe(this.root);
@@ -252,6 +287,37 @@ export class Scene {
     }
   }
 
+  /** The storage close-up: the picture, a ring round each hole and the pins that go into them. */
+  private buildStash(stash: Stash): void {
+    const { model } = this;
+    let done: Stow[] = [];
+    for (const segment of model.disassembly) {
+      this.stowed.push(done);
+      done = [...done, ...segment.stow];
+    }
+    const root = document.createElement('div');
+    root.className = 'scene-stash';
+    root.setAttribute('aria-hidden', 'true');
+    const kicker = document.createElement('span');
+    kicker.textContent = stash.kicker;
+    const title = document.createElement('b');
+    title.textContent = stash.title;
+    const { view } = stash;
+    const svg = el('svg', { class: 'stash-svg', viewBox: `${view.x} ${view.y} ${view.w} ${view.h}` });
+    image(model, stash.sprite, svg);
+    const end = model.sprites[stash.pin.end];
+    const rings = stash.holes.map(([x, y]) => el('circle', { cx: x, cy: y, r: end.w / 2 + 0.8, class: 'stash-ring' }, svg));
+    const pins = new Map<string, { g: SVGGElement; pin: PinGraphic }>();
+    for (const stow of done) {
+      if (pins.has(stow.part)) continue;
+      const g = el('g', { class: 'stash-pin', opacity: 0 }, svg);
+      pins.set(stow.part, { g, pin: pinGraphic(model, g, stash.pin, `stash-${stow.part}-${this.options.uid}`) });
+    }
+    root.append(kicker, title, svg);
+    this.root.appendChild(root);
+    this.stash = { root, rings, pins };
+  }
+
   private buildPart(def: PartDef, parent: SVGGElement): void {
     const home = document.createComment(def.id);
     parent.appendChild(home);
@@ -261,16 +327,9 @@ export class Scene {
 
     const { model } = this;
     if (def.kind === 'pin' && def.pin) {
-      const side = model.sprites[def.pin.side];
       const end = model.sprites[def.pin.end];
-      view.pinLength = side.length ?? side.w;
       view.pinRing = el('circle', { r: (end.w / 2) + 3.5, class: 'pin-ring', opacity: 0 }, g);
-      const clipId = `clip-${def.id}-${this.options.uid}`;
-      const clip = el('clipPath', { id: clipId, clipPathUnits: 'userSpaceOnUse' }, g);
-      view.pinClip = el('rect', { x: -4, y: side.y - 1, width: 0, height: side.h + 2 }, clip);
-      view.pinBody = el('g', { class: 'pin-body' }, g);
-      el('image', { href: spriteUrl(model, def.pin.side), x: side.x, y: side.y, width: side.w, height: side.h, 'clip-path': `url(#${clipId})`, preserveAspectRatio: 'none' }, view.pinBody);
-      view.pinEnd = el('image', { href: spriteUrl(model, def.pin.end), x: -end.w / 2, y: -end.h / 2, width: end.w, height: end.h, class: 'pin-end', preserveAspectRatio: 'none' }, g);
+      view.pin = pinGraphic(model, g, def.pin, `clip-${def.id}-${this.options.uid}`);
       return;
     }
     if (def.kind === 'sling') {
@@ -346,7 +405,7 @@ export class Scene {
     if (def.kind === 'pin') {
       const pose = poses.get(def.id) ?? REST;
       const view = this.views.get(def.id);
-      const length = view?.pinLength ?? 40;
+      const length = view?.pin?.length ?? 40;
       const local: Box = { x: -8, y: -8, w: length * (0.4 + pose.v * 0.6) + 16, h: 16 };
       return transformBox(this.worldMatrix(def, poses), local);
     }
@@ -508,6 +567,7 @@ export class Scene {
     const unit = cam.w / this.width;   // world units per screen pixel
     this.renderArrows(active, poses, unit);
     this.renderLabel(active, poses, cam, focus);
+    this.renderStash(active, pulse);
   }
 
   private setLifted(view: PartView, lifted: boolean): void {
@@ -518,19 +578,7 @@ export class Scene {
   }
 
   private renderPin(view: PartView, pose: Pose, lit: boolean, pulse: number): void {
-    const length = view.pinLength ?? 40;
-    const { pinOut, pinDepth } = this.model;
-    const out = pose.z * length * pinDepth * (1 - pose.v);
-    const hx = pinOut[0] * out, hy = pinOut[1] * out;
-    // The shank points back into the hole, opposite to the direction the pin comes out.
-    const inward = Math.atan2(-pinOut[1], -pinOut[0]) * 180 / Math.PI;
-    const angle = inward * (1 - pose.v);
-    const foreshorten = lerp(pinDepth, 1, pose.v);
-    view.pinBody!.setAttribute('transform', `translate(${hx.toFixed(2)} ${hy.toFixed(2)}) rotate(${angle.toFixed(2)}) scale(${foreshorten.toFixed(3)} 1)`);
-    const visible = pose.v > 0 ? length + 6 : 2 + pose.z * length;
-    view.pinClip!.setAttribute('width', String(visible + 4));
-    view.pinEnd!.setAttribute('transform', `translate(${hx.toFixed(2)} ${hy.toFixed(2)})`);
-    view.pinEnd!.setAttribute('opacity', String(clamp(1 - pose.v * 1.4)));
+    const [hx, hy] = placePin(this.model, view.pin!, pose.z, pose.v);
     view.pinRing!.setAttribute('cx', hx.toFixed(2));
     view.pinRing!.setAttribute('cy', hy.toFixed(2));
     view.pinRing!.setAttribute('opacity', lit && pose.v < 0.5 ? String(pulse) : '0');
@@ -600,6 +648,42 @@ export class Scene {
     }
   }
 
+  /**
+   * The close-up is open for the whole of a segment that stows pins, in either direction: its
+   * pins go into their holes (in assembly, come out of them) while the same pins travel between
+   * the rifle and the mat, and pins stowed in earlier segments sit in their holes.
+   */
+  private renderStash(active: ActiveSegment, pulse: number): void {
+    const view = this.stash;
+    const stash = this.model.stash;
+    if (!view || !stash) return;
+    const index = this.model.disassembly.indexOf(active.segment);
+    const own = index >= 0 && active.time > 0 ? active.segment.stow : [];
+    view.root.classList.toggle('open', own.length > 0);
+    if (!own.length) return;
+    const before = this.stowed[index];
+    view.rings.forEach((ring, hole) => {
+      const target = own.some((stow) => stow.hole === hole);
+      const taken = before.some((stow) => stow.hole === hole);
+      ring.classList.toggle('target', target);
+      ring.setAttribute('opacity', target ? String(pulse) : taken ? '0' : '0.75');
+    });
+    for (const [part, { g, pin }] of view.pins) {
+      const mine = own.find((stow) => stow.part === part);
+      const stow = mine ?? before.find((earlier) => earlier.part === part);
+      if (!stow) {
+        g.setAttribute('opacity', '0');
+        continue;
+      }
+      // A pin being stowed appears in front of its hole and is pushed in, the way it left the rifle.
+      const k = mine ? clamp((active.u - mine.t[0]) / (mine.t[1] - mine.t[0])) : 1;
+      const [x, y] = stash.holes[stow.hole];
+      g.setAttribute('transform', `translate(${x} ${y})`);
+      g.setAttribute('opacity', String(clamp(k / 0.2)));
+      placePin(this.model, pin, 1 - ease('inOut', k), 0);
+    }
+  }
+
   private renderLabel(active: ActiveSegment, poses: Map<string, Pose>, cam: Box, focus: string[]): void {
     const info = this.options.label?.(active);
     if (!info || !focus.length || active.time <= 0) {
@@ -629,14 +713,23 @@ export class Scene {
         this.label.appendChild(hint);
       }
       this.labelWidth = this.label.offsetWidth;
+      this.labelHeight = this.label.offsetHeight;
     }
     // Keep the whole callout inside the stage.
     const half = this.labelWidth / 2 + 8;
     const anchorX = x;
     x = half * 2 < this.width ? clamp(x, half, this.width - half) : this.width / 2;
+    y = clamp(y, 8, height - 8);
+    // Move aside for the storage close-up when both are at the same height.
+    const stash = this.stash?.root;
+    if (stash?.classList.contains('open')) {
+      const top = below ? y : y - this.labelHeight;
+      if (top < stash.offsetTop + stash.offsetHeight + 6 && top + this.labelHeight > stash.offsetTop - 6) {
+        x = Math.max(half, Math.min(x, stash.offsetLeft - 8 - this.labelWidth / 2));
+      }
+    }
     const pointer = clamp(anchorX - (x - this.labelWidth / 2), 14, this.labelWidth - 14);
     this.label.style.setProperty('--pointer', `${pointer.toFixed(1)}px`);
-    y = clamp(y, 8, height - 8);
     this.label.classList.toggle('below', below);
     this.label.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) translate(-50%, ${below ? '0' : '-100%'})`;
   }
