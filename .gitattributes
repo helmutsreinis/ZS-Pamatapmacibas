@@ -1,0 +1,5 @@
+# Normalise text files to LF in the repository; images and other binaries are detected automatically.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.webp binary

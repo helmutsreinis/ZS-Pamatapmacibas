@@ -1,0 +1,1302 @@
+[
+ {
+  "id": "01-01",
+  "chapter": "01 — Ierindas pamati",
+  "page": 1,
+  "prompt": "Kas mācību materiālā ir definēts kā ierinda?",
+  "correct": "Noteikts karavīru vai transportlīdzekļu sakārtojums kopējai darbībai.",
+  "wrong": [
+   "Jebkura karavīru grupa, kas atrodas vienā telpā.",
+   "Tikai kolonna, kurā karavīri pārvietojas cits aiz cita.",
+   "Komandiera noteikta atpūtas vieta pirms uzdevuma."
+  ],
+  "explanation": "Ierinda ir noteikts karavīru vai transportlīdzekļu sakārtojums kopējai darbībai."
+ },
+ {
+  "id": "01-02",
+  "chapter": "01 — Ierindas pamati",
+  "page": 1,
+  "prompt": "Kāda ir galvenā atšķirība starp rindu un kolonnu?",
+  "correct": "Rindā stāv cits citam blakus, kolonnā — cits aiz cita.",
+  "wrong": [
+   "Rindā stāv cits aiz cita, kolonnā — cits citam blakus.",
+   "Rinda vienmēr ir divās līnijās, kolonna — tikai vienā.",
+   "Rindu lieto tikai uz vietas, kolonnu — tikai telpās."
+  ],
+  "explanation": "Rinda ir frontāls izvietojums blakus; kolonna ir izvietojums dziļumā cits aiz cita."
+ },
+ {
+  "id": "01-03",
+  "chapter": "01 — Ierindas pamati",
+  "page": 1,
+  "prompt": "Ko nozīmē ierindas fronte un aizmugure?",
+  "correct": "Fronte ir virziens, uz kuru karavīri vērsti ar seju; aizmugure ir pretējais virziens.",
+  "wrong": [
+   "Fronte vienmēr ir ziemeļi, bet aizmugure — dienvidi.",
+   "Fronte ir ierindas labā puse, aizmugure — kreisā puse.",
+   "Fronte ir komandiera atrašanās vieta, aizmugure — pēdējais karavīrs."
+  ],
+  "explanation": "Fronte tiek noteikta pēc karavīru sejas virziena, nevis pēc debespusēm vai komandiera vietas."
+ },
+ {
+  "id": "01-04",
+  "chapter": "01 — Ierindas pamati",
+  "page": 1,
+  "prompt": "Kas ir ierindas flangs?",
+  "correct": "Ierindas labā vai kreisā puse; flanga galā atrodas attiecīgās puses pēdējais karavīrs.",
+  "wrong": [
+   "Ierindas centrs, kur vienmēr stāv komandieris.",
+   "Attālums no pirmās līdz pēdējai rindai.",
+   "Brīvā vieta starp divām apakšvienībām."
+  ],
+  "explanation": "Flangs ir ierindas sānu mala — labā vai kreisā puse."
+ },
+ {
+  "id": "01-05",
+  "chapter": "01 — Ierindas pamati",
+  "page": 1,
+  "prompt": "Kura atbilde pareizi izskaidro atstarpi un atstatumu?",
+  "correct": "Atstarpe ir starp līdzās stāvošajiem; atstatums ir dziļumā starp cits aiz cita stāvošajiem.",
+  "wrong": [
+   "Atstarpe ir dziļumā, bet atstatums — starp līdzās stāvošajiem.",
+   "Abi jēdzieni nozīmē tikai attālumu līdz komandierim.",
+   "Atstarpi mēra laikā, atstatumu — soļu skaitā."
+  ],
+  "explanation": "Atstarpe attiecas uz izvietojumu blakus, atstatums — uz izvietojumu dziļumā."
+ },
+ {
+  "id": "01-06",
+  "chapter": "01 — Ierindas pamati",
+  "page": 1,
+  "prompt": "Kas divrindu ierindā ir kārta?",
+  "correct": "Divi karavīri, kuri stāv viens otram aiz muguras; ja aizmugurējā vieta brīva, kārta ir nepilna.",
+  "wrong": [
+   "Visi vienas rindas karavīri no viena flanga līdz otram.",
+   "Trīs karavīri, kuri stāv plecu pie pleca.",
+   "Komandiera un viņa vietnieka kopīga pozīcija ierindas priekšā."
+  ],
+  "explanation": "Kārta veidojas no priekšējā un aizmugurējā karavīra vienā vertikālā līnijā."
+ },
+ {
+  "id": "01-07",
+  "chapter": "01 — Ierindas pamati",
+  "page": 1,
+  "prompt": "Kāda ir vadošā un noslēdzošā loma gājiena ierindā?",
+  "correct": "Vadošais virzās galvgalī, pārējie pieskaņo kustību viņam; noslēdzošais ir pēdējais kolonnā.",
+  "wrong": [
+   "Vadošais vienmēr stāv kolonnas vidū, noslēdzošais — priekšā.",
+   "Abi pārvietojas ārpus ierindas un tikai dod signālus.",
+   "Vadošais nosaka tikai balsi, noslēdzošais — tikai soli."
+  ],
+  "explanation": "Vadošais nosaka kustības orientieri, bet noslēdzošais atrodas kolonnas beigās."
+ },
+ {
+  "id": "01-08",
+  "chapter": "01 — Ierindas pamati",
+  "page": 1,
+  "prompt": "Kā atšķiras takts no tempa?",
+  "correct": "Takts ir kustību vienmērīga atkārtošanās secība; temps ir pārvietošanās ātrums, piemēram, soļi minūtē.",
+  "wrong": [
+   "Takts ir attālums starp karavīriem; temps ir rindas platums.",
+   "Takts ir komandas skaļums; temps ir balss tonis.",
+   "Takts ir tikai soļa garums; temps ir tikai roku vēziens."
+  ],
+  "explanation": "Takts raksturo ritmisku secību, temps — kustības ātrumu."
+ },
+ {
+  "id": "01-09",
+  "chapter": "01 — Ierindas pamati",
+  "page": 1,
+  "prompt": "Kas jāpārbauda pirms nodarbības, ja karavīram ir ierocis?",
+  "correct": "Jāpārliecinās, ka ierocis nav pielādēts un ir nodrošināts.",
+  "wrong": [
+   "Jāatstāj ierocis nenodrošināts, lai ātrāk sāktu vingrinājumu.",
+   "Jāpārbauda tikai siksnas krāsa un garums.",
+   "Jāielādē viena patrona funkcionālajai pārbaudei."
+  ],
+  "explanation": "Materiāls īpaši uzsver: ierocis nedrīkst būt pielādēts un tam jābūt nodrošinātam."
+ },
+ {
+  "id": "01-10",
+  "chapter": "01 — Ierindas pamati",
+  "page": 1,
+  "prompt": "Kura rīcība atbilst prasībām, atrodoties ierindā?",
+  "correct": "Zināt savu vietu, ievērot klusumu, precīzi izpildīt komandas un bez atļaujas neatstāt ierindu.",
+  "wrong": [
+   "Brīvi mainīt vietu, ja citā ierindas daļā ir vairāk vietas.",
+   "Sarunāties pusbalsī, kamēr komandieris nav tieši blakus.",
+   "Pēc saviem ieskatiem palielināt atstarpi un atstatumu."
+  ],
+  "explanation": "Ierindā saglabā noteikto vietu, klusumu, līdzināšanos, atstarpi un atstatumu."
+ },
+ {
+  "id": "02-01",
+  "chapter": "02 — Karavīra pienākumi",
+  "page": 2,
+  "prompt": "Kāds ir karavīra pienākums attiecībā uz ieroci pirms stāšanās ierindā?",
+  "correct": "Pārbaudīt, vai ierocis nav pielādēts un vai tas ir nodrošināts.",
+  "wrong": [
+   "Pārbaudīt tikai optikas tīrību.",
+   "Ieroci pielādēt un drošināt tikai pēc nostāšanās.",
+   "Nodot ieroci tuvākajam karavīram bez pārbaudes."
+  ],
+  "explanation": "Drošības pārbaude jāveic pirms ierindas darbību sākuma."
+ },
+ {
+  "id": "02-02",
+  "chapter": "02 — Karavīra pienākumi",
+  "page": 2,
+  "prompt": "Kas jādara ar kaujas tērpu un matiem pirms stāšanās ierindā?",
+  "correct": "Jāpārbauda tērpa kārtība, tas pareizi jāuzģērbj un jāsakārto, kā arī jāsakārto mati.",
+  "wrong": [
+   "Jāsakārto tikai galvassega; pārējais nav būtiski.",
+   "Tērps jāsakārto tikai pēc komandas “BRĪVI!”.",
+   "Mati jāsakārto tikai komandierim un vadošajam."
+  ],
+  "explanation": "Materiāls atsevišķi min tērpa kārtību, pareizu uzģērbšanu un matu sakārtošanu."
+ },
+ {
+  "id": "02-03",
+  "chapter": "02 — Karavīra pienākumi",
+  "page": 2,
+  "prompt": "Kas jāpārbauda attiecībā uz individuālajiem aizsardzības līdzekļiem un uzkabi?",
+  "correct": "To kārtība, pareiza uzģērbšana un sakārtojums.",
+  "wrong": [
+   "Tikai ražotāja nosaukums un izgatavošanas gads.",
+   "Vienīgi tas, vai uzkabe ir vienā krāsā ar zābakiem.",
+   "Nekas — par to atbild tikai komandieris."
+  ],
+  "explanation": "Karavīrs pats pārbauda aizsardzības līdzekļus un uzkabi un pareizi tos uzģērbj."
+ },
+ {
+  "id": "02-04",
+  "chapter": "02 — Karavīra pienākumi",
+  "page": 2,
+  "prompt": "Kad karavīram jāpārbauda kaujas un cita tehnika?",
+  "correct": "Ja tā ietilpst viņa uzdevumā un aprīkojumā.",
+  "wrong": [
+   "Tikai tad, ja tehnika pieder citai vienībai.",
+   "Vienmēr tikai pēc ierindas izformēšanas.",
+   "Tikai tad, ja komandieris nav ieradies."
+  ],
+  "explanation": "Tehnikas pārbaude attiecas uz karavīra uzdevumā un aprīkojumā ietilpstošo tehniku."
+ },
+ {
+  "id": "02-05",
+  "chapter": "02 — Karavīra pienākumi",
+  "page": 2,
+  "prompt": "Ko nozīmē pienākums “Palīdzība biedram”?",
+  "correct": "Palīdzēt citiem karavīriem novērst atklātos ietērpa un uzkabes trūkumus.",
+  "wrong": [
+   "Pārņemt biedra vietu ierindā bez komandas.",
+   "Nodot biedram savu ieroci pārbaudes laikā.",
+   "Atļaut biedram izlaist ekipējuma pārbaudi."
+  ],
+  "explanation": "Pamanītie trūkumi jānovērš savlaicīgi, arī palīdzot biedram."
+ },
+ {
+  "id": "02-06",
+  "chapter": "02 — Karavīra pienākumi",
+  "page": 2,
+  "prompt": "Kā karavīram jāieņem sava vieta ierindā?",
+  "correct": "Ātri un netraucējot pārējos.",
+  "wrong": [
+   "Lēni, vispirms apejot ierindu pa perimetru.",
+   "Tikai pēc tam, kad visi pārējie jau nostājušies.",
+   "No jebkuras puses, pārvietojot citus karavīrus."
+  ],
+  "explanation": "Karavīram jāzina sava vieta un jāprot to ieņemt ātri, netraucējot citus."
+ },
+ {
+  "id": "02-07",
+  "chapter": "02 — Karavīra pienākumi",
+  "page": 2,
+  "prompt": "Kas jāsaglabā, pārvietojoties ierindā?",
+  "correct": "Līdzināšanās, noteiktais atstatums un atstarpes.",
+  "wrong": [
+   "Tikai vienāds roku vēziens; vieta nav būtiska.",
+   "Brīva distance pēc katra karavīra ieskatiem.",
+   "Nepārtraukta sarunāšanās, lai saskaņotu soli."
+  ],
+  "explanation": "Ierindas kārtību kustībā uztur ar līdzināšanos, atstatumu un atstarpēm."
+ },
+ {
+  "id": "02-08",
+  "chapter": "02 — Karavīra pienākumi",
+  "page": 2,
+  "prompt": "Kura rīcība pārkāpj karavīra pienākumus ierindā?",
+  "correct": "Sarunāšanās bez atļaujas un ierindas atstāšana pēc saviem ieskatiem.",
+  "wrong": [
+   "Komandu un signālu precīza izpilde.",
+   "Klusuma un uzmanības ievērošana.",
+   "Savas vietas saglabāšana."
+  ],
+  "explanation": "Bez atļaujas nedrīkst ne sarunāties, ne atstāt ierindu."
+ },
+ {
+  "id": "02-09",
+  "chapter": "02 — Karavīra pienākumi",
+  "page": 2,
+  "prompt": "Kā jāstāv slēgtā ierindā?",
+  "correct": "Skatoties taisni uz priekšu, nekustīgi, bet nesaspringstot.",
+  "wrong": [
+   "Ar noliektu galvu un svaru tikai uz labās kājas.",
+   "Brīvi mainot stāju ik pēc dažām sekundēm.",
+   "Skatoties uz tuvāko komandieri neatkarīgi no virziena."
+  ],
+  "explanation": "Pareiza stāja ir nekustīga un disciplinēta, taču bez nevajadzīga sasprindzinājuma."
+ },
+ {
+  "id": "02-10",
+  "chapter": "02 — Karavīra pienākumi",
+  "page": 2,
+  "prompt": "Kā pareizi nodot saņemtas pavēles, komandas un signālus?",
+  "correct": "Saprotami un nesagrozot to saturu.",
+  "wrong": [
+   "Saīsinot pēc saviem ieskatiem.",
+   "Nododot tikai daļu, kas šķiet svarīgākā.",
+   "Mainot formulējumu, lai tas skanētu stingrāk."
+  ],
+  "explanation": "Novērotājs vai ziņnesis saņemto nodod precīzi, saprotami un bez sagrozījumiem."
+ },
+ {
+  "id": "03-01",
+  "chapter": "03 — Komandiera pienākumi",
+  "page": 3,
+  "prompt": "Kas komandierim jāpaziņo, nosakot nostāšanās prasības?",
+  "correct": "Nostāšanās laiks, vieta un kārtība, kā arī vajadzīgais tērps, uzkabe, bruņojums un tehnika.",
+  "wrong": [
+   "Tikai nostāšanās laiks un laikapstākļu prognoze.",
+   "Vienīgi karavīru uzvārdi un dienesta pakāpes.",
+   "Tikai paredzamais nodarbības beigu laiks."
+  ],
+  "explanation": "Nostāšanās prasībām jābūt pilnīgām un jāaptver laiks, vieta, kārtība un nepieciešamais aprīkojums."
+ },
+ {
+  "id": "03-02",
+  "chapter": "03 — Komandiera pienākumi",
+  "page": 3,
+  "prompt": "Ko komandieris pārbauda attiecībā uz sastāvu un aprīkojumu?",
+  "correct": "Karavīru skaitu, apbruņojumu, individuālos aizsardzības līdzekļus, tehniku un to drošību.",
+  "wrong": [
+   "Tikai karavīru skaitu bez aprīkojuma pārbaudes.",
+   "Vienīgi formas tērpa krāsu un zābaku modeli.",
+   "Tikai transportlīdzekļu degvielas patēriņu."
+  ],
+  "explanation": "Komandierim jāzina sastāvs un jābūt pārliecinātam par aprīkojuma un tehnikas drošību."
+ },
+ {
+  "id": "03-03",
+  "chapter": "03 — Komandiera pienākumi",
+  "page": 3,
+  "prompt": "Kad komandierim jāveic kaujas un citas tehnikas apskate?",
+  "correct": "Pirms tehnikas nostādīšanas ierindā.",
+  "wrong": [
+   "Tikai pēc nodarbības noslēguma.",
+   "Pēc tam, kad tehnika jau sākusi kustību.",
+   "Tikai tad, ja parādās acīmredzams bojājums."
+  ],
+  "explanation": "Tehnikas apskate ir pirmsierindas sagatavošanas daļa."
+ },
+ {
+  "id": "03-04",
+  "chapter": "03 — Komandiera pienākumi",
+  "page": 3,
+  "prompt": "Ko ietver pārvadāšanas gatavības pārbaude?",
+  "correct": "Vajadzīgo ierīču un iekārtu tehnisko kārtību, sakabes stiprību un mantu pareizu izvietojumu.",
+  "wrong": [
+   "Tikai vadītāja dokumentu pārbaudi.",
+   "Tikai transportlīdzekļa ārējās krāsas atbilstību.",
+   "Vienīgi pasažieru sēdvietu skaitu, neapskatot sakabes."
+  ],
+  "explanation": "Pārvadāšanas drošība ietver gan tehnisko stāvokli, gan sakabes, gan kravas izvietojumu."
+ },
+ {
+  "id": "03-05",
+  "chapter": "03 — Komandiera pienākumi",
+  "page": 3,
+  "prompt": "Kā komandieris rāda priekšzīmi ierindā?",
+  "correct": "Pats pareizi izpilda ierindas noteikumu prasības un ar rīcību rāda piemēru padotajiem.",
+  "wrong": [
+   "Atstāj izpildi tikai padotajiem un pats stāv malā.",
+   "Maina noteikumus atkarībā no situācijas bez paskaidrojuma.",
+   "Dod komandas sēdus, lai taupītu spēkus."
+  ],
+  "explanation": "Komandiera personīgā izpilde ir daļa no disciplīnas uzturēšanas."
+ },
+ {
+  "id": "03-06",
+  "chapter": "03 — Komandiera pienākumi",
+  "page": 3,
+  "prompt": "Ko komandieris pārbauda karavīru ārējā izskatā?",
+  "correct": "Ietērpa un uzkabes sakārtotību un atbilstību, kā arī matu sakārtojumu.",
+  "wrong": [
+   "Tikai sejas izteiksmi un balss skaļumu.",
+   "Vienīgi cimdu un zeķu ražotāju.",
+   "Tikai to, vai visiem ir vienāds pulkstenis."
+  ],
+  "explanation": "Ārējā izskata pārbaude aptver ietērpu, uzkabi un matus."
+ },
+ {
+  "id": "03-07",
+  "chapter": "03 — Komandiera pienākumi",
+  "page": 3,
+  "prompt": "Ko nozīmē uzturēt ierindas disciplīnu?",
+  "correct": "Sekot, lai padotie ievēro disciplīnu un pareizi izpilda pienākumus, komandas un signālus.",
+  "wrong": [
+   "Atļaut katram izvēlēties savu komandu izpildes veidu.",
+   "Pārtraukt visas pārbaudes, tiklīdz ierinda nostājusies.",
+   "Uzraudzīt tikai priekšējo rindu."
+  ],
+  "explanation": "Disciplīna ietver gan uzvedību, gan precīzu pienākumu, komandu un signālu izpildi."
+ },
+ {
+  "id": "03-08",
+  "chapter": "03 — Komandiera pienākumi",
+  "page": 3,
+  "prompt": "Kādā stāvoklī komandierim jābūt, dodot komandas uz vietas?",
+  "correct": "Pamatstājā.",
+  "wrong": [
+   "Stāvoklī brīvi ar sakrustotām rokām.",
+   "Sēdus vai atbalstoties pret tehniku.",
+   "Jebkurā stāvoklī, ja balss ir pietiekami skaļa."
+  ],
+  "explanation": "Dodot komandas uz vietas, komandieris ieņem pamatstāju."
+ },
+ {
+  "id": "03-09",
+  "chapter": "03 — Komandiera pienākumi",
+  "page": 3,
+  "prompt": "Kas komandierim jāievēro kustībā?",
+  "correct": "Noteiktais atstatums, atstarpe, kustības ātrums un kustības noteikumi.",
+  "wrong": [
+   "Tikai attālums līdz vadošajam.",
+   "Vienīgi roku vēziena augstums.",
+   "Tikai balss komandu biežums."
+  ],
+  "explanation": "Kustības kārtība ietver gan izvietojumu, gan ātrumu, gan noteikumus."
+ },
+ {
+  "id": "03-10",
+  "chapter": "03 — Komandiera pienākumi",
+  "page": 3,
+  "prompt": "Kura secība vislabāk atbilst komandiera īsajai pārbaudei pirms ierindas?",
+  "correct": "Prasības paziņotas → sastāvs un aprīkojums pārbaudīts → tehnika apskatīta → pārvadāšanas gatavība pārbaudīta.",
+  "wrong": [
+   "Pārvadāšana sākta → prasības paziņotas → sastāvs saskaitīts → tehnika apskatīta.",
+   "Komanda dota → ierinda izformēta → aprīkojums pārbaudīts → laiks paziņots.",
+   "Tērps pārbaudīts → visi atlaisti → tehnika apskatīta → prasības atceltas."
+  ],
+  "explanation": "Materiālā pirmsierindas pārbaude izklāstīta tieši šādā loģiskā secībā."
+ },
+ {
+  "id": "04-01",
+  "chapter": "04 — Ierindas veidi un shēmas",
+  "page": 4,
+  "prompt": "Kā parasti stājas nodaļa, kurā ir mazāk par pieciem karavīriem?",
+  "correct": "Vienā rindā vai kolonnā pa vienam.",
+  "wrong": [
+   "Obligāti divrindu ierindā.",
+   "Tikai špalerā.",
+   "Kolonnā pa četri neatkarīgi no sastāva."
+  ],
+  "explanation": "Materiāls mazākai nodaļai paredz vienu rindu vai kolonnu pa vienam."
+ },
+ {
+  "id": "04-02",
+  "chapter": "04 — Ierindas veidi un shēmas",
+  "page": 4,
+  "prompt": "Kāds ir otrās rindas novietojums divrindu ierindā?",
+  "correct": "Aiz pirmās rindas viena soļa vai izstieptas rokas atstatumā; pēdējā kārta ir pilna.",
+  "wrong": [
+   "Divu soļu attālumā pa diagonāli; pēdējā kārta var būt jebkāda.",
+   "Tieši blakus pirmajai rindai bez atstatuma.",
+   "Priekšā pirmajai rindai plaukstas platumā."
+  ],
+  "explanation": "Divrindu ierindā otrā rinda atrodas dziļumā, un pēdējā kārta tiek veidota pilna."
+ },
+ {
+  "id": "04-03",
+  "chapter": "04 — Ierindas veidi un shēmas",
+  "page": 4,
+  "prompt": "Kas raksturo slēgtu ierindu?",
+  "correct": "Starp līdzās stāvošo karavīru elkoņiem ir plaukstas platuma atstarpe.",
+  "wrong": [
+   "Starp karavīriem ir tieši divu soļu atstarpe.",
+   "Karavīri stāv bez jebkādas atstarpes, saskaroties ar pleciem.",
+   "Atstarpi nosaka tikai transportlīdzekļa platums."
+  ],
+  "explanation": "Slēgtā ierindā atstarpe ir plaukstas platumā starp elkoņiem."
+ },
+ {
+  "id": "04-04",
+  "chapter": "04 — Ierindas veidi un shēmas",
+  "page": 4,
+  "prompt": "Kas raksturo izretinātu ierindu?",
+  "correct": "Frontāli starp karavīriem ir viena soļa vai komandiera noteikta lielāka atstarpe.",
+  "wrong": [
+   "Karavīri stāv plecu pie pleca bez atstarpes.",
+   "Atstatums dziļumā vienmēr ir tieši pieci soļi.",
+   "Karavīri nostājas tikai apļa formā."
+  ],
+  "explanation": "Izretinājums attiecas uz palielinātu frontālo atstarpi."
+ },
+ {
+  "id": "04-05",
+  "chapter": "04 — Ierindas veidi un shēmas",
+  "page": 4,
+  "prompt": "Kur parasti lieto izvērstu ierindu?",
+  "correct": "Pārbaudēs, sadalēs, skatēs un parādēs.",
+  "wrong": [
+   "Tikai skrējienā šķēršļotā apvidū.",
+   "Vienīgi transportlīdzekļu remontā.",
+   "Tikai nakts pārgājienos pa vienam."
+  ],
+  "explanation": "Izvērstā ierindā apakšvienības frontāli nostājas vienā līnijā noteiktās atstarpēs."
+ },
+ {
+  "id": "04-06",
+  "chapter": "04 — Ierindas veidi un shēmas",
+  "page": 4,
+  "prompt": "Kā nodaļa un vads var pārvietoties gājiena ierindā?",
+  "correct": "Nodaļa kolonnā pa vienam vai divi; vadam iespējama arī kolonna pa trīs vai četri atbilstoši sastāvam.",
+  "wrong": [
+   "Nodaļa tikai špalerā, vads tikai vienrindā.",
+   "Visas vienības tikai kolonnā pa vienam.",
+   "Nodaļa kolonnā pa četri, vads tikai pa divi."
+  ],
+  "explanation": "Gājiena ierindas kolonnas izvēlas atbilstoši apakšvienības sastāvam."
+ },
+ {
+  "id": "04-07",
+  "chapter": "04 — Ierindas veidi un shēmas",
+  "page": 4,
+  "prompt": "Kas ir špalera?",
+  "correct": "Divas rindas ar sejām viena pret otru; atstarpes un attālumu nosaka komandieris.",
+  "wrong": [
+   "Viena rinda ar mugurām pret komandieri.",
+   "Četras kolonnas, kas virzās vienā virzienā.",
+   "Aplis, kura centrā atrodas vadošais."
+  ],
+  "explanation": "Špaleru veido divas pretēji vērstas rindas."
+ },
+ {
+  "id": "04-08",
+  "chapter": "04 — Ierindas veidi un shēmas",
+  "page": 4,
+  "prompt": "Ko raksturo apzīmējumi “divrindu”, “slēgta” un “izvērsta”?",
+  "correct": "Attiecīgi rindu skaitu, atstarpes un apakšvienību sakārtojumu; tie var attiekties uz vienu un to pašu ierindu.",
+  "wrong": [
+   "Tie ir trīs savstarpēji izslēdzoši pārvietošanās ātrumi.",
+   "Tie visi apzīmē tikai komandiera atrašanās vietu.",
+   "Tie ir ieroča nešanas stāvokļi."
+  ],
+  "explanation": "Šie termini raksturo dažādas vienas ierindas īpašības, tāpēc var pārklāties."
+ },
+ {
+  "id": "04-09",
+  "chapter": "04 — Ierindas veidi un shēmas",
+  "page": 4,
+  "prompt": "Ko shēmās apzīmē izvietojums blakus un izvietojums aiz muguras?",
+  "correct": "Blakus — atstarpi; aiz muguras — atstatumu.",
+  "wrong": [
+   "Blakus — atstatumu; aiz muguras — atstarpi.",
+   "Abi apzīmē tikai flangu.",
+   "Blakus — tempu; aiz muguras — takti."
+  ],
+  "explanation": "Atstarpe ir frontāli blakus, atstatums — dziļumā aiz muguras."
+ },
+ {
+  "id": "04-10",
+  "chapter": "04 — Ierindas veidi un shēmas",
+  "page": 4,
+  "prompt": "Kā visprecīzāk raksturot kolonnu pa divi?",
+  "correct": "Divas paralēlas kolonnas, kurās karavīri izvietoti cits aiz cita.",
+  "wrong": [
+   "Divas rindas ar sejām viena pret otru.",
+   "Viena gara rinda, kur katrs otrais karavīrs stāv sāniski.",
+   "Četri karavīri vienā kārtā bez dziļuma."
+  ],
+  "explanation": "Kolonnā pa divi ir divi frontāli blakus esoši kolonnas pavedieni."
+ },
+ {
+  "id": "05-01",
+  "chapter": "05 — Pamatstāja un stāvoklis brīvi",
+  "page": 5,
+  "prompt": "Kā pamatstājā novieto pēdas?",
+  "correct": "Papēži kopā, purngali vienādi izvērsti; starp purngalu iekšmalām — savilktas dūres platums.",
+  "wrong": [
+   "Papēži plecu platumā, purngali pilnīgi paralēli.",
+   "Labā pēda vienu soli priekšā kreisajai.",
+   "Purngali kopā, papēži dūres platumā."
+  ],
+  "explanation": "Pamatstājā papēži ir kopā, bet purngali vienādi izvērsti."
+ },
+ {
+  "id": "05-02",
+  "chapter": "05 — Pamatstāja un stāvoklis brīvi",
+  "page": 5,
+  "prompt": "Kā pamatstājā sadala ķermeņa svaru?",
+  "correct": "Vienādi uz abām pēdu vidusdaļām, ķermeni turot taisnu, dabisku un mazliet uz priekšu.",
+  "wrong": [
+   "Pilnībā uz papēžiem, ķermeni atliecot atpakaļ.",
+   "Tikai uz kreisās kājas, labo turot brīvu.",
+   "Uz purngaliem, ceļus viegli saliecot."
+  ],
+  "explanation": "Stāja ir līdzsvarota, ceļi taisni un ķermenis nedaudz virzīts uz priekšu."
+ },
+ {
+  "id": "05-03",
+  "chapter": "05 — Pamatstāja un stāvoklis brīvi",
+  "page": 5,
+  "prompt": "Kā pamatstājā tur rokas un galvu?",
+  "correct": "Rokas taisnas gar sāniem, dūres viegli savilktas, vidējais pirksts pret bikšu vīli; galva taisni, skats uz priekšu.",
+  "wrong": [
+   "Rokas sakrustotas uz krūtīm, skats uz leju.",
+   "Rokas aiz muguras, galva pagriezta pa labi.",
+   "Elkoņi izvērsti sānis, plaukstas atvērtas uz priekšu."
+  ],
+  "explanation": "Rokas paliek gar sāniem, bet galva un skatiens — taisni uz priekšu."
+ },
+ {
+  "id": "05-04",
+  "chapter": "05 — Pamatstāja un stāvoklis brīvi",
+  "page": 5,
+  "prompt": "Kurā no minētajām situācijām jāieņem pamatstāja?",
+  "correct": "Pēc komandām “STĀTIES!” un “MIERĀ!”, dodot vai saņemot pavēles, ziņojot, sveicinoties un Valsts himnas laikā.",
+  "wrong": [
+   "Tikai ēdienreizes laikā.",
+   "Vienīgi pēc komandas “BRĪVI!”.",
+   "Tikai pārvietojoties brīvajā solī."
+  ],
+  "explanation": "Materiāls uzskaita vairākas oficiālas situācijas, kurās jābūt pamatstājā."
+ },
+ {
+  "id": "05-05",
+  "chapter": "05 — Pamatstāja un stāvoklis brīvi",
+  "page": 5,
+  "prompt": "Kā izpilda “BRĪVI!” lauka un ikdienas formas tērpā?",
+  "correct": "Kreiso kāju atvirza pa kreisi plecu platumā un vienlaikus rokas sakrusto aiz muguras.",
+  "wrong": [
+   "Labo kāju sper soli uz priekšu un rokas paceļ pie galvas.",
+   "Abas kājas saliek kopā un rokas nolaiž gar sāniem.",
+   "Apsēžas vai atbalstās pret tuvāko priekšmetu."
+  ],
+  "explanation": "“BRĪVI!” tiek izpildīts vienā taktī, saglabājot uzmanību."
+ },
+ {
+  "id": "05-06",
+  "chapter": "05 — Pamatstāja un stāvoklis brīvi",
+  "page": 5,
+  "prompt": "Kā stāvoklī “BRĪVI!” novieto rokas aiz muguras?",
+  "correct": "Kreisās plaukstas virspuse ir pie jostasvietas, īkšķi sakrustoti ar labo virspusē, kreisās rokas pirksti aptver labo delnu.",
+  "wrong": [
+   "Labā plauksta uz kreisā pleca, kreisā roka gar sāniem.",
+   "Abas dūres savilktas un piespiestas pie muguras lejasdaļas.",
+   "Plaukstas saliktas kopā ar pirkstiem uz augšu."
+  ],
+  "explanation": "Materiāls precīzi nosaka plaukstu un īkšķu savstarpējo novietojumu."
+ },
+ {
+  "id": "05-07",
+  "chapter": "05 — Pamatstāja un stāvoklis brīvi",
+  "page": 5,
+  "prompt": "Ko komanda “BRĪVI!” pati par sevi neatļauj?",
+  "correct": "Sarunāties vai patvaļīgi sakārtoties.",
+  "wrong": [
+   "Vienmērīgi sadalīt svaru uz abām kājām.",
+   "Saglabāt uzmanību.",
+   "Palikt savā vietā."
+  ],
+  "explanation": "Stāvoklis brīvi nav atļauja sarunām vai brīvai kustībai."
+ },
+ {
+  "id": "05-08",
+  "chapter": "05 — Pamatstāja un stāvoklis brīvi",
+  "page": 5,
+  "prompt": "Kā atšķiras stāvoklis brīvi svētku un parādes formas tērpā?",
+  "correct": "Tas ir līdzīgs pamatstājai, bet vienu kāju ieliec ceļī; no vietas nekustas un saglabā uzmanību.",
+  "wrong": [
+   "Abas kājas novieto plecu platumā un rokas sakrusto uz krūtīm.",
+   "Atļauts brīvi staigāt un sarunāties.",
+   "Jāapsēžas uz viena ceļa."
+  ],
+  "explanation": "Svētku un parādes formas variantā stāja atšķiras no lauka formas “BRĪVI!”."
+ },
+ {
+  "id": "05-09",
+  "chapter": "05 — Pamatstāja un stāvoklis brīvi",
+  "page": 5,
+  "prompt": "Ko drīkst darīt pēc komandas “SAKĀRTOTIES!”?",
+  "correct": "Paliekot savā vietā, sakārtot galvassegu, tērpu, uzkabi un apavus no augšas uz leju; drīkst kustēties un sarunāties pusbalsī.",
+  "wrong": [
+   "Atstāt ierindu un doties uz ekipējuma telpu.",
+   "Sakārtot tikai apavus un klusēt pamatstājā.",
+   "Mainīt savu vietu ierindā ar kaimiņu."
+  ],
+  "explanation": "“SAKĀRTOTIES!” dod ierobežotu atļauju sakārtoties uz vietas un pusbalsī sazināties."
+ },
+ {
+  "id": "05-10",
+  "chapter": "05 — Pamatstāja un stāvoklis brīvi",
+  "page": 5,
+  "prompt": "Kas jādara pēc komandas “BEIGT SAKĀRTOTIES!”?",
+  "correct": "Jāieņem iepriekšējais stāvoklis.",
+  "wrong": [
+   "Jāiziet no ierindas.",
+   "Jāieņem stāvoklis brīvi neatkarīgi no iepriekšējā stāvokļa.",
+   "Jāpagriežas par 180° un jāgaida nākamā komanda."
+  ],
+  "explanation": "Komanda pārtrauc sakārtošanos un atjauno iepriekšējo stāvokli."
+ },
+ {
+  "id": "06-01",
+  "chapter": "06 — Komandu izpilde un pagriezieni",
+  "page": 6,
+  "prompt": "Kāda ir priekškomandas un izpildkomandas funkcija?",
+  "correct": "Priekškomanda sagatavo, izpildkomanda sāk darbību.",
+  "wrong": [
+   "Priekškomanda atceļ darbību, izpildkomanda to paskaidro.",
+   "Abas komandas vienmēr nozīmē vienu un to pašu.",
+   "Priekškomanda noslēdz darbību, izpildkomanda dod atpūtu."
+  ],
+  "explanation": "Komanda tiek sadalīta sagatavojošajā un izpildes daļā."
+ },
+ {
+  "id": "06-02",
+  "chapter": "06 — Komandu izpilde un pagriezieni",
+  "page": 6,
+  "prompt": "Kā jāizrunā priekškomanda un izpildkomanda?",
+  "correct": "Priekškomandu skaļi un stiepti, pēc īsas pauzes izpildkomandu īsi un enerģiski.",
+  "wrong": [
+   "Priekškomandu čukstus, izpildkomandu lēni un klusi.",
+   "Abas vienā tonī bez pauzes.",
+   "Priekškomandu īsi, izpildkomandu gari un dziedoši."
+  ],
+  "explanation": "Balss ritms palīdz vienlaicīgi sagatavoties un sākt darbību."
+ },
+ {
+  "id": "06-03",
+  "chapter": "06 — Komandu izpilde un pagriezieni",
+  "page": 6,
+  "prompt": "Ko dara karavīrs priekškomandas laikā?",
+  "correct": "Ieņem pamatstāju; ja soļo, pāriet uz ierindas soli.",
+  "wrong": [
+   "Nekavējoties sāk visu darbību pirms izpildkomandas.",
+   "Pāriet brīvajā solī un atslābina uzmanību.",
+   "Apsēžas un gaida izpildkomandu."
+  ],
+  "explanation": "Priekškomanda ir sagatavošanās signāls, nevis atļauja priekšlaicīgi sākt darbību."
+ },
+ {
+  "id": "06-04",
+  "chapter": "06 — Komandu izpilde un pagriezieni",
+  "page": 6,
+  "prompt": "Kura ir komanda, kas var sastāvēt tikai no izpildkomandas?",
+  "correct": "“MIERĀ!”",
+  "wrong": [
+   "“Uz la —”",
+   "“Pus uz krei —”",
+   "“Nodaļa, divās rindās —”"
+  ],
+  "explanation": "Materiālā “MIERĀ!” dots kā piemērs komandai bez atsevišķas priekškomandas."
+ },
+ {
+  "id": "06-05",
+  "chapter": "06 — Komandu izpilde un pagriezieni",
+  "page": 6,
+  "prompt": "Ko nozīmē komanda “ATLIKT!”?",
+  "correct": "Atcelt vai pārtraukt rīkojuma izpildi un ieņemt stāvokli, kāds bija pirms rīkojuma.",
+  "wrong": [
+   "Paātrināt izpildi divas reizes.",
+   "Pabeigt darbību un iziet no ierindas.",
+   "Pāriet stāvoklī brīvi neatkarīgi no iepriekšējā stāvokļa."
+  ],
+  "explanation": "“ATLIKT!” atgriež karavīru pirmsrīkojuma stāvoklī."
+ },
+ {
+  "id": "06-06",
+  "chapter": "06 — Komandu izpilde un pagriezieni",
+  "page": 6,
+  "prompt": "Cik taktīs izpilda pagriezienu uz vietas?",
+  "correct": "Divās taktīs: pagriež ķermeni, pēc tam pieliek otru kāju un pabeidz pamatstājā.",
+  "wrong": [
+   "Vienā taktī ar lēcienu.",
+   "Trijās taktīs, pēdējā paceļot rokas.",
+   "Četrās taktīs, katrā pagriežoties par 45°."
+  ],
+  "explanation": "Visi aprakstītie pagriezieni uz vietas tiek mācīti divās taktīs."
+ },
+ {
+  "id": "06-07",
+  "chapter": "06 — Komandu izpilde un pagriezieni",
+  "page": 6,
+  "prompt": "Uz kuriem balsta punktiem griežas komandā “Uz la — BO!”?",
+  "correct": "Uz labā papēža un kreisās kājas purngala.",
+  "wrong": [
+   "Uz kreisā papēža un labās kājas purngala.",
+   "Uz abu pēdu purngaliem.",
+   "Uz labās pēdas ārmalas un kreisā papēža."
+  ],
+  "explanation": "Pagrieziens pa labi ir 90° uz labā papēža un kreisā purngala."
+ },
+ {
+  "id": "06-08",
+  "chapter": "06 — Komandu izpilde un pagriezieni",
+  "page": 6,
+  "prompt": "Uz kuriem balsta punktiem griežas komandā “Uz krei — SO!”?",
+  "correct": "Uz kreisā papēža un labās kājas purngala.",
+  "wrong": [
+   "Uz labā papēža un kreisās kājas purngala.",
+   "Uz abu pēdu papēžiem.",
+   "Tikai uz kreisās pēdas purngala."
+  ],
+  "explanation": "Pagrieziens pa kreisi ir 90° uz kreisā papēža un labā purngala."
+ },
+ {
+  "id": "06-09",
+  "chapter": "06 — Komandu izpilde un pagriezieni",
+  "page": 6,
+  "prompt": "Kādi ir pusapgrieziena un apkārtgrieziena leņķi?",
+  "correct": "Pusapgrieziens ir 45°, apkārtgrieziens — 180°.",
+  "wrong": [
+   "Pusapgrieziens ir 30°, apkārtgrieziens — 90°.",
+   "Pusapgrieziens ir 90°, apkārtgrieziens — 270°.",
+   "Abi ir 180°, tikai dažādos virzienos."
+  ],
+  "explanation": "“Pus uz labo/kreiso” ir 45°, bet “Apkārt griez — TIES!” ir 180°."
+ },
+ {
+  "id": "06-10",
+  "chapter": "06 — Komandu izpilde un pagriezieni",
+  "page": 6,
+  "prompt": "Kā pareizi izpilda apkārtgriezienu?",
+  "correct": "Caur kreiso plecu, uz kreisā papēža un labās kājas purngala; rokas paliek pamatstājas stāvoklī.",
+  "wrong": [
+   "Caur labo plecu ar platu roku vēzienu.",
+   "Ar lēcienu uz abu pēdu purngaliem.",
+   "Caur jebkuru plecu pēc paša izvēles."
+  ],
+  "explanation": "Bieža kļūda ir griezties pa labi; materiāls nosaka pagriezienu caur kreiso plecu."
+ },
+ {
+  "id": "07-01",
+  "chapter": "07 — Soļošana un apstāšanās",
+  "page": 7,
+  "prompt": "Kādu soli sāk pēc komandas “Soļos — MARŠ!”, ja cits solis nav norādīts?",
+  "correct": "Gājiena soli.",
+  "wrong": [
+   "Lēno soli.",
+   "Brīvo soli.",
+   "Soli uz vietas."
+  ],
+  "explanation": "Gājiena solis ir galvenais pārvietošanās veids un noklusējuma solis."
+ },
+ {
+  "id": "07-02",
+  "chapter": "07 — Soļošana un apstāšanās",
+  "page": 7,
+  "prompt": "Kad lieto ierindas soli?",
+  "correct": "Ierindas mācībās, parādes maršā, sveicinot apakšvienības sastāvā un izejot no ierindas.",
+  "wrong": [
+   "Tikai ilgstošā pārgājienā ar smagu uzkabi.",
+   "Vienīgi šķēršļotā apvidū un uz tiltiem.",
+   "Tikai telpās ar grīdas segumu."
+  ],
+  "explanation": "Ierindas solis ir formāls un precīzi reglamentēts solis."
+ },
+ {
+  "id": "07-03",
+  "chapter": "07 — Soļošana un apstāšanās",
+  "page": 7,
+  "prompt": "Kurās situācijās piemērots brīvais solis?",
+  "correct": "Ilgstošā pārgājienā, ar smagu uzkabi, šķēršļotā apvidū, uz tiltiem un telpās ar grīdas segumu.",
+  "wrong": [
+   "Tikai parādes maršā pie tribīnes.",
+   "Tikai ziņojot priekšniekam.",
+   "Vienīgi pagriezienos uz vietas."
+  ],
+  "explanation": "Brīvais solis paredzēts praktiskai pārvietošanai sarežģītākos apstākļos."
+ },
+ {
+  "id": "07-04",
+  "chapter": "07 — Soļošana un apstāšanās",
+  "page": 7,
+  "prompt": "Kādi ir lēnā soļa pamatparametri?",
+  "correct": "Apmēram 45 soļi minūtē un 30 cm soļa garums.",
+  "wrong": [
+   "120 soļi minūtē un 80 cm soļa garums.",
+   "60 soļi minūtē un 10 cm soļa garums.",
+   "90 soļi minūtē un 1 m soļa garums."
+  ],
+  "explanation": "Lēno soli lieto aizceres un sēru ceremonijām."
+ },
+ {
+  "id": "07-05",
+  "chapter": "07 — Soļošana un apstāšanās",
+  "page": 7,
+  "prompt": "Kā izpilda soli uz vietas?",
+  "correct": "Pamīšus paceļ ceļī saliektu kāju 10–15 cm, purngalu vērš lejup uz priekšu, rokas kustina taktī.",
+  "wrong": [
+   "Abas kājas paceļ vienlaikus līdz jostasvietai.",
+   "Pēdas neatrauj no zemes un kustina tikai rokas.",
+   "Kājas paceļ 30–40 cm, purngalus vērš uz augšu."
+  ],
+  "explanation": "Solis uz vietas saglabā soļošanas ritmu, nepārvietojoties uz priekšu."
+ },
+ {
+  "id": "07-06",
+  "chapter": "07 — Soļošana un apstāšanās",
+  "page": 7,
+  "prompt": "Ar kuru kāju sāk ierindas soli pēc izpildkomandas?",
+  "correct": "Ar kreiso kāju.",
+  "wrong": [
+   "Ar labo kāju.",
+   "Ar jebkuru kāju pēc izvēles.",
+   "Ar abām kājām vienlaikus."
+  ],
+  "explanation": "Pēc izpildkomandas kustību sāk ar kreiso kāju."
+ },
+ {
+  "id": "07-07",
+  "chapter": "07 — Soļošana un apstāšanās",
+  "page": 7,
+  "prompt": "Kā ierindas solī virza pēdu uz priekšu?",
+  "correct": "Iztaisnotu kāju virza uz priekšu, pēdu paceļ 5–10 cm un noliek ar papēdi pa priekšu.",
+  "wrong": [
+   "Ceļgalu paceļ līdz gurnam un piezemējas uz purngala.",
+   "Pēdu velk pa zemi, papēdi nepaceļot.",
+   "Kāju virza sānis un noliek uz ārmalas."
+  ],
+  "explanation": "Pēdu noliek ar papēdi pa priekšu un svaru pārnes uz pilnu pēdu."
+ },
+ {
+  "id": "07-08",
+  "chapter": "07 — Soļošana un apstāšanās",
+  "page": 7,
+  "prompt": "Kā ierindas solī kustina rokas?",
+  "correct": "Priekšējo roku saliec elkonī ar īkšķi vidusjostas augstumā, otru taisno roku virza 30–40° atpakaļ.",
+  "wrong": [
+   "Abas rokas tur nekustīgi aiz muguras.",
+   "Priekšējo roku paceļ virs galvas, otru piespiež pie sāniem.",
+   "Abas rokas izstiepj uz sāniem plecu augstumā."
+  ],
+  "explanation": "Roku kustība ir ritmiska un noteikta, dūres viegli savilktas."
+ },
+ {
+  "id": "07-09",
+  "chapter": "07 — Soļošana un apstāšanās",
+  "page": 7,
+  "prompt": "Ko kustībā nozīmē komandas “MIERĀ!” un “BRĪVI!”?",
+  "correct": "“MIERĀ!” — no gājiena soļa pāriet uz ierindas soli; “BRĪVI!” — no ierindas soļa uz gājiena soli.",
+  "wrong": [
+   "“MIERĀ!” — apstājas; “BRĪVI!” — sāk skriet.",
+   "Abas komandas nozīmē sākt brīvo soli.",
+   "“MIERĀ!” — pagriežas apkārt; “BRĪVI!” — soļo uz vietas."
+  ],
+  "explanation": "Kustībā šīs komandas maina soļa veidu, nevis obligāti aptur kustību."
+ },
+ {
+  "id": "07-10",
+  "chapter": "07 — Soļošana un apstāšanās",
+  "page": 7,
+  "prompt": "Kā pareizi apstājas pēc komandas “Nodaļa — STĀT!”?",
+  "correct": "Izpildkomandu parasti dod pie kreisās kājas soļa; ar labo sper vēl vienu soli, pieliek kreiso un ieņem pamatstāju.",
+  "wrong": [
+   "Izpildkomandu dod pie labās kājas; tūlīt apstājas uz vienas kājas.",
+   "Sper vēl trīs soļus un nostājas stāvoklī brīvi.",
+   "Pagriežas pa kreisi un turpina soļot uz vietas."
+  ],
+  "explanation": "Apstāšanās secība saglabā takti un noslēdzas pamatstājā."
+ },
+ {
+  "id": "08-01",
+  "chapter": "08 — Nostāšanās un pārkārtošanās",
+  "page": 8,
+  "prompt": "Kur nodaļa nostājas pēc komandas “Nodaļa, vienā rindā — STĀTIES!”?",
+  "correct": "Pa kreisi no komandiera, kurš sākumā atrodas paredzētā labā flanga galā.",
+  "wrong": [
+   "Pa labi no komandiera, kurš stāv kreisajā flangā.",
+   "Aiz komandiera divu soļu attālumā.",
+   "Ap komandieri puslokā."
+  ],
+  "explanation": "Komandieris sākumā iezīmē paredzēto labā flanga galu."
+ },
+ {
+  "id": "08-02",
+  "chapter": "08 — Nostāšanās un pārkārtošanās",
+  "page": 8,
+  "prompt": "Kur divrindu ierindā nostājas otrā rinda?",
+  "correct": "Tieši aiz pirmās rindas karavīriem.",
+  "wrong": [
+   "Pa diagonāli pa kreisi no pirmās rindas.",
+   "Pirmās rindas priekšā.",
+   "Starp pirmās rindas karavīriem."
+  ],
+  "explanation": "Otrā rinda veido kārtas tieši aiz pirmās rindas."
+ },
+ {
+  "id": "08-03",
+  "chapter": "08 — Nostāšanās un pārkārtošanās",
+  "page": 8,
+  "prompt": "Ko nozīmē komandas “LĪDZINĀTIES!” un “Uz kreiso — LĪDZINĀTIES!”?",
+  "correct": "Pirmā — līdzināties uz labo, otrā — uz kreiso.",
+  "wrong": [
+   "Abas nozīmē līdzināties uz centru.",
+   "Pirmā — uz kreiso, otrā — uz labo.",
+   "Abas nozīmē pagriezties par 90°."
+  ],
+  "explanation": "Bez papildu norādes līdzināšanās notiek uz labo."
+ },
+ {
+  "id": "08-04",
+  "chapter": "08 — Nostāšanās un pārkārtošanās",
+  "page": 8,
+  "prompt": "Ko dara pēc komandas “MIERĀ!” pēc līdzināšanās?",
+  "correct": "Galvu pagriež taisni un ieņem pamatstāju.",
+  "wrong": [
+   "Turpina skatīties uz flangu un pāriet stāvoklī brīvi.",
+   "Sper vienu soli uz priekšu.",
+   "Pagriežas ar muguru pret fronti."
+  ],
+  "explanation": "“MIERĀ!” noslēdz līdzināšanos un atjauno pamatstāju."
+ },
+ {
+  "id": "08-05",
+  "chapter": "08 — Nostāšanās un pārkārtošanās",
+  "page": 8,
+  "prompt": "Kā sāk skaitīšanos pēc komandas “Pēc kārtas — SKAITĪT!”?",
+  "correct": "Sāk labā flanga galā: pirmais pagriež galvu pa kreisi, nosauc “Pirmais!” un pagriež galvu taisni.",
+  "wrong": [
+   "Sāk kreisā flanga galā un skaita atpakaļ.",
+   "Sāk komandieris, nosaucot tikai kopējo skaitu.",
+   "Visi vienlaikus skaļi nosauc savu numuru."
+  ],
+  "explanation": "Skaitīšanās virzās no labā flanga uz kreiso."
+ },
+ {
+  "id": "08-06",
+  "chapter": "08 — Nostāšanās un pārkārtošanās",
+  "page": 8,
+  "prompt": "Ko dara kreisā flanga pēdējais karavīrs skaitīšanās laikā?",
+  "correct": "Tur galvu taisni un savam numuram pievieno “Pēdējais!”.",
+  "wrong": [
+   "Pagriež galvu pa labi un saka “Beigas!”.",
+   "Nesauc numuru un iziet no ierindas.",
+   "Atkārto pirmā karavīra numuru."
+  ],
+  "explanation": "Pēdējais skaitītājs norāda arī to, ka skaitīšanās ir beigusies."
+ },
+ {
+  "id": "08-07",
+  "chapter": "08 — Nostāšanās un pārkārtošanās",
+  "page": 8,
+  "prompt": "Kā skaitās divrindu ierinda?",
+  "correct": "Otrā rinda klusē, izņemot pēdējās kārtas karavīru, kurš beigās nosauc “Pilna” vai “Nepilna”.",
+  "wrong": [
+   "Abas rindas vienlaikus nosauc vienus un tos pašus numurus.",
+   "Skaita tikai otrā rinda.",
+   "Otrā rinda skaita atpakaļ no pēdējā numura."
+  ],
+  "explanation": "“Pilna” vai “Nepilna” raksturo pēdējās kārtas komplektāciju."
+ },
+ {
+  "id": "08-08",
+  "chapter": "08 — Nostāšanās un pārkārtošanās",
+  "page": 8,
+  "prompt": "Kā pārvietojas “otrie numuri”, pārkārtojoties no vienas rindas divās?",
+  "correct": "Kreisā atpakaļ → labā pa labi → kreisā klāt, nostājoties aiz pirmajiem numuriem.",
+  "wrong": [
+   "Labā uz priekšu → kreisā pa kreisi → labā klāt.",
+   "Kreisā pa kreisi → labā uz priekšu → lēciens atpakaļ.",
+   "Divi soļi taisni uz priekšu un pagrieziens pa labi."
+  ],
+  "explanation": "Materiālā pārvietošanās secība dota trīs kustībās."
+ },
+ {
+  "id": "08-09",
+  "chapter": "08 — Nostāšanās un pārkārtošanās",
+  "page": 8,
+  "prompt": "Ko dara, ja saskaitīšanās nepāra sastāvā beidzas ar “pirmo numuru”?",
+  "correct": "Tam blakus pa labi esošais otrais numurs nostājas aiz viņa: labā atpakaļ → kreisā pa kreisi → labā klāt.",
+  "wrong": [
+   "Pirmais numurs atstāj ierindu, lai skaits kļūtu pāra.",
+   "Pēdējais karavīrs nostājas ierindas priekšā.",
+   "Visi otrie numuri atgriežas sākuma vietās."
+  ],
+  "explanation": "Šī īpašā secība nodrošina pilnu pēdējo kārtu."
+ },
+ {
+  "id": "08-10",
+  "chapter": "08 — Nostāšanās un pārkārtošanās",
+  "page": 8,
+  "prompt": "Kura atbilde pareizi raksturo izretināšanos un saslēgšanos?",
+  "correct": "Izretinoties ieņem norādīto atstarpi (ja nav norādīts — parasti vienu soli); saslēdzoties virzās līdz slēgtās ierindas atstarpei, bet norādītais flangs vai vidus paliek vietā.",
+  "wrong": [
+   "Izretinoties visi paliek nekustīgi, saslēdzoties katrs sper vienu soli atpakaļ.",
+   "Izretināšanās vienmēr ir trīs soļi, saslēgšanās — pagrieziens par 180°.",
+   "Abas darbības nozīmē pāriet kolonnā pa vienam."
+  ],
+  "explanation": "Izretināšanās maina atstarpes, bet saslēgšanās tās samazina līdz slēgtās ierindas normai."
+ },
+ {
+  "id": "09-01",
+  "chapter": "09 — Sveicināšana un iziešana no ierindas",
+  "page": 9,
+  "prompt": "Kurš sveicina pirmais individuālā sveicināšanā?",
+  "correct": "Jaunākais dienesta pakāpē sveicina vecāko; vienādā pakāpē sveicina vienlaikus.",
+  "wrong": [
+   "Vecākais vienmēr sveicina jaunāko.",
+   "Sveicina tikai tas, kurš pirmais pamana otru.",
+   "Vienādā pakāpē neviens nesveicina."
+  ],
+  "explanation": "Sveicināšanas iniciatīva ir jaunākajam pakāpē, bet vienādas pakāpes gadījumā — abiem."
+ },
+ {
+  "id": "09-02",
+  "chapter": "09 — Sveicināšana un iziešana no ierindas",
+  "page": 9,
+  "prompt": "Kā ar galvassegu novieto roku sveicinot uz vietas?",
+  "correct": "Vidējais pirksts pie naga sākuma labajā pusē, pirksti taisni un kopā, elkonis pleca līmenī.",
+  "wrong": [
+   "Plauksta uz pakauša, elkonis vērsts lejup.",
+   "Dūre pie kreisā pleca, pirksti savilkti.",
+   "Roka virs galvas ar izplestiem pirkstiem."
+  ],
+  "explanation": "Rokas novietojums ir precīzi reglamentēts un skatiens vērsts uz sveicināmo."
+ },
+ {
+  "id": "09-03",
+  "chapter": "09 — Sveicināšana un iziešana no ierindas",
+  "page": 9,
+  "prompt": "Kādā attālumā sāk individuālo sveicināšanu?",
+  "correct": "Apmēram 3–4 soļu attālumā.",
+  "wrong": [
+   "Tieši 10 soļu attālumā.",
+   "Tikai pēc tam, kad persona jau pagājusi garām.",
+   "Vienu roku stiepiena attālumā."
+  ],
+  "explanation": "Sveicināšanu sāk 3–4 soļus pirms sastapšanās un beidz pēc paiešanas garām vai apstāšanās."
+ },
+ {
+  "id": "09-04",
+  "chapter": "09 — Sveicināšana un iziešana no ierindas",
+  "page": 9,
+  "prompt": "Kā sveicina bez galvassegas, atrodoties uz vietas?",
+  "correct": "Pagriežas pret personu un ieņem pamatstāju, roku pie galvas neceļ.",
+  "wrong": [
+   "Pieliek labo roku pie pieres tāpat kā ar galvassegu.",
+   "Pagriežas ar muguru un nolaiž galvu.",
+   "Sper vienu soli uz priekšu un paceļ abas rokas."
+  ],
+  "explanation": "Bez galvassegas sveicināšanu izsaka ar stāju un pagriezienu, nevis ar roku pie galvas."
+ },
+ {
+  "id": "09-05",
+  "chapter": "09 — Sveicināšana un iziešana no ierindas",
+  "page": 9,
+  "prompt": "Kā sāk sveicināšanu kustībā ārpus ierindas?",
+  "correct": "3–4 soļus pirms personas, ar kreisās kājas nolikšanu pārtrauc roku vēzienus, pieliek labo roku pie galvassegas un pagriež galvu pret personu.",
+  "wrong": [
+   "Ar labās kājas nolikšanu sāk skriet un paceļ kreiso roku.",
+   "Apstājas 10 soļus pirms personas un pagriežas apkārt.",
+   "Turpina roku vēzienus un skatās taisni uz priekšu."
+  ],
+  "explanation": "Kustībā sveicināšana tiek sasaistīta ar kreisās kājas soli."
+ },
+ {
+  "id": "09-06",
+  "chapter": "09 — Sveicināšana un iziešana no ierindas",
+  "page": 9,
+  "prompt": "Kā sveicina, ja abas rokas ir aizņemtas ar nesamo?",
+  "correct": "Ar galvas pagriezienu pret sveicināmo.",
+  "wrong": [
+   "Nesveicina vispār.",
+   "Nomet nesamo zemē un pieliek roku pie galvas.",
+   "Pagriežas ar muguru pret personu."
+  ],
+  "explanation": "Ja roku nevar izmantot, sveicināšanu izpilda ar galvas pagriezienu."
+ },
+ {
+  "id": "09-07",
+  "chapter": "09 — Sveicināšana un iziešana no ierindas",
+  "page": 9,
+  "prompt": "Kas nodaļas sastāvā pieliek roku pie galvassegas pēc komandas “... — SKATĪT!”?",
+  "correct": "Nodaļas komandieris; pārējie ieņem pamatstāju un pavada sveicināmo ar skatienu.",
+  "wrong": [
+   "Visi karavīri vienlaikus.",
+   "Tikai noslēdzošais.",
+   "Neviens, arī komandieris ne."
+  ],
+  "explanation": "Nodaļas sastāvā roku pie galvassegas pieliek komandieris."
+ },
+ {
+  "id": "09-08",
+  "chapter": "09 — Sveicināšana un iziešana no ierindas",
+  "page": 9,
+  "prompt": "Kā nodaļa atbild uz uzrunu “Sveicināti, karavīri!”?",
+  "correct": "“Esiet sveiks!” vai “Esiet sveika!”",
+  "wrong": [
+   "“Klausos!”",
+   "“Atlikt!”",
+   "“Pirmais, pēdējais!”"
+  ],
+  "explanation": "Atbilde tiek pielāgota uzrunājošās personas dzimumam."
+ },
+ {
+  "id": "09-09",
+  "chapter": "09 — Sveicināšana un iziešana no ierindas",
+  "page": 9,
+  "prompt": "Kā jāatsaucas uz izsaukumu un sekojošu komandu?",
+  "correct": "Uz uzvārdu — “Es!”, uz komandu — “Klausos!”.",
+  "wrong": [
+   "Uz uzvārdu — “Klausos!”, uz komandu — “Es!”.",
+   "Abos gadījumos — “Mierā!”.",
+   "Uz uzvārdu neatbild, uz komandu saka “Brīvi!”."
+  ],
+  "explanation": "Materiālā atbildes ir skaidri nošķirtas: izsaukums un komanda."
+ },
+ {
+  "id": "09-10",
+  "chapter": "09 — Sveicināšana un iziešana no ierindas",
+  "page": 9,
+  "prompt": "Ja, izejot no ierindas, soļu skaits nav dots, cik soļus jāiziet?",
+  "correct": "Divus soļus.",
+  "wrong": [
+   "Vienu soli.",
+   "Trīs soļus.",
+   "Piecus soļus."
+  ],
+  "explanation": "Ja konkrēts skaits nav norādīts, materiāls paredz divus soļus."
+ },
+ {
+  "id": "10-01",
+  "chapter": "10 — Ātrā atgādne un pašpārbaude",
+  "page": 10,
+  "prompt": "Ko nozīmē “MIERĀ!” un “BRĪVI!” uz vietas?",
+  "correct": "Attiecīgi pamatstāju un konkrētajam formas tērpam noteikto stāvokli brīvi.",
+  "wrong": [
+   "Attiecīgi gājiena soli un ierindas soli.",
+   "Attiecīgi pagriezienu pa labi un pa kreisi.",
+   "Abas komandas nozīmē iziet no ierindas."
+  ],
+  "explanation": "Uz vietas šīs komandas nosaka stāju, nevis soļa veidu."
+ },
+ {
+  "id": "10-02",
+  "chapter": "10 — Ātrā atgādne un pašpārbaude",
+  "page": 10,
+  "prompt": "Ko nozīmē “MIERĀ!” un “BRĪVI!” kustībā?",
+  "correct": "Attiecīgi ierindas soli un gājiena soli.",
+  "wrong": [
+   "Attiecīgi apstāšanos un skriešanu.",
+   "Attiecīgi lēno soli un soli uz vietas.",
+   "Abas komandas nozīmē brīvo soli."
+  ],
+  "explanation": "Kustībā “MIERĀ!” pārslēdz uz ierindas soli, “BRĪVI!” — uz gājiena soli."
+ },
+ {
+  "id": "10-03",
+  "chapter": "10 — Ātrā atgādne un pašpārbaude",
+  "page": 10,
+  "prompt": "Kāda ir ātrā atgādne komandai “SAKĀRTOTIES!”?",
+  "correct": "Paliec vietā un sakārtojies no galvassegas līdz apaviem.",
+  "wrong": [
+   "Atstāj ierindu un sakārtojies telpās.",
+   "Sakārto tikai ieroci un uzkabi.",
+   "Nostājies kolonnā pa vienam."
+  ],
+  "explanation": "Sakārtošanās notiek uz vietas virzienā no augšas uz leju."
+ },
+ {
+  "id": "10-04",
+  "chapter": "10 — Ātrā atgādne un pašpārbaude",
+  "page": 10,
+  "prompt": "Ko ātrajā atgādnē nozīmē “ATLIKT!”?",
+  "correct": "Atgriezties stāvoklī, kāds bija pirms rīkojuma.",
+  "wrong": [
+   "Pāriet pamatstājā neatkarīgi no iepriekšējā stāvokļa.",
+   "Izpildīt rīkojumu divreiz ātrāk.",
+   "Pārtraukt nodarbību un izklīst."
+  ],
+  "explanation": "“ATLIKT!” atceļ vai pārtrauc konkrēto rīkojumu."
+ },
+ {
+  "id": "10-05",
+  "chapter": "10 — Ātrā atgādne un pašpārbaude",
+  "page": 10,
+  "prompt": "Ko dara pēc komandas “Nodaļa — IZKLĪST!”?",
+  "correct": "Ātri iziet no ierindas.",
+  "wrong": [
+   "Nostājas divrindu ierindā.",
+   "Sāk soļot uz vietas.",
+   "Pagriežas pa labi un gaida."
+  ],
+  "explanation": "Komanda paredz ātru ierindas atstāšanu."
+ },
+ {
+  "id": "10-06",
+  "chapter": "10 — Ātrā atgādne un pašpārbaude",
+  "page": 10,
+  "prompt": "Ko dara pēc komandas “Nodaļa — PIE MANIS!”?",
+  "correct": "Pieskrien pie komandiera un izpilda nākamās komandas.",
+  "wrong": [
+   "Paliek savā vietā un paceļ roku.",
+   "Iziet no nodarbības vietas.",
+   "Nostājas špalerā bez papildu komandas."
+  ],
+  "explanation": "Komanda sasauc nodaļu pie komandiera turpmākiem norādījumiem."
+ },
+ {
+  "id": "10-07",
+  "chapter": "10 — Ātrā atgādne un pašpārbaude",
+  "page": 10,
+  "prompt": "Kuri pagriezienu leņķi norādīti ātrajā atgādnē?",
+  "correct": "Pa labi 90°, pa kreisi 90°, apkārt 180° caur kreiso plecu.",
+  "wrong": [
+   "Pa labi 45°, pa kreisi 45°, apkārt 90° caur labo plecu.",
+   "Pa labi 180°, pa kreisi 180°, apkārt 360°.",
+   "Visi pagriezieni ir 90° caur jebkuru plecu."
+  ],
+  "explanation": "Ātrā atgādne atkārto pamatleņķus un apkārtgrieziena virzienu."
+ },
+ {
+  "id": "10-08",
+  "chapter": "10 — Ātrā atgādne un pašpārbaude",
+  "page": 10,
+  "prompt": "Kā ātrajā atgādnē nošķir atstarpi un atstatumu?",
+  "correct": "Atstarpe — blakus; atstatums — dziļumā.",
+  "wrong": [
+   "Atstarpe — dziļumā; atstatums — blakus.",
+   "Abi nozīmē tikai plaukstas platumu.",
+   "Atstarpe — laiks; atstatums — ātrums."
+  ],
+  "explanation": "Šis ir viens no pamatjēdzieniem visā ierindas mācībā."
+ },
+ {
+  "id": "10-09",
+  "chapter": "10 — Ātrā atgādne un pašpārbaude",
+  "page": 10,
+  "prompt": "Kā pēc komandas “Galvassegu — NOŅEMT!” noņem lauka cepuri?",
+  "correct": "Ar kreiso roku aiz naga un tur nolaistā rokā pie kreisās kājas.",
+  "wrong": [
+   "Ar labo roku aiz pakauša un tur virs galvas.",
+   "Ar abām rokām un noliek zemē sev priekšā.",
+   "Ar kreiso roku, bet tur pie labā pleca."
+  ],
+  "explanation": "Materiāls nosaka lauka cepures noņemšanu ar kreiso roku un turēšanu pie kreisās kājas."
+ },
+ {
+  "id": "10-10",
+  "chapter": "10 — Ātrā atgādne un pašpārbaude",
+  "page": 10,
+  "prompt": "Kāda drošības prasība jāievēro pirms ierindas paņēmieniem ar ieroci?",
+  "correct": "Jāpārbauda, ka ierocis nav pielādēts, tas jānodrošina, un konkrētie paņēmieni jāapgūst instruktora vadībā.",
+  "wrong": [
+   "Ierocim jābūt pielādētam, lai kustības būtu reālistiskas.",
+   "Drošības pārbaude nav vajadzīga, ja ierocim nav optikas.",
+   "Paņēmienus drīkst brīvi improvizēt bez instruktora."
+  ],
+  "explanation": "Materiāls uzsver drošību un konkrētā ieroča īpatnību apguvi instruktora vadībā."
+ }
+]

@@ -1,0 +1,27 @@
+# Netlify: install from package-lock.json, run the tests, build the static site into dist/.
+[build]
+  command = "npm test && npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Every page is a hash route of index.html (#/g36c/macibas), so no rewrites are needed.
+# A mistyped path is sent to the home page instead of a 404.
+[[redirects]]
+  from = "/*"
+  to = "/"
+  status = 302
+
+# Build assets have content hashes in their names and never change.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"

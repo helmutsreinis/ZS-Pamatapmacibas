@@ -1,0 +1,229 @@
+{
+  "boreY": 154.5,
+  "tubeY": 126.5,
+  "holes": {
+    "stockA": [
+      962.0,
+      178.5
+    ],
+    "stockB": [
+      982.0,
+      178.5
+    ],
+    "grip": [
+      744.0,
+      233.0
+    ],
+    "handguard": [
+      221.0,
+      138.0
+    ],
+    "rivetA": [
+      1264.0,
+      193.0
+    ],
+    "rivetB": [
+      1260.0,
+      236.5
+    ]
+  },
+  "pivots": {
+    "grip": [
+      744.0,
+      233.0
+    ],
+    "handguard": [
+      612.0,
+      170.0
+    ],
+    "selector": [
+      823.35,
+      211.49
+    ],
+    "catch": [
+      725.0,
+      232.0
+    ]
+  },
+  "selectorS": -38.0,
+  "sprites": {
+    "stock": {
+      "file": "stock.png",
+      "x": 610.7,
+      "y": 111.2,
+      "w": 717.0,
+      "h": 166.0,
+      "pad": 10
+    },
+    "barrel": {
+      "file": "barrel.png",
+      "x": 230.92,
+      "y": 142.43,
+      "w": 316.0,
+      "h": 25.0,
+      "pad": 10
+    },
+    "magazine": {
+      "file": "magazine.png",
+      "x": 629.06,
+      "y": 158.63,
+      "w": 89.0,
+      "h": 192.0,
+      "pad": 10
+    },
+    "carrier": {
+      "file": "carrier.png",
+      "x": 494.56,
+      "y": 114.06,
+      "w": 339.0,
+      "h": 50.0,
+      "pad": 10
+    },
+    "bolt-head": {
+      "file": "bolt-head.png",
+      "x": 653.18,
+      "y": 138.02,
+      "w": 69.0,
+      "h": 35.0,
+      "pad": 10
+    },
+    "locking-piece": {
+      "file": "locking-piece.png",
+      "x": 689.88,
+      "y": 144.26,
+      "w": 91.0,
+      "h": 21.0,
+      "pad": 10
+    },
+    "firing-pin": {
+      "file": "firing-pin.png",
+      "x": 654.58,
+      "y": 147.45,
+      "w": 168.0,
+      "h": 14.0,
+      "pad": 10
+    },
+    "firing-spring": {
+      "file": "firing-spring.png",
+      "x": 769.0,
+      "y": 145.0,
+      "w": 62.0,
+      "h": 19.0,
+      "pad": 10
+    },
+    "trigger": {
+      "file": "trigger.png",
+      "x": 730.56,
+      "y": 155.85,
+      "w": 158.0,
+      "h": 130.0,
+      "pad": 10
+    },
+    "grip": {
+      "file": "grip.png",
+      "x": 729.3,
+      "y": 185.3,
+      "w": 242.0,
+      "h": 170.0,
+      "pad": 10
+    },
+    "selector": {
+      "file": "selector.png",
+      "x": 816.04,
+      "y": 179.74,
+      "w": 37.0,
+      "h": 37.0,
+      "pad": 10
+    },
+    "handguard": {
+      "file": "handguard.png",
+      "x": 221.92,
+      "y": 131.72,
+      "w": 395.0,
+      "h": 67.0,
+      "pad": 10
+    },
+    "receiver": {
+      "file": "receiver.png",
+      "x": 35.92,
+      "y": 78.42,
+      "w": 943.0,
+      "h": 179.0,
+      "pad": 10
+    },
+    "cocking-handle": {
+      "file": "cocking-handle.png",
+      "x": 315.92,
+      "y": 102.42,
+      "w": 85.0,
+      "h": 14.0,
+      "pad": 10
+    },
+    "mag-catch": {
+      "file": "mag-catch.png",
+      "x": 721.92,
+      "y": 232.43,
+      "w": 8.0,
+      "h": 22.0,
+      "pad": 10
+    },
+    "pin-long-a": {
+      "file": "pin-long-a.png",
+      "x": -1.55,
+      "y": -8.05,
+      "w": 53.0,
+      "h": 17.0,
+      "length": 48.45,
+      "radius": 5.2,
+      "head": 7.65
+    },
+    "pin-long-b": {
+      "file": "pin-long-b.png",
+      "x": -1.55,
+      "y": -7.62,
+      "w": 53.0,
+      "h": 17.0,
+      "length": 48.45,
+      "radius": 4.91,
+      "head": 7.22
+    },
+    "pin-short-a": {
+      "file": "pin-short-a.png",
+      "x": -2.55,
+      "y": -6.78,
+      "w": 44.0,
+      "h": 15.0,
+      "length": 39.1,
+      "radius": 4.33,
+      "head": 6.38
+    },
+    "pin-short-b": {
+      "file": "pin-short-b.png",
+      "x": -1.55,
+      "y": -6.78,
+      "w": 43.0,
+      "h": 15.0,
+      "length": 39.95,
+      "radius": 4.33,
+      "head": 6.38
+    },
+    "pin-long-end": {
+      "file": "pin-long-end.png",
+      "x": -7.65,
+      "y": -7.65,
+      "w": 15.25,
+      "h": 15.25,
+      "scale": 4,
+      "radius": 7.65
+    },
+    "pin-short-end": {
+      "file": "pin-short-end.png",
+      "x": -6.38,
+      "y": -6.38,
+      "w": 12.75,
+      "h": 12.75,
+      "scale": 4,
+      "radius": 6.38
+    }
+  }
+}

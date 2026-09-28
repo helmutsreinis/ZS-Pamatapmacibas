@@ -1,0 +1,229 @@
+{
+  "boreY": 258,
+  "gasY": 236,
+  "pins": {
+    "rear": [
+      470,
+      300
+    ],
+    "centre": [
+      356,
+      322
+    ],
+    "front": [
+      255,
+      285
+    ],
+    "cam": [
+      295,
+      259
+    ],
+    "retainer": [
+      355,
+      257
+    ]
+  },
+  "sprites": {
+    "flash-hider": {
+      "file": "flash-hider.png",
+      "x": 7.0,
+      "y": 248.0,
+      "w": 39.0,
+      "h": 27.0,
+      "pad": 10
+    },
+    "handguard": {
+      "file": "handguard.png",
+      "x": 43.0,
+      "y": 219.0,
+      "w": 223.0,
+      "h": 77.0,
+      "pad": 10
+    },
+    "receiver": {
+      "file": "receiver.png",
+      "x": 131.0,
+      "y": 204.0,
+      "w": 384.0,
+      "h": 115.0,
+      "pad": 10
+    },
+    "stock": {
+      "file": "stock.png",
+      "x": 501.0,
+      "y": 241.0,
+      "w": 231.0,
+      "h": 172.0,
+      "pivot": [
+        506,
+        293
+      ],
+      "pad": 10
+    },
+    "rail": {
+      "file": "rail.png",
+      "x": 138.0,
+      "y": 184.0,
+      "w": 345.0,
+      "h": 59.0,
+      "pad": 10
+    },
+    "grip": {
+      "file": "grip.png",
+      "x": 344.0,
+      "y": 276.0,
+      "w": 156.0,
+      "h": 152.0,
+      "pad": 10
+    },
+    "magwell": {
+      "file": "magwell.png",
+      "x": 268.0,
+      "y": 284.0,
+      "w": 110.0,
+      "h": 56.0,
+      "pad": 10
+    },
+    "magazine": {
+      "file": "magazine.png",
+      "x": 260.0,
+      "y": 289.0,
+      "w": 116.0,
+      "h": 198.0,
+      "pad": 10
+    },
+    "mag-catch": {
+      "file": "mag-catch.png",
+      "x": 348.0,
+      "y": 290.0,
+      "w": 62.0,
+      "h": 66.0,
+      "pad": 10
+    },
+    "recoil-spring": {
+      "file": "recoil-spring.png",
+      "x": 280.0,
+      "y": 219.0,
+      "w": 230.0,
+      "h": 72.0,
+      "pad": 10
+    },
+    "bolt-carrier": {
+      "file": "bolt-carrier.png",
+      "x": 186.0,
+      "y": 218.0,
+      "w": 180.0,
+      "h": 54.0,
+      "pad": 10
+    },
+    "bolt-head": {
+      "file": "bolt-head.png",
+      "x": 248.0,
+      "y": 249.0,
+      "w": 71.0,
+      "h": 19.0,
+      "pad": 10
+    },
+    "cam-pin-head": {
+      "file": "cam-pin-head.png",
+      "x": 290.0,
+      "y": 254.0,
+      "w": 11.0,
+      "h": 11.0
+    },
+    "retainer-head": {
+      "file": "retainer-head.png",
+      "x": 350.0,
+      "y": 252.0,
+      "w": 11.0,
+      "h": 11.0
+    },
+    "pin": {
+      "file": "pin.png",
+      "x": -0.75,
+      "y": -3.9,
+      "w": 43.75,
+      "h": 7.75,
+      "scale": 4,
+      "length": 42,
+      "radius": 2.7,
+      "head": 3.4
+    },
+    "pin-end": {
+      "file": "pin-end.png",
+      "x": -3.9,
+      "y": -3.9,
+      "w": 7.75,
+      "h": 7.75,
+      "scale": 4,
+      "radius": 3.4
+    },
+    "retainer": {
+      "file": "retainer.png",
+      "x": -0.75,
+      "y": -3.05,
+      "w": 17.75,
+      "h": 6.0,
+      "scale": 4,
+      "length": 16,
+      "radius": 2.0,
+      "head": 2.3
+    },
+    "cam-pin": {
+      "file": "cam-pin.png",
+      "x": -0.75,
+      "y": -4.7,
+      "w": 21.75,
+      "h": 9.5,
+      "scale": 4,
+      "length": 20,
+      "radius": 3.0,
+      "head": 4.2
+    },
+    "firing-pin": {
+      "file": "firing-pin.png",
+      "x": 248.0,
+      "y": 254.0,
+      "w": 126.0,
+      "h": 8.0,
+      "scale": 4,
+      "pad": 10
+    },
+    "barrel": {
+      "file": "barrel.png",
+      "x": 43.0,
+      "y": 226.5,
+      "w": 220.0,
+      "h": 43.5,
+      "scale": 2,
+      "pad": 10
+    },
+    "piston": {
+      "file": "piston.png",
+      "x": 57.25,
+      "y": 230.25,
+      "w": 35.5,
+      "h": 11.5,
+      "scale": 4,
+      "pad": 10
+    },
+    "operating-rod": {
+      "file": "operating-rod.png",
+      "x": 85.25,
+      "y": 230.0,
+      "w": 105.5,
+      "h": 12.0,
+      "scale": 4,
+      "pad": 10
+    },
+    "operating-spring": {
+      "file": "operating-spring.png",
+      "x": 98.0,
+      "y": 229.5,
+      "w": 44.0,
+      "h": 13.0,
+      "scale": 4,
+      "pad": 10
+    }
+  }
+}

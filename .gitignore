@@ -1,0 +1,22 @@
+node_modules/
+dist/
+.vite/
+coverage/
+.netlify/
+
+# Python bytecode from the sprite tools
+__pycache__/
+*.pyc
+
+# Local editor and assistant settings
+.claude/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Loose reference photos in the project root are not part of the site
+# (the site's images live in src/assets and src/weapons/*/assets).
+/*.jpg
+/*.jpeg
+/*.png
+/*.webp
