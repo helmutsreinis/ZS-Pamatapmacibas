@@ -4,9 +4,10 @@ dist/
 coverage/
 .netlify/
 
-# Python bytecode from the sprite tools
+# Python bytecode from the sprite tools, and the source photos the study image tool downloads
 __pycache__/
 *.pyc
+tools/.cache/
 
 # Local editor and assistant settings
 .claude/

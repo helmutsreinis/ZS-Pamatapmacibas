@@ -2,7 +2,7 @@ export const html = (value: string): string => value.replace(/[&<>"']/g, (charac
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
 })[character] ?? character);
 
-export type IconName = 'arrow' | 'play' | 'pause' | 'check' | 'layers' | 'target' | 'book' | 'prev' | 'next' | 'flag' | 'rifle' | 'drill' | 'print' | 'lock';
+export type IconName = 'arrow' | 'play' | 'pause' | 'check' | 'layers' | 'target' | 'book' | 'prev' | 'next' | 'flag' | 'rifle' | 'drill' | 'print' | 'lock' | 'ammo' | 'kit';
 
 export function icon(name: IconName): string {
   const paths: Record<IconName, string> = {
@@ -20,6 +20,8 @@ export function icon(name: IconName): string {
     drill: '<circle cx="12" cy="5" r="2"/><path d="M12 7v7m-4-5 4 2 4-2m-6 12 2-7 2 7"/>',
     print: '<path d="M7 9V3h10v6M7 17H4v-7h16v7h-3M7 14h10v7H7z"/>',
     lock: '<rect x="5" y="11" width="14" height="9" rx="1"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+    ammo: '<path d="M12 2c2 2 3 4.5 3 7H9c0-2.5 1-5 3-7Z"/><path d="M9 9h6v11.5a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5z"/><path d="M9 18h6"/>',
+    kit: '<path d="M9 6V4.5a3 3 0 0 1 6 0V6"/><rect x="5" y="6" width="14" height="15" rx="3"/><path d="M9 13h6v4H9zM5 11h14"/>',
   };
   return `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name]}</svg>`;
 }

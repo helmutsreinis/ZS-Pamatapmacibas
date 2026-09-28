@@ -1,13 +1,15 @@
 import './style.css';
 import './hub.css';
+import './study.css';
 import assembledPhoto from './assets/g36-reference-assembled.png';
 import explodedPhoto from './assets/g36-reference-exploded.png';
 import partsPhoto from './assets/g36-reference-parts.png';
 import { chapters } from './drill';
 import { drillView } from './drill/topics-view';
 import { examView } from './exam/view';
-import { weapons } from './modules';
+import { exams, studies, weapons } from './modules';
 import { parseRoute, routeSection, type Route } from './router';
+import { studyView } from './study/view';
 import type { AppContext, View } from './ui/dom';
 import { homeView } from './ui/home';
 import { SITE_NAME, shell } from './ui/shell';
@@ -40,15 +42,20 @@ function page(route: Route): { view: View; title: string } {
       const chapter = chapters.find((item) => item.number === route.chapter) ?? chapters[0];
       return { view: drillView(chapter.number), title: `Ierinda · ${chapter.title}` };
     }
+    case 'study': {
+      const study = studies[route.module];
+      const chapter = study.chapters.find((item) => item.number === route.chapter) ?? study.chapters[0];
+      return { view: studyView(study, chapter.number), title: `${study.name} · ${chapter.title}` };
+    }
     case 'exam':
-      return { view: examView(route.exam, app), title: route.exam === 'ierinda' ? 'Ierindas pārbaude' : 'Kopējā pārbaude' };
+      return { view: examView(route.exam, app), title: exams[route.exam].pageTitle };
     default:
       return { view: homeView(app), title: 'Ieroču uzbūve un ierindas mācība' };
   }
 }
 
 function render(): void {
-  const route = parseRoute(routeHash, Object.keys(weapons));
+  const route = parseRoute(routeHash, Object.keys(weapons), Object.keys(studies));
   cleanup?.();
   cleanup = undefined;
   // Dialogs opened by the previous page close with it (their promises resolve as "cancel").

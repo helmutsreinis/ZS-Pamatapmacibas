@@ -4,12 +4,17 @@ export type Route =
   | { page: 'weapon-learn'; weapon: string }
   | { page: 'weapon-test'; weapon: string }
   | { page: 'drill'; chapter?: string }
-  | { page: 'exam'; exam: 'ierinda' | 'kopeja' };
+  | { page: 'study'; module: string; chapter?: string }
+  /** 'ierinda', 'kopeja' or a study module id. */
+  | { page: 'exam'; exam: string };
 
 /** Old weapon ids that still open their module (the G36 module was first published as G36C). */
 const ALIASES: Record<string, string> = { g36c: 'g36' };
 
-export function parseRoute(hash: string, weapons: readonly string[]): Route {
+/** "tema-03" → "03". */
+const chapterOf = (segment?: string) => segment?.match(/^tema-(\d{2})$/)?.[1];
+
+export function parseRoute(hash: string, weapons: readonly string[], studies: readonly string[] = []): Route {
   const parts = hash.replace(/^#\/?/, '').split('/').filter(Boolean);
   const [id, second] = parts;
   const first = id && (ALIASES[id] ?? id);
@@ -18,8 +23,11 @@ export function parseRoute(hash: string, weapons: readonly string[]): Route {
   }
   if (first === 'ierinda') {
     if (second === 'parbaude') return { page: 'exam', exam: 'ierinda' };
-    const chapter = second?.match(/^tema-(\d{2})$/)?.[1];
-    return { page: 'drill', chapter };
+    return { page: 'drill', chapter: chapterOf(second) };
+  }
+  if (first && studies.includes(first)) {
+    if (second === 'parbaude') return { page: 'exam', exam: first };
+    return { page: 'study', module: first, chapter: chapterOf(second) };
   }
   if (first === 'parbaude') return { page: 'exam', exam: 'kopeja' };
   return { page: 'home' };
@@ -30,7 +38,8 @@ export function routeHref(route: Route): string {
     case 'weapon-learn': return `#/${route.weapon}/macibas`;
     case 'weapon-test': return `#/${route.weapon}/parbaude`;
     case 'drill': return route.chapter ? `#/ierinda/tema-${route.chapter}` : '#/ierinda';
-    case 'exam': return route.exam === 'ierinda' ? '#/ierinda/parbaude' : '#/parbaude';
+    case 'study': return route.chapter ? `#/${route.module}/tema-${route.chapter}` : `#/${route.module}`;
+    case 'exam': return route.exam === 'kopeja' ? '#/parbaude' : `#/${route.exam}/parbaude`;
     default: return '#/';
   }
 }
@@ -40,7 +49,8 @@ export function routeSection(route: Route): string {
   switch (route.page) {
     case 'weapon-learn': case 'weapon-test': return route.weapon;
     case 'drill': return 'ierinda';
-    case 'exam': return route.exam === 'ierinda' ? 'ierinda' : 'kopeja';
+    case 'study': return route.module;
+    case 'exam': return route.exam;
     default: return 'home';
   }
 }

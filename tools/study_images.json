@@ -1,0 +1,499 @@
+{
+ "about": "Sources of the study-module photos. tools/build_study_images.py downloads each url once into tools/.cache/study/, applies rotate, erase (inpaint), crop and max, and writes src/study/<module>/assets/<file>. Credits are shown under every photo.",
+ "images": [
+  {
+   "module": "ammo",
+   "file": "calibres.jpg",
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Intermediate_caliber_cartridges_comparison_-_7.62x39mm%2C_5.45x39mm%2C_5.56x45mm_and_7.62x51mm_NATO.jpg/1280px-Intermediate_caliber_cartridges_comparison_-_7.62x39mm%2C_5.45x39mm%2C_5.56x45mm_and_7.62x51mm_NATO.jpg",
+   "cache": "calibres-source.jpg",
+   "credit": {
+    "author": "Grasyl",
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Intermediate_caliber_cartridges_comparison_-_7.62x39mm,_5.45x39mm,_5.56x45mm_and_7.62x51mm_NATO.jpg",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+   },
+   "rotate": null,
+   "crop": [
+    270,
+    40,
+    700,
+    770
+   ],
+   "erase": null,
+   "max": [
+    700,
+    770
+   ]
+  },
+  {
+   "module": "ammo",
+   "file": "cutaway.jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/7.5x55_Cutaway_cartridge.jpeg/500px-7.5x55_Cutaway_cartridge.jpeg",
+   "cache": "cutaway-source.jpeg",
+   "credit": {
+    "author": "BreTho",
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:7.5x55_Cutaway_cartridge.jpeg",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+   },
+   "rotate": -90,
+   "crop": [
+    60,
+    40,
+    1280,
+    355
+   ],
+   "erase": null,
+   "max": [
+    1280,
+    355
+   ],
+   "prescale": 0.875
+  },
+  {
+   "module": "ammo",
+   "file": "types-g3.jpg",
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/HecklerundKoch_G3_Munitionsarten.jpg/1280px-HecklerundKoch_G3_Munitionsarten.jpg",
+   "cache": "types-g3-source.jpg",
+   "credit": {
+    "author": "Auge=mit",
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:HecklerundKoch_G3_Munitionsarten.jpg",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+   },
+   "rotate": null,
+   "crop": [
+    40,
+    125,
+    1190,
+    535
+   ],
+   "erase": null,
+   "max": [
+    1190,
+    535
+   ]
+  },
+  {
+   "module": "ammo",
+   "file": "types-sweden.jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/1/15/7.62%C3%9751mmNATO.jpg",
+   "cache": "types-sweden-source.jpg",
+   "credit": {
+    "author": "Indianarrow",
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:7.62%C3%9751mmNATO.jpg",
+    "licence": "CC BY-SA 3.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+   },
+   "rotate": null,
+   "crop": [
+    150,
+    110,
+    823,
+    630
+   ],
+   "erase": [
+    [
+     150,
+     668,
+     55,
+     62
+    ],
+    [
+     405,
+     672,
+     55,
+     62
+    ],
+    [
+     622,
+     672,
+     55,
+     62
+    ]
+   ],
+   "max": [
+    823,
+    630
+   ]
+  },
+  {
+   "module": "ammo",
+   "file": "headstamps.jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/6/65/Two_223_Headstamps.jpg",
+   "cache": "headstamps-source.jpg",
+   "credit": {
+    "author": "User:Static-rat",
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Two_223_Headstamps.jpg",
+    "licence": "CC BY-SA 3.0",
+    "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+   },
+   "rotate": null,
+   "crop": [
+    80,
+    70,
+    1560,
+    630
+   ],
+   "erase": null,
+   "max": [
+    1560,
+    630
+   ]
+  },
+  {
+   "module": "ammo",
+   "file": "rifling.jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Romanian_M44_rifle_muzzle_and_bore_focus_stacked.jpg",
+   "cache": "rifling-source.jpg",
+   "credit": {
+    "author": "Darron Birgenheier from Brantingham, NY, USA",
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Romanian_M44_rifle_muzzle_and_bore_focus_stacked.jpg",
+    "licence": "CC BY 2.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/2.0"
+   },
+   "rotate": null,
+   "crop": [
+    20,
+    260,
+    540,
+    540
+   ],
+   "erase": null,
+   "max": [
+    540,
+    540
+   ]
+  },
+  {
+   "module": "ammo",
+   "file": "mpg.jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/G3_G36_MPG_ManoeverPatronenGeraet.jpg/960px-G3_G36_MPG_ManoeverPatronenGeraet.jpg",
+   "cache": "mpg-source.jpg",
+   "credit": {
+    "author": "Auge=mit",
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:G3_G36_MPG_ManoeverPatronenGeraet.jpg",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+   },
+   "rotate": null,
+   "crop": [
+    255,
+    85,
+    460,
+    200
+   ],
+   "erase": [
+    [
+     562,
+     206,
+     16,
+     80
+    ]
+   ],
+   "max": [
+    460,
+    200
+   ]
+  },
+  {
+   "module": "ammo",
+   "file": "cartridge-556.jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Patrone_5%2C56x45mm.jpg",
+   "cache": "cartridge-556-source.jpg",
+   "credit": {
+    "author": "metroplex, additional changes made by Shotgun",
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Patrone_5,56x45mm.jpg",
+    "licence": "CC BY-SA 3.0",
+    "licenceUrl": "http://creativecommons.org/licenses/by-sa/3.0/"
+   },
+   "rotate": null,
+   "crop": null,
+   "erase": null,
+   "max": [
+    900,
+    385
+   ],
+   "pad": [
+    70,
+    0,
+    90,
+    0
+   ]
+  },
+  {
+   "module": "ammo",
+   "file": "fx.jpg",
+   "url": "https://upload.wikimedia.org/wikipedia/commons/a/a5/FX_Patrone.jpg",
+   "cache": "fx-source.jpg",
+   "credit": {
+    "author": "Syncro2000",
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:FX_Patrone.jpg",
+    "licence": "CC BY-SA 4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+   },
+   "rotate": null,
+   "crop": [
+    245,
+    110,
+    740,
+    765
+   ],
+   "erase": null,
+   "max": [
+    740,
+    765
+   ]
+  },
+  {
+   "module": "kit",
+   "file": "uniform-regulation.jpg",
+   "url": "https://www.likumi.lv/wwwraksti/2020/011/BILDES/N_26/IMAGE193.JPG",
+   "cache": "uniform-regulation-source.jpg",
+   "credit": {
+    "author": "Ministru kabinets",
+    "source": "MK noteikumi Nr. 26, 2. pielikums, 106. attēls (likumi.lv)",
+    "page": "https://likumi.lv/ta/id/311981-noteikumi-par-karavira-formas-terpiem-un-atskiribas-zimem",
+    "licence": "normatīvais akts – autortiesības neattiecas (Autortiesību likuma 6. pants)",
+    "licenceUrl": "https://likumi.lv/ta/id/5138-autortiesibu-likums"
+   },
+   "rotate": null,
+   "crop": [
+    110,
+    25,
+    360,
+    375
+   ],
+   "max": null,
+   "keep": [
+    [
+     185,
+     187,
+     19,
+     24
+    ],
+    [
+     178,
+     212,
+     24,
+     33
+    ]
+   ],
+   "trace_lines": [
+    [
+     140,
+     165,
+     262,
+     1
+    ],
+    [
+     140,
+     200,
+     200,
+     1
+    ],
+    [
+     140,
+     244,
+     200,
+     1
+    ],
+    [
+     470,
+     66,
+     292,
+     -1
+    ],
+    [
+     440,
+     164,
+     330,
+     -1
+    ],
+    [
+     440,
+     200,
+     370,
+     -1
+    ],
+    [
+     440,
+     245,
+     378,
+     -1
+    ]
+   ],
+   "paint_lines": [
+    [
+     [
+      289,
+      46
+     ],
+     [
+      297,
+      48
+     ],
+     [
+      303,
+      50
+     ],
+     [
+      306,
+      53
+     ],
+     [
+      319,
+      55
+     ]
+    ],
+    [
+     [
+      385,
+      222
+     ],
+     [
+      395,
+      223
+     ],
+     [
+      399,
+      226
+     ],
+     [
+      405,
+      230
+     ]
+    ]
+   ],
+   "whiteout": [
+    [
+     104,
+     142,
+     44,
+     112
+    ],
+    [
+     428,
+     150,
+     50,
+     108
+    ],
+    [
+     428,
+     40,
+     50,
+     40
+    ]
+   ]
+  },
+  {
+   "module": "kit",
+   "file": "kit-zemessargs.jpg",
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/A_Zemessarde_%28Latvian_National_Guard%29_pulls_security_during_Strong_Guard_2016_near_Tukums.jpg/1280px-A_Zemessarde_%28Latvian_National_Guard%29_pulls_security_during_Strong_Guard_2016_near_Tukums.jpg",
+   "cache": "kit-zemessargs-source.jpg",
+   "credit": {
+    "author": "Staff Sgt. Kimberly Derryberry",
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:A_Zemessarde_(Latvian_National_Guard)_pulls_security_during_Strong_Guard_2016_near_Tukums.jpg",
+    "licence": "Public domain",
+    "licenceUrl": null
+   },
+   "rotate": null,
+   "crop": [
+    330,
+    110,
+    670,
+    744
+   ],
+   "erase": null,
+   "max": [
+    670,
+    744
+   ]
+  },
+  {
+   "module": "kit",
+   "file": "kit-saber-strike.jpg",
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Saber_Strike_2017_Norwegian_STX_Lane_170604-A-YI894-0138.jpg/1280px-Saber_Strike_2017_Norwegian_STX_Lane_170604-A-YI894-0138.jpg",
+   "cache": "kit-saber-strike-source.jpg",
+   "credit": {
+    "author": "Pvt. Brandon Best",
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Saber_Strike_2017_Norwegian_STX_Lane_170604-A-YI894-0138.jpg",
+    "licence": "Public domain",
+    "licenceUrl": null
+   },
+   "rotate": null,
+   "crop": [
+    760,
+    20,
+    520,
+    833
+   ],
+   "erase": null,
+   "max": [
+    520,
+    833
+   ]
+  },
+  {
+   "module": "kit",
+   "file": "kit-rucksack.jpg",
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Baltic_Warrior_2023_%287795647%29.jpg/1280px-Baltic_Warrior_2023_%287795647%29.jpg",
+   "cache": "kit-rucksack-source.jpg",
+   "credit": {
+    "author": "U.S. Army HQ-4ID by Staff Sgt. Cesar Rivas",
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Baltic_Warrior_2023_(7795647).jpg",
+    "licence": "Public domain",
+    "licenceUrl": null
+   },
+   "rotate": null,
+   "crop": [
+    640,
+    50,
+    370,
+    430
+   ],
+   "erase": null,
+   "max": [
+    370,
+    430
+   ]
+  },
+  {
+   "module": "kit",
+   "file": "flag-patch.jpg",
+   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Latvian_soldier_with_weapon.jpg/1280px-Latvian_soldier_with_weapon.jpg",
+   "cache": "flag-patch-source.jpg",
+   "credit": {
+    "author": "Kārlis Dambrāns",
+    "source": "Wikimedia Commons",
+    "page": "https://commons.wikimedia.org/wiki/File:Latvian_soldier_with_weapon.jpg",
+    "licence": "CC BY 2.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/2.0"
+   },
+   "rotate": null,
+   "crop": [
+    600,
+    0,
+    340,
+    440
+   ],
+   "erase": null,
+   "max": [
+    340,
+    440
+   ]
+  }
+ ]
+}

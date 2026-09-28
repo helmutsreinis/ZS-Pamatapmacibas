@@ -14,7 +14,12 @@ export type ExamQuestion = {
   ref?: string;
   /** Photo of weapon parts shown with the question. */
   media?: { weapon: string; stepId: string; label: string };
+  /** Photo shown with the question, with one marker. */
+  image?: ExamImage;
 };
+
+/** A photo with one marker at (x, y) in its pixels; `credit` is the author and licence line. */
+export type ExamImage = { src: string; width: number; height: number; alt: string; x: number; y: number; credit: string };
 
 export type Topic = { key: string; module: string; label: string; count: number };
 

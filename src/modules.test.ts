@@ -1,9 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import { formatTime, plural } from './lv';
-import { exams, modules, weapons } from './modules';
+import { exams, modules, studies, weapons } from './modules';
 import { parseRoute, routeHref, routeSection } from './router';
 
 const ids = Object.keys(weapons);
+const studyIds = Object.keys(studies);
 
 describe.each(Object.values(weapons))('$name weapon module', (weapon) => {
   it('has a timeline segment for the safety check and every step, in order', () => {
@@ -43,11 +44,12 @@ describe.each(Object.values(weapons))('$name weapon module', (weapon) => {
 });
 
 describe('hub', () => {
-  it('has a weapon module behind every ready weapon card, and links the router understands', () => {
+  it('has a module behind every ready weapon or study card, and links the router understands', () => {
     for (const card of modules.filter((module) => module.status === 'ready')) {
       if (card.group === 'weapon') expect(weapons[card.id], card.id).toBeDefined();
+      if (card.group === 'study') expect(studies[card.id], card.id).toBeDefined();
       expect(card.links.length, card.id).toBeGreaterThan(0);
-      for (const link of card.links) expect(parseRoute(link.href, ids).page, link.href).not.toBe('home');
+      for (const link of card.links) expect(parseRoute(link.href, ids, studyIds).page, link.href).not.toBe('home');
     }
     for (const card of modules.filter((module) => module.status === 'planned')) expect(card.links, card.id).toHaveLength(0);
   });
@@ -56,6 +58,7 @@ describe('hub', () => {
     const covered = exams.kopeja.sources.map((source) => source.module);
     for (const card of modules.filter((module) => module.status === 'ready')) expect(covered, card.id).toContain(card.id);
     expect(exams.ierinda.sources.map((source) => source.module)).toEqual(['ierinda']);
+    for (const id of studyIds) expect(exams[id].sources.map((source) => source.module), id).toEqual([id]);
   });
 });
 
@@ -75,18 +78,25 @@ describe('routes', () => {
     ['#/ierinda/tema-03', { page: 'drill', chapter: '03' }],
     ['#/ierinda/parbaude', { page: 'exam', exam: 'ierinda' }],
     ['#/parbaude', { page: 'exam', exam: 'kopeja' }],
+    ['#/municija', { page: 'study', module: 'municija' }],
+    ['#/municija/tema-02', { page: 'study', module: 'municija', chapter: '02' }],
+    ['#/municija/parbaude', { page: 'exam', exam: 'municija' }],
+    ['#/ekipejums', { page: 'study', module: 'ekipejums' }],
+    ['#/ekipejums/parbaude', { page: 'exam', exam: 'ekipejums' }],
     ['#/nezinams/lapa', { page: 'home' }],
   ])('%s', (hash, route) => {
-    expect(parseRoute(hash, ids)).toEqual(route);
+    expect(parseRoute(hash, ids, studyIds)).toEqual(route);
   });
 
   it('turns routes back into the same links and marks their section', () => {
-    for (const hash of ['#/g36/macibas', '#/g36/parbaude', '#/ierinda', '#/ierinda/tema-07', '#/ierinda/parbaude', '#/parbaude', '#/']) {
-      expect(routeHref(parseRoute(hash, ids))).toBe(hash);
+    for (const hash of ['#/g36/macibas', '#/g36/parbaude', '#/ierinda', '#/ierinda/tema-07', '#/ierinda/parbaude', '#/parbaude', '#/municija', '#/municija/tema-03', '#/municija/parbaude', '#/ekipejums/tema-01', '#/']) {
+      expect(routeHref(parseRoute(hash, ids, studyIds))).toBe(hash);
     }
-    expect(routeSection(parseRoute('#/ierinda/parbaude', ids))).toBe('ierinda');
-    expect(routeSection(parseRoute('#/parbaude', ids))).toBe('kopeja');
-    expect(routeSection(parseRoute('#/g36/parbaude', ids))).toBe('g36');
+    expect(routeSection(parseRoute('#/ierinda/parbaude', ids, studyIds))).toBe('ierinda');
+    expect(routeSection(parseRoute('#/parbaude', ids, studyIds))).toBe('kopeja');
+    expect(routeSection(parseRoute('#/g36/parbaude', ids, studyIds))).toBe('g36');
+    expect(routeSection(parseRoute('#/municija/parbaude', ids, studyIds))).toBe('municija');
+    expect(routeSection(parseRoute('#/ekipejums/tema-02', ids, studyIds))).toBe('ekipejums');
   });
 });
 

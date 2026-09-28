@@ -1,10 +1,9 @@
-import { drillTabs } from '../drill/tabs';
 import { formatTime, pad, plural, upper } from '../lv';
 import { exams, weapons, type ExamDefinition, type ExamKind } from '../modules';
 import { secureRandom } from '../random';
 import { partThumb } from '../scene/thumb';
 import { confirmDialog, html, icon, pageIntro, scrollBehavior, toast, type AppContext, type View } from '../ui/dom';
-import { drawQuestions, scoreSession, testCode, type ExamConfig, type SessionQuestion, type Topic } from './model';
+import { drawQuestions, scoreSession, testCode, type ExamConfig, type ExamQuestion, type SessionQuestion, type Topic } from './model';
 import { loadBest, loadPrefs, saveBest, savePrefs } from './store';
 
 const COUNTS: ExamConfig['count'][] = [20, 40, 60, 'all'];
@@ -15,6 +14,19 @@ const LETTERS = 'ABCD';
 const percent = (value: number) => `${value} %`;
 const questionsText = (value: number) => `${value} ${plural(value, 'jautājums', 'jautājumi')}`;
 const minutesText = (seconds: number) => `${seconds / 60} ${plural(seconds / 60, 'minūte', 'minūtes')}`;
+
+/** The picture shown with a question: weapon parts drawn from the scene, or a photo with one marker. */
+function questionMedia(question: ExamQuestion, className: 'exam-media' | 'review-media'): string {
+  const weapon = question.media ? weapons[question.media.weapon] : undefined;
+  if (weapon && question.media) return `<div class="${className}">${partThumb(weapon.scene, weapon.stepParts[question.media.stepId] ?? [], question.media.label)}</div>`;
+  const image = question.image;
+  if (!image) return '';
+  // Tall photos are limited by height; wide ones (a cartridge lying down) get a row of their own.
+  const ratio = image.width / image.height;
+  const width = ratio > 2 ? (className === 'exam-media' ? 680 : 300) : Math.round((className === 'exam-media' ? 260 : 150) * Math.min(ratio, 1.6));
+  const left = ((image.x / image.width) * 100).toFixed(2), top = ((image.y / image.height) * 100).toFixed(2);
+  return `<div class="${className} is-photo"><div class="question-photo" style="width:min(100%,${width}px);aspect-ratio:${image.width} / ${image.height}"><img src="${image.src}" width="${image.width}" height="${image.height}" alt="${html(image.alt)}"><span class="question-spot" style="left:${left}%;top:${top}%" aria-hidden="true"></span></div><small class="question-credit">${html(image.credit)}</small></div>`;
+}
 
 type Session = {
   config: ExamConfig;
@@ -120,7 +132,7 @@ function intro(def: ExamDefinition, screen: Screen, session: Session | null, tit
     : `${topics.length} ${upper(plural(topics.length, 'tēma', 'tēmas'))} · ${upper(questionsText(total))}`;
   return pageIntro({
     kicker: def.kicker, side, title, lead, className: `exam-intro exam-${def.kind} ${screen === 'setup' ? '' : 'is-compact'}`,
-    extra: steps + (def.kind === 'ierinda' ? drillTabs('test') : ''),
+    extra: steps + (def.tabs?.('test') ?? ''),
   });
 }
 
@@ -323,10 +335,10 @@ function testView(kind: ExamKind, def: ExamDefinition, session: Session, app: Ap
     };
     const render = () => {
       const question = current();
-      const weapon = question.media ? weapons[question.media.weapon] : undefined;
-      const media = weapon && question.media ? `<div class="exam-media">${partThumb(weapon.scene, weapon.stepParts[question.media.stepId] ?? [], question.media.label)}</div>` : '';
+      const media = questionMedia(question, 'exam-media');
+      const wide = !!question.image && question.image.width / question.image.height > 2;
       card.innerHTML = `<div class="exam-card-head"><span class="exam-badge">${html(topicLabel.get(question.topic) ?? '')}</span><span class="exam-ref">${pad(session.index + 1)} / ${pad(questions.length)}</span></div>
-        <div class="exam-question ${media ? 'has-media' : ''}">${media}<h2 id="exam-prompt">${html(question.prompt)}</h2></div>
+        <div class="exam-question ${media ? 'has-media' : ''} ${wide ? 'has-wide-media' : ''}">${media}<h2 id="exam-prompt">${html(question.prompt)}</h2></div>
         <div class="exam-answers" role="group" aria-labelledby="exam-prompt">${question.options.map((option, index) => `<button type="button" class="exam-answer" data-answer="${index}"><span class="letter" aria-hidden="true">${LETTERS[index]}</span><span class="sr-only">${LETTERS[index]}:</span><span>${html(option.text)}</span></button>`).join('')}</div>
         <div class="exam-feedback hidden" id="exam-feedback" aria-live="polite"></div>
         <div class="exam-nav"><div class="exam-nav-group"><button type="button" class="button button-outline" id="exam-prev" ${session.index === 0 ? 'disabled' : ''}>${icon('prev')} Iepriekšējais</button><button type="button" class="button button-outline" id="exam-next" ${session.index === questions.length - 1 ? 'disabled' : ''}>Nākamais ${icon('next')}</button></div><div class="exam-nav-group"><button type="button" class="button button-outline flag-button" id="exam-flag"></button><button type="button" class="button button-primary" id="exam-finish">Iesniegt testu ${icon('arrow')}</button></div></div>`;
@@ -496,8 +508,7 @@ function resultsView(kind: ExamKind, def: ExamDefinition, session: Session, go: 
       if (!list) return;
       if (!rows.length) { list.innerHTML = '<p class="empty-review">Nevienas kļūdas – visas atbildes ir pareizas.</p>'; return; }
       list.innerHTML = rows.map(({ question, chosen, isCorrect, index }) => {
-        const weapon = question.media ? weapons[question.media.weapon] : undefined;
-        const media = weapon && question.media ? `<div class="review-media">${partThumb(weapon.scene, weapon.stepParts[question.media.stepId] ?? [], question.media.label)}</div>` : '';
+        const media = questionMedia(question, 'review-media');
         return `<details class="review-item ${isCorrect ? 'correct' : 'incorrect'}"><summary><span class="review-mark" aria-label="${isCorrect ? 'Pareizi' : 'Nepareizi'}">${isCorrect ? '✓' : '×'}</span><span class="review-number">${pad(index + 1)}</span><span class="review-prompt">${html(question.prompt)}</span></summary>
           <div class="review-body">${media}<dl><div><dt>Tava atbilde</dt><dd class="${isCorrect ? 'right' : 'wrong'}">${chosen ? html(chosen.text) : 'Nav atbildes'}</dd></div>${isCorrect ? '' : `<div><dt>Pareizā atbilde</dt><dd class="right">${html(question.correct)}</dd></div>`}<div><dt>Skaidrojums</dt><dd>${html(question.explanation)}</dd></div></dl></div><p class="review-ref">${html([topicLabel.get(question.topic), question.ref].filter(Boolean).join(' · '))}</p></details>`;
       }).join('');

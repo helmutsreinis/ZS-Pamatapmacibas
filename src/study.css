@@ -1,0 +1,164 @@
+/* Study modules (Munīcija, Ekipējums): chapter content blocks ------------------------------ */
+.study-blocks{display:grid;gap:26px;padding:0 28px}
+.study-text p{max-width:78ch;margin:0 0 12px;color:#c6d2bf;font-size:15px;line-height:1.65}
+.study-text p:last-child{margin-bottom:0}
+.study-text b,.study-card b,.study-callout b,.study-sequence b,.decode-parts b,.figure-detail b,.study-table b{color:#eef3dc}
+.block-title{margin:0 0 12px;color:#b9c786;font-size:11px;font-weight:900;letter-spacing:.2em;text-transform:uppercase}
+.block-lead,.block-note{max-width:78ch;margin:0 0 14px;color:#a9b9a6;font-size:14px;line-height:1.6}
+.block-note{margin:14px 0 0;font-size:13px}
+
+/* Photo with numbered markers */
+.study-figure{margin:0;border:1px solid #3a4b3a;background:#101a13}
+.figure-body{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(250px,1fr)}
+.study-figure.is-portrait .figure-body{grid-template-columns:minmax(0,1fr) minmax(260px,1.15fr)}
+.figure-stage{position:relative;align-self:start;justify-self:center;width:100%;background:radial-gradient(circle at 50% 45%,#2a3a2b,#0e1611 80%)}
+.figure-photo{display:block;width:100%;height:100%;object-fit:contain}
+.figure-lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.figure-line line{vector-effect:non-scaling-stroke;stroke-linecap:round}
+.figure-line .halo{stroke:#fffbe6;stroke-width:5;opacity:.8}
+.figure-line .stroke{stroke:#1d2a16;stroke-width:2}
+.figure-line.leader .stroke{stroke-dasharray:5 4}
+.figure-line text{fill:#172116;font-family:Arial,Helvetica,sans-serif;font-weight:900;paint-order:stroke;stroke:#fffbe6;stroke-width:4px;stroke-linejoin:round}
+.figure-leader line{stroke:#e2cf82;stroke-width:1.6;vector-effect:non-scaling-stroke;opacity:.9}
+.figure-leader circle{fill:#e2cf82;stroke:#172116;stroke-width:1;vector-effect:non-scaling-stroke}
+.figure-leader.active line{stroke:#fffbe6;stroke-width:2.4;opacity:1}
+.figure-leader.active circle{fill:#fffbe6}
+.figure-spot{position:absolute;z-index:1;display:grid;place-items:center;width:30px;height:30px;padding:0;border:2px solid #172116;border-radius:50%;background:#e2cf82;color:#172116;font-size:13px;font-weight:900;line-height:1;transform:translate(-50%,-50%);box-shadow:0 0 0 3px #e2cf8259,0 3px 10px #000a;transition:transform .15s,background .15s}
+.figure-spot:hover{transform:translate(-50%,-50%) scale(1.12)}
+.figure-spot.active{z-index:2;background:#fffbe6;transform:translate(-50%,-50%) scale(1.2);box-shadow:0 0 0 4px #fffbe699,0 0 18px #ffe98a}
+.figure-side{display:flex;flex-direction:column;gap:12px;min-width:0;padding:16px 16px 18px;border-left:1px solid #2f3f31}
+.figure-tools{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.figure-legend{list-style:none;margin:0;padding:0;display:grid;gap:3px}
+.figure-key{display:flex;align-items:center;gap:10px;width:100%;padding:7px 8px;border:0;border-left:2px solid transparent;background:transparent;color:#bdcab6;font-size:13px;line-height:1.3;text-align:left}
+.figure-key b{flex:none;display:grid;place-items:center;width:23px;height:23px;border-radius:50%;background:#2b3b2d;color:#e2cf82;font-size:11px}
+.figure-key:hover{background:#1c2a1f;color:#eef3dc}
+.figure-key.active{border-left-color:#e2cf82;background:#223224;color:#eef3dc}
+.figure-key.active b{background:#e2cf82;color:#172116}
+.figure-key-hidden{display:none;color:#6f8468;font-weight:900;letter-spacing:.2em}
+.study-figure.is-hidden .figure-key-label{display:none}
+.study-figure.is-hidden .figure-key-hidden{display:inline}
+.study-figure.is-hidden .figure-key.is-revealed .figure-key-label{display:inline}
+.study-figure.is-hidden .figure-key.is-revealed .figure-key-hidden{display:none}
+.figure-detail{display:flex;gap:12px;min-height:118px;margin-top:auto;padding:14px;border:1px solid #33452f;background:#162219}
+.figure-detail h4{margin:0 0 6px;color:#eef3dc;font-size:15px}
+.figure-detail p{margin:0;color:#b4c3ad;font-size:13px;line-height:1.55}
+.figure-detail-number{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#e2cf82;color:#172116;font-weight:900;font-size:13px}
+.figure-detail .figure-detail-hint{color:#8fa688;font-size:12px}
+.study-figure figcaption{padding:10px 16px 12px;border-top:1px solid #2f3f31;color:#a9b9a6;font-size:12px;line-height:1.55}
+.study-credit{display:block;margin-top:3px;color:#7f937a;font-size:11px}
+.study-credit a{color:#9fb29a}
+.study-credit a:hover{color:#dfe8cf}
+
+/* Cards */
+.study-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.study-card{display:flex;flex-direction:column;min-width:0;border:1px solid #3a4b3a;background:#132018}
+.study-card-photo{display:flex;align-items:center;justify-content:center;height:190px;padding:10px;background:radial-gradient(circle at 50% 45%,#2a3a2b,#0e1611 80%);border-bottom:1px solid #2f3f31;overflow:hidden}
+.study-card-photo img{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 6px 8px #000b)}
+.study-card-body{display:flex;flex-direction:column;gap:8px;padding:15px 16px 16px;flex:1}
+.study-card-body .kicker{font-size:9px}
+.study-card h4{margin:0;font-family:Impact,'Arial Narrow',sans-serif;font-size:23px;font-weight:400;letter-spacing:.04em;text-transform:uppercase;color:#eef3dc}
+.study-card p{margin:0;color:#b4c3ad;font-size:13px;line-height:1.55}
+.study-swatch{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;padding:4px 9px 4px 5px;border:1px solid #3d4f3b;background:#0f1912;color:#cfdbb9;font-size:11px;font-weight:700}
+.study-swatch-colours{display:inline-flex}
+.study-swatch-colours i{display:block;width:14px;height:14px;border:1px solid #0009;border-radius:50%}
+.study-swatch-colours i+i{margin-left:-4px}
+.study-card-facts{display:grid;gap:5px;margin:4px 0 0;padding-top:9px;border-top:1px solid #2f3f31}
+.study-card-facts div{display:grid;grid-template-columns:minmax(80px,auto) 1fr;gap:10px}
+.study-card-facts dt{color:#8fa688;font-size:10px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;padding-top:2px}
+.study-card-facts dd{margin:0;color:#dfe8cf;font-size:12px;line-height:1.45}
+.study-card-credit{margin-top:auto!important;padding-top:6px}
+.study-card-credit .study-credit{margin:0}
+
+/* Table */
+.study-table table{width:100%;border-collapse:collapse;font-size:13px}
+.study-table caption{padding:0 0 10px;color:#b9c786;font-size:11px;font-weight:900;letter-spacing:.2em;text-align:left;text-transform:uppercase}
+.study-table th,.study-table td{padding:10px 12px;border-bottom:1px solid #33443a;text-align:left;vertical-align:top;line-height:1.45}
+.study-table thead th{color:#8fa688;font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;border-bottom-color:#4b5d45}
+.study-table tbody th{color:#eef3dc;font-weight:700;white-space:nowrap}
+.study-table td{color:#bdcab6}
+.study-table tbody tr:hover{background:#18251b}
+
+/* Sequence (fixed order) */
+.study-sequence ol{list-style:none;margin:0;padding:0;display:grid;gap:8px;counter-reset:none}
+.study-sequence li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;padding:13px 14px;border:1px solid #33452f;background:#132018}
+.sequence-number{color:#e2cf82;font-family:Impact,'Arial Narrow',sans-serif;font-size:24px;letter-spacing:.05em;line-height:1}
+.study-sequence li b{font-size:15px}
+.study-sequence li p{margin:5px 0 0;color:#b4c3ad;font-size:13px;line-height:1.55}
+.sequence-tag{display:inline-block;margin-left:10px;padding:2px 7px;border:1px solid #5a6d52;color:#b9c786;font-size:9px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;vertical-align:2px}
+
+/* Bullet list */
+.study-list ul{margin:0;padding:0;list-style:none;display:grid;gap:7px}
+.study-list li{position:relative;max-width:78ch;padding:10px 12px 10px 34px;border:1px solid #2f3f31;background:#132018;color:#c6d2bf;font-size:14px;line-height:1.55}
+.study-list li:before{content:"";position:absolute;left:14px;top:17px;width:8px;height:8px;background:#b9c786;transform:rotate(45deg)}
+
+/* Callouts */
+.study-callout{padding:14px 16px;border-left:3px solid #b9c786;background:#1b2a1e}
+.study-callout>b{display:block;margin-bottom:5px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#d9e6b4}
+.study-callout p{margin:0;color:#c6d2bf;font-size:14px;line-height:1.6}
+.study-callout.tone-safety{border-left-color:#e0876c;background:#3a1f1640}
+.study-callout.tone-safety>b{color:#f0b09a}
+.study-callout.tone-course{border-left-color:#e2cf82;background:#5a4a1e33}
+.study-callout.tone-course>b{color:#eadca0}
+
+/* Designation decoder: "5,56 × 45 mm NATO" */
+.decode-value{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin:0 0 16px;font-family:Impact,'Arial Narrow',sans-serif;font-size:clamp(34px,5vw,58px);letter-spacing:.03em;line-height:1}
+.decode-value span:nth-child(4n+1){color:#e2cf82}
+.decode-value span:nth-child(4n+2){color:#8fa688}
+.decode-value span:nth-child(4n+3){color:#b9c786}
+.decode-value span:nth-child(4n){color:#d8cfa6}
+.decode-parts{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin:0}
+.decode-parts div{padding:13px 14px;border:1px solid #33452f;background:#132018}
+.decode-parts dt{display:flex;align-items:center;gap:9px;color:#eef3dc;font-size:13px;font-weight:700}
+.decode-chip{padding:3px 8px;background:#e2cf82;color:#172116;font-family:Impact,'Arial Narrow',sans-serif;font-size:15px;font-weight:400;letter-spacing:.04em}
+.decode-parts dd{margin:7px 0 0;color:#b4c3ad;font-size:13px;line-height:1.55}
+
+/* Sources under a chapter */
+.study-sources{margin:24px 28px 0;padding:14px 16px;border:1px solid #33452f;background:#111b14}
+.study-sources ul{margin:8px 0 0;padding-left:18px;color:#a9b9a6;font-size:12px;line-height:1.6}
+.study-sources a{color:#c8d6b6}
+
+/* Hub: the study group spans the whole row */
+.module-group-study{grid-column:1/-1}
+.module-group-study .module-group-title .icon+.icon{margin-left:6px}
+
+/* Test questions with a photo and one marker */
+.exam-media.is-photo,.review-media.is-photo{height:auto;display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px}
+.question-photo{position:relative;max-width:100%}
+.question-photo img{display:block;width:100%;height:100%;object-fit:contain}
+.question-spot{position:absolute;width:28px;height:28px;border:3px solid #ffe36e;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 3px #000a,0 0 16px #ffe36e;animation:spot-pulse 1.6s ease-in-out infinite}
+.review-media .question-spot{width:18px;height:18px;border-width:2px}
+.exam-question.has-wide-media{grid-template-columns:minmax(0,1fr)}
+.exam-question.has-wide-media .exam-media{justify-self:start;width:100%;max-width:700px}
+.question-credit{max-width:260px;color:#7f937a;font-size:9px;line-height:1.4;text-align:center}
+@keyframes spot-pulse{50%{box-shadow:0 0 0 6px #0006,0 0 24px #ffe36e}}
+
+@media(max-width:1100px){
+  .figure-body,.study-figure.is-portrait .figure-body{grid-template-columns:minmax(0,1fr)}
+  .figure-side{border-left:0;border-top:1px solid #2f3f31}
+  .study-figure.is-portrait .figure-stage{max-width:520px;width:100%;justify-self:center}
+}
+@media(max-width:720px){
+  .study-blocks{padding:0 12px;gap:20px}
+  .study-sources{margin:20px 12px 0}
+  .figure-spot{width:26px;height:26px;font-size:12px}
+  .study-sequence li{grid-template-columns:34px minmax(0,1fr);padding:12px}
+  .study-table tbody th{white-space:normal}
+}
+@media(prefers-reduced-motion:reduce){.question-spot{animation:none}}
+@media print{
+  .study-figure,.study-card,.study-sequence li,.decode-parts div,.study-callout,.study-sources{background:#fff!important;border-color:#bbb!important;color:#000!important}
+  .figure-stage,.study-card-photo{background:#f3f3f3!important}
+  .figure-tools,.chapter-train{display:none!important}
+}
+
+/* Header: seven tabs since Munīcija and Ekipējums were added. Labels never break inside
+   ("AK-4", "Kopējā pārbaude"); the tabs tighten, drop below the brand, then wrap on phones. */
+.nav-link{white-space:nowrap}
+@media(max-width:1400px){.header-chip{display:none}.nav-link{padding:12px 11px}}
+@media(max-width:1180px){.nav-link{padding:10px 8px;font-size:10px;letter-spacing:.08em}}
+@media(max-width:1000px){
+  .site-header{flex-wrap:wrap;gap:8px}
+  .brand{width:100%}
+  .main-nav{width:100%;justify-content:space-between}
+}
+@media(max-width:720px){.main-nav{flex-wrap:wrap;justify-content:flex-start;gap:2px 6px}}

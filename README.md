@@ -5,7 +5,11 @@ Latvian-language static learning website with separate modules behind one hub pa
 - **G36** – field strip and assembly animated on a photographic model of the rifle with the adjustable stock (a close-up shows the stock's pin storage holes while the pins are removed), and a self-test (16-step ordering task plus one function question per part). The module was first published as G36C; old `#/g36c/...` links still open it.
 - **AK-4** – the same for the AK-4 (Swedish licence build of the HK G3): 8 steps in the order of the Jaunsargs' handbook, movements from the G3 service manual, parts cut from a CC BY-SA photo.
 - **Ierinda** – the drill-training material: ten topics with explanations and a flash-card mode, and a configurable test.
-- **Kopējā pārbaude** – one test across every ready module: weapon questions generated from the module content (part functions, part photos, movement directions, step order) and each weapon's technical-data questions, plus the drill question bank.
+- **Munīcija** – four topics on ammunition: cartridge construction (a sectioned cartridge), calibre and designations ("5,56 × 45 mm NATO" decoded, dimension lines, rifling, a calibre comparison and C.I.P. dimensions), cartridge types (ball, tracer, blank, drill, armour-piercing, incendiary, simulation, plastic-bullet and subsonic rounds, the blank-firing adapter) and markings and safety (headstamps, storage, misfires); 67 questions.
+- **Ekipējums** – seven topics on kit: the combat uniform and where its patches go (the photo from the Cabinet regulation), pocket contents (course material), wearing the uniform (COLD, appearance rules), the kit systems KIAS / KMPS / KSIP, the first-aid kit, the rucksack and 3-day kit, and the IMUMS pre-task check; 80 questions.
+- **Kopējā pārbaude** – one test across every ready module: weapon questions generated from the module content (part functions, part photos, movement directions, step order) and each weapon's technical-data questions, plus the drill question bank and the ammunition and kit questions.
+
+The ammunition and kit topics are photos with numbered markers: choosing a marker on the photo or in the list shows what it is; "Slēpt nosaukumus" hides the names for self-testing. Every marked photo also becomes test questions ("what is marked here?"), shown with the photo and a pulsing ring.
 
 Everything runs in the browser: no backend, login, analytics or external runtime assets. Test preferences and the best result are kept in the browser's local storage only.
 
@@ -47,6 +51,8 @@ Upload **the contents** of `dist/` to the storage account's `$web` container, wi
 | `#/<weapon>/macibas`, `#/<weapon>/parbaude` | Weapon learning mode and self-test |
 | `#/ierinda`, `#/ierinda/tema-NN` | Drill topics |
 | `#/ierinda/parbaude` | Drill test |
+| `#/municija`, `#/municija/tema-NN`, `#/municija/parbaude` | Ammunition topics and test |
+| `#/ekipejums`, `#/ekipejums/tema-NN`, `#/ekipejums/parbaude` | Kit topics and test |
 | `#/parbaude` | Combined test |
 
 Both tests share one engine (`src/exam/`): topic selection, 20 / 40 / 60 / all questions (drawn in proportion to the chosen topics), exam or training mode, optional time limit, pass mark 70–90 %, question map with flags, keyboard (1–4, ← →, F), results by module and topic, answer review and printing. A test in progress survives moving to another page.
@@ -60,6 +66,8 @@ Both tests share one engine (`src/exam/`): topic selection, 20 / 40 / 60 / all q
 - `src/weapons/learn-view.ts`, `test-view.ts`, `questions.ts` – weapon-independent learning page, self-test and exam questions (part functions, part photos, movement directions, step order).
 - `src/scene/` – the animation engine: `engine.ts` draws the SVG scene from a `SceneModel`, `timeline.ts` evaluates keyframes, `player.ts` handles playback, `thumb.ts` draws part pictures.
 - `src/drill/` – the drill question bank (`ierinda-bank.json`, as supplied), topics page and tabs.
+- `src/study/` – study modules (chapters of explanations with photos, and a question bank): `types.ts` (`StudyModule`, content blocks, marked figures), `figure.ts` (photo with numbered markers, leader lines and dimension lines), `blocks.ts` (text, cards, tables, ordered steps, lists, notes, designation decoder), `view.ts` (chapter page), `questions.ts` (the question source, including the "what is marked here?" questions made from every figure with a `quiz` prompt), `study.css` (their styles).
+- `src/study/ammo/` and `src/study/kit/` – the Munīcija and Ekipējums content (`index.ts`: sources, chapters, figures, questions) and their photos (`assets/`, sizes in `assets/images.json`). `src/study/kit/pockets.ts` holds the pocket figure drawn on the course poster.
 - `src/exam/` – question drawing and scoring (`model.ts`), the test pages (`view.ts`), local storage (`store.ts`).
 - `src/ui/` – site shell, hub page and DOM helpers; `src/lv.ts` – Latvian number agreement and formatting.
 
@@ -69,6 +77,24 @@ Both tests share one engine (`src/exam/`): topic selection, 20 / 40 / 60 / all q
 2. Register it in `src/modules.ts`: add it to `weapons` and add a `ready` card with the links `#/<id>/macibas` and `#/<id>/parbaude`.
 
 The routes, header navigation, weapon self-test, exam question topics and the combined test pick the new module up from the registry. `src/modules.test.ts` and `src/weapons/questions.test.ts` check every registered weapon (timeline matches the steps, parts exist, generated questions are valid).
+
+## Adding a study module
+
+1. Create `src/study/<id>/index.ts` exporting a `StudyModule` (chapters with blocks, sources, questions with one correct and three wrong answers) and put its photos in `assets/` through the image tool below.
+2. Register it in `src/modules.ts` (`studies`); the hub card, header tab, routes (`#/<id>`, `#/<id>/tema-NN`, `#/<id>/parbaude`), test and combined test follow. `src/study/study.test.ts` checks every study module: typography, three distinct wrong answers, known sources, markers inside their photos, credits, topic counts, and that the correct answer is the longest option in at most 40 % of the questions.
+
+## Study-module photos
+
+`tools/build_study_images.py` builds `src/study/*/assets/` from `tools/study_images.json`, which lists every photo with its source URL, author and licence (needs Pillow, numpy and opencv-python):
+
+```powershell
+python tools/build_study_images.py            # all photos; add a file-name fragment to rebuild one
+```
+
+The tool downloads each source once into `tools/.cache/study/` (not committed), then rotates, paints out printed labels (`trace_lines`, `paint_lines`, `erase`, `whiteout`), crops, pads and scales it, and writes the pixel sizes to `assets/images.json`. Marker coordinates in the module content are in the final image's pixels, so change them together with a crop.
+
+- **Kaujas formas tērps:** figure 106 of annex 2 to Cabinet regulation No 26 (likumi.lv). Latvian copyright law (Autortiesību likums, section 6) does not protect normative acts; the printed labels and pointer lines were removed and replaced by the site's own markers.
+- **Other photos:** Wikimedia Commons, US government works (public domain) and CC BY / CC BY-SA photos; every photo shows its author, source and licence under it and in the test. CC BY-SA derivatives (the crops) are under the same licence.
 
 ## Part images
 
@@ -111,6 +137,8 @@ python tools/build_ak4_images.py            # add --debug <folder> for fitting a
 - [Bundeswehr ZDv 3/13 “Das Gewehr G3” (1999)](https://upload.wikimedia.org/wikipedia/commons/6/6c/ZDv_3-13_Das_Gewehr_G3_(1999).pdf), Nr. 201–215 (parts, operation) and 318–323 (stripping, assembly, function check)
 - [Course presentation “Triecienšautene AK-4 (G-3)”](https://www.slideserve.com/andres/triecien-autene-ak-4-g-3) (part functions)
 - The supplied ten-page drill-training material (question bank in `src/drill/ierinda-bank.json`)
+- Munīcija: [Ieroču aprites likums](https://likumi.lv/ta/id/305818-ierocu-aprites-likums) (terms), J. Melderis, [“Ieroču un munīcijas uzbūves un darbības principi”](https://virsnieki.lv/wp-content/uploads/2022/04/Ierocu-un-municijas-uzbuve-un-darbibas-principi.pdf) (NAA, 2008), C.I.P. dimension tables, the Bundeswehr G36 manual (Nr. 210, 502–511, 701–711), [MK noteikumi Nr. 494](https://likumi.lv/ta/id/316509) (misfire), the Jaunsarga rokasgrāmata (range rules), Nammo product data, US Army TM 43-0001-27, the Small Arms Survey identification handbook, SAAMI (via American Rifleman), Simunition
+- Ekipējums: [MK noteikumi Nr. 26](https://likumi.lv/ta/id/311981-noteikumi-par-karavira-formas-terpiem-un-atskiribas-zimem) (uniform, patches), AM noteikumi Nr. 18-NOT (2012; appearance, reflective band, ID tag), JC noteikumi Nr. 8-NOT (Jaunsardze uniform), AM noteikumi Nr. 27-NOT (2015; kit systems), [MK noteikumi Nr. 720](https://likumi.lv/ta/id/214698) (first-aid kit), the Jaunsarga rokasgrāmata (rucksack), the VAM course reminder (IMUMS, COLD, hygiene), sargs.lv (2021 march kit, 2022 tourniquets), and the course's pocket list supplied by the trainee
 - [Azure Storage static website documentation](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website)
 
 The site is an unofficial study aid. Before using it as official training material, have an instructor check the points in [CONTENT_REVIEW.md](CONTENT_REVIEW.md).

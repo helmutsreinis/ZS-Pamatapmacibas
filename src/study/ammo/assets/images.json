@@ -1,0 +1,38 @@
+{
+ "calibres.jpg": {
+  "width": 700,
+  "height": 770
+ },
+ "cartridge-556.jpg": {
+  "width": 900,
+  "height": 385
+ },
+ "cutaway.jpg": {
+  "width": 1280,
+  "height": 355
+ },
+ "fx.jpg": {
+  "width": 740,
+  "height": 765
+ },
+ "headstamps.jpg": {
+  "width": 1560,
+  "height": 630
+ },
+ "mpg.jpg": {
+  "width": 460,
+  "height": 200
+ },
+ "rifling.jpg": {
+  "width": 540,
+  "height": 540
+ },
+ "types-g3.jpg": {
+  "width": 1190,
+  "height": 535
+ },
+ "types-sweden.jpg": {
+  "width": 823,
+  "height": 630
+ }
+}
