@@ -68,7 +68,8 @@ describe.each(modules)('$name study module', (module) => {
           expect(x >= 0 && x <= figure.width && y >= 0 && y <= figure.height, `${figure.id} line`).toBe(true);
         }
       }
-      for (const field of ['author', 'source', 'url', 'licence'] as const) expect(figure.credit[field], `${figure.id}: ${field}`).toBeTruthy();
+      for (const field of ['author', 'source', 'licence'] as const) expect(figure.credit[field], `${figure.id}: ${field}`).toBeTruthy();
+      if (figure.credit.url !== undefined) expect(figure.credit.url, `${figure.id}: url`).toMatch(/^https?:\/\//);
       expectTypography(figure.caption, figure.id);
       expectTypography(figure.alt, figure.id);
       if (figure.quiz) {
@@ -87,7 +88,7 @@ describe.each(modules)('$name study module', (module) => {
         for (const card of block.cards) {
           expectTypography(card.title, card.id);
           expectTypography(card.text, card.id);
-          if (card.picture) for (const field of ['author', 'source', 'url', 'licence'] as const) expect(card.picture.credit[field], `${card.id}: ${field}`).toBeTruthy();
+          if (card.picture) for (const field of ['author', 'source', 'licence'] as const) expect(card.picture.credit[field], `${card.id}: ${field}`).toBeTruthy();
         }
       }
     }

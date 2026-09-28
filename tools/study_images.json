@@ -494,6 +494,111 @@
     340,
     440
    ]
+  },
+  {
+   "module": "kit",
+   "file": "rucksack-course.jpg",
+   "source": "tools/study-sources/rucksack-course-numbered.png",
+   "credit": {
+    "author": "Tasmanian Tiger (ražotāja foto)",
+    "source": "kursa materiāls",
+    "licence": "kursa materiāls – pirms publicēšanas pārbaudi tiesības"
+   },
+   "remove_markers": [
+    {
+     "at": [
+      168,
+      283
+     ],
+     "shift": [
+      0,
+      57
+     ]
+    },
+    {
+     "at": [
+      416,
+      261
+     ],
+     "shift": [
+      0,
+      50
+     ]
+    },
+    {
+     "at": [
+      325,
+      304
+     ],
+     "rows": 26
+    },
+    {
+     "at": [
+      311,
+      354
+     ],
+     "rows": 26
+    },
+    {
+     "at": [
+      311,
+      405
+     ],
+     "rows": 26
+    },
+    {
+     "at": [
+      287,
+      35
+     ]
+    },
+    {
+     "at": [
+      301,
+      155
+     ]
+    },
+    {
+     "at": [
+      308,
+      227
+     ]
+    },
+    {
+     "at": [
+      257,
+      470
+     ]
+    }
+   ],
+   "max": [
+    513,
+    511
+   ],
+   "quality": 88,
+   "whiteout": [
+    [
+     433,
+     433,
+     80,
+     78
+    ]
+   ]
+  },
+  {
+   "module": "kit",
+   "file": "uniform-poster.jpg",
+   "source": "tools/study-sources/uniform-poster.webp",
+   "credit": {
+    "author": "kursa dalībnieks",
+    "source": "kursa materiāls",
+    "licence": "izmantots ar autora atļauju"
+   },
+   "max": [
+    900,
+    1125
+   ],
+   "quality": 84
   }
  ]
 }

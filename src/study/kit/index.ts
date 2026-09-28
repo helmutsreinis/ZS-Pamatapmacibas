@@ -1,7 +1,7 @@
 import { photoLibrary } from '../photos';
 import type { Credit, Figure, Picture, StudyModule } from '../types';
 import sizes from './assets/images.json';
-import { pocketFigure } from './pockets';
+import { pocketFigure, threeDayFigure } from './pockets';
 
 const photo = photoLibrary(import.meta.glob<string>('./assets/*.jpg', { eager: true, query: '?url', import: 'default' }), sizes);
 
@@ -28,7 +28,7 @@ const sources = {
   sargs2021: { label: 'Sargs.lv, 19.06.2021.: „Alūksnē izturīgākie Latvijas karavīri pulcējas uz pirmā militarizētā marša sacīkstēm”', short: 'Sargs.lv (2021)', url: 'https://www.sargs.lv/lv/nbs/2021-06-19/aluksne-izturigakie-latvijas-karaviri-pulcejas-uz-pirma-militarizeta-marsa-sacikstem' },
   sargs2022: { label: 'Sargs.lv, 22.12.2022.: par žņaugu nēsāšanu (Zemessardzes pirmās palīdzības pasniedzēja seržante D. Kleinberga)', short: 'Sargs.lv (2022)', url: 'https://www.sargs.lv/lv/uznemejdarbiba-un-inovacijas/2022-12-22/nakotne-nbs-formas-terpos-varetu-tikt-iestradata-ipasa' },
   vam: { label: 'Jaunsardzes centrs, VAM tematu plāns: „Kājnieka individuālā ekipējuma sagatavošana uzdevumam”', short: 'VAM tematu plāns', url: 'https://www.jc.gov.lv/sites/jic/files/document/Tematu%20plans_1.MG_VAM112h.pdf' },
-  course: { label: 'Kursa materiāls: kabatu saturs (iesniedza kursa dalībnieks, 2026. gada 28. septembrī)', short: 'Kursa materiāls' },
+  course: { label: 'Kursa materiāls: kabatu saturs un 3 dienu somas kārtošanas secība (iesniedza kursa dalībnieks, 2026. gada 28. septembrī)', short: 'Kursa materiāls' },
 };
 
 const patches: Figure = {
@@ -80,8 +80,8 @@ const rucksack: Figure = {
 export const kit: StudyModule = {
   id: 'ekipejums', name: 'Ekipējums', genitive: 'Ekipējuma', kicker: 'EKIPĒJUMS', codePrefix: 'EK',
   title: 'KARAVĪRA <em>EKIPĒJUMS.</em>',
-  lead: 'Kaujas formas tērps un atšķirības zīmes, kabatu saturs, ekipējuma sistēmas, medpakete, mugursoma un sagatavošanās uzdevumam. Uz fotoattēliem izvēlies numuru, lai redzētu skaidrojumu.',
-  summary: 'Formas tērps un uzšuves, kabatu saturs, ekipējuma sistēmas, medpakete, mugursoma un sagatavošanās uzdevumam – ar fotoattēliem un pārbaudi.',
+  lead: 'Kaujas formas tērps un atšķirības zīmes, kabatu saturs, ekipējuma sistēmas, medpakete, 3 dienu somas kārtošana un sagatavošanās uzdevumam. Uz attēliem izvēlies numuru, lai redzētu skaidrojumu.',
+  summary: 'Formas tērps un uzšuves, kabatu saturs, ekipējuma sistēmas, medpakete, 3 dienu somas kārtošana un sagatavošanās uzdevumam – ar attēliem un pārbaudi.',
   notice: 'Uzšuvju vietas un ekipējuma sastāvs ņemti no normatīvajiem aktiem, kabatu saturs – no kursa materiāla. Kārtība vienībās var atšķirties: noteicošais ir tavs komandieris un instruktors.',
   sources,
   chapters: [
@@ -116,7 +116,7 @@ export const kit: StudyModule = {
       lead: 'Katrai lietai ir sava kabata, lai to atrastu uzreiz – arī tumsā un arī tad, ja to meklē biedrs. Šeit parādīts kursā noteiktais kabatu saturs.',
       sources: ['course', 'am18', 'jc8', 'atgadne'],
       blocks: [
-        ...(pocketFigure ? [{ kind: 'figure' as const, figure: pocketFigure }] : []),
+        { kind: 'figure', figure: pocketFigure },
         { kind: 'table', caption: 'Kabatu saturs pēc kursa kārtības', head: ['Kabata', 'Saturs', 'Piezīme'], rows: [
           ['Kreisās piedurknes kabata', 'Kompass', '–'],
           ['Labās piedurknes kabata', 'Pierakstu blociņš ar pildspalvu', 'Pildspalva paliek kabatā: formas tērpa ārpusē to piestiprināt aizliegts (AM, 2012).'],
@@ -210,9 +210,21 @@ export const kit: StudyModule = {
     },
     {
       number: '06', title: 'Mugursoma un 3 dienu soma',
-      lead: 'Lielajā mugursomā karavīrs nes ekipējumu vairākām dienām. Pareizi sakārtota soma ir sausa, netrokšņo, un vajadzīgākais tajā ir pa rokai.',
-      sources: ['jrg', 'sargs2021', 'am27', 'atgadne'],
+      lead: 'Trīs dienu somā karavīrs nes visu, kas vajadzīgs vairākām dienām. Kursā to kārto noteiktā secībā – no apakšējā nodalījuma līdz vāka kabatai.',
+      sources: ['course', 'jrg', 'sargs2021', 'am27', 'atgadne'],
       blocks: [
+        { kind: 'figure', figure: threeDayFigure },
+        { kind: 'sequence', title: '3 dienu somas kārtošanas secība (kursa materiāls)', items: [
+          { title: 'Sapiera lāpsta, guļammaiss, olīvkrāsas striķis', tag: 'apakšējais nodalījums', text: 'Striķim jābūt vismaz 10 m garam.' },
+          { title: 'Patruļsoma', tag: 'ārpusē', text: 'Patruļsomu pievieno mugursomai ārpusē.' },
+          { title: 'Sausās ēdienreizes, sausas zeķes, higiēnas preces', tag: 'sānu kabata', text: 'Vairāku dienu sauso ēdienreižu devas, sausas zeķes, higiēnas preces un citas lietas, kas ātri nepieciešamas.' },
+          { title: 'Pēc brīvas izvēles', tag: 'otra sānu kabata', text: 'Visbiežāk tur liek nepieciešamo ūdeni.' },
+          { title: 'Zābaku pāris ūdensdrošā maisā', tag: 'galvenā nodalījuma apakšā', text: 'Rezerves zābakus vispirms iepako ūdensdrošā maisā.' },
+          { title: 'Rezerves formas tērps', tag: 'galvenais nodalījums', text: 'Virs zābakiem.' },
+          { title: 'Silta laika jaka („lācītis”)', tag: 'galvenais nodalījums', text: 'Virs rezerves formas tērpa.' },
+          { title: 'Gore-Tex jaka un bikses', tag: 'galvenā nodalījuma augšā', text: 'Lietainam laikam – augšā, lai tās ātri paņemtu, ja laikapstākļi strauji mainās.' },
+          { title: 'Ēdiena katliņš, ēdamrīki, salvetes, tualetes papīrs', tag: 'vāka kabata', text: 'Mugursomas augšējā vāka kabatā.' },
+        ], note: 'Secības numuri atbilst marķieriem attēlā.' },
         { kind: 'figure', figure: rucksack },
         { kind: 'sequence', title: 'Kā sakārtot mugursomu (Jaunsarga rokasgrāmata)', items: [
           { title: 'Pārbaudi somu', tag: 'pirms kārtošanas', text: 'Pārbaudi siksnas, rāvējslēdzējus, saspraudes un sprādzes; bojājumus novērs.' },
@@ -228,7 +240,7 @@ export const kit: StudyModule = {
           'Dvielis un higiēnas preces',
           'Pārtikas deva trim dienām',
           'Ne mazāk kā 3 litri dzeramā ūdens',
-        ], note: 'Šis bija NBS militarizētā marša sacensību (20 km) nolikums. Kursa 3 dienu somas sarakstu un kārtošanas secību nosaka instruktors.' },
+        ], note: 'Šis bija NBS militarizētā marša sacensību (20 km) nolikums.' },
         { kind: 'list', title: 'Personīgās higiēnas piederumi (VAM atgādne)', items: [
           'Zobu suka un zobu pasta, ziepes, mazgāšanās sūklis',
           'Šķērītes un kāju kopšanas piederumi',
@@ -317,6 +329,15 @@ export const kit: StudyModule = {
     { id: 'outer-pockets', chapter: '06', source: 'jrg', prompt: 'Ko liek mugursomas ārējās kabatās?', correct: 'Tikai pašu nepieciešamāko', wrong: ['Visas rezerves drēbes', 'Guļammaisu, paklājiņu un teltenes pārvalku', 'Visu, kas neietilpst somā'], explanation: 'Ārējās kabatās jāsaliek tikai pats nepieciešamākais.' },
     { id: 'water-3day', chapter: '06', source: 'sargs2021', prompt: 'Cik dzeramā ūdens bija jānes trīs dienu ekipējumā NBS marša sacensībās 2021. gadā?', correct: 'Ne mazāk kā 3 litri', wrong: ['Ne mazāk kā 1 litrs', 'Ne mazāk kā 6 litri', 'Ūdens nebija jānes'], explanation: 'Lielajā mugursomā bija jānes trīs dienu ekipējums, tostarp ne mazāk kā trīs litri dzeramā ūdens.' },
     { id: 'three-day', chapter: '06', source: 'sargs2021', prompt: 'Kas ietilpa trīs dienu ekipējumā NBS marša sacensībās 2021. gadā?', correct: 'Guļammaiss, rezerves forma un zābaki, dvielis', wrong: ['Telts, saliekamais krēsls un gāzes plīts', 'Sapieru lāpsta, cirvis un virve', 'Rācija, rezerves baterijas un binoklis'], explanation: 'Trīs dienu ekipējumā bija dvielis, rezerves zābaki, higiēnas preces, rezerves forma, guļammaiss, pārtikas deva trim dienām un ūdens.' },
+    { id: 'pack-first', chapter: '06', source: 'course', prompt: 'Kas pēc kursa kārtības jāliek 3 dienu somas apakšējā nodalījumā?', correct: 'Sapiera lāpsta, guļammaiss un striķis', wrong: ['Rezerves zābaki un rezerves formas tērps', 'Gore-Tex jaka un bikses lietum', 'Ēdiena katliņš un ēdamrīki'], explanation: 'Apakšējā nodalījumā liek sapiera lāpstu, guļammaisu un olīvkrāsas striķi (vismaz 10 m).' },
+    { id: 'rope', chapter: '06', source: 'course', prompt: 'Cik garam jābūt olīvkrāsas striķim 3 dienu somā?', correct: 'Vismaz 10 m', wrong: ['Vismaz 2 m', 'Vismaz 5 m', 'Vismaz 25 m'], explanation: 'Apakšējā nodalījumā kopā ar sapiera lāpstu un guļammaisu ir olīvkrāsas striķis – vismaz 10 m.' },
+    { id: 'patrol-bag', chapter: '06', source: 'course', prompt: 'Kur pēc kursa kārtības pievieno patruļsomu?', correct: 'Mugursomai ārpusē', wrong: ['Mugursomas galvenajā nodalījumā', 'Mugursomas apakšējā nodalījumā', 'Vāka kabatā kopā ar katliņu'], explanation: 'Patruļsomu pievieno mugursomai ārpusē.' },
+    { id: 'side-pocket', chapter: '06', source: 'course', prompt: 'Ko pēc kursa kārtības liek sānu kabatā kopā ar citām ātri vajadzīgām lietām?', correct: 'Sausās ēdienreizes, zeķes un higiēnas preces', wrong: ['Guļammaisu, sapiera lāpstu un olīvkrāsas striķi', 'Rezerves zābakus ūdensdrošā maisā', 'Gore-Tex jaku un rezerves formas tērpu'], explanation: 'Vienā sānu kabatā liek sausās ēdienreizes, sausas zeķes, higiēnas preces un citas lietas, kas ātri nepieciešamas; otrā – pēc izvēles, visbiežāk ūdeni.' },
+    { id: 'boots-pack', chapter: '06', source: 'course', prompt: 'Kā un kur 3 dienu somā liek rezerves zābakus?', correct: 'Ūdensdrošā maisā galvenā nodalījuma apakšā', wrong: ['Somas ārpusē, piesietus pie kompresijas siksnām', 'Vāka kabatā, lai tie ātri izžūtu', 'Sānu kabatā kopā ar ūdeni'], explanation: 'Zābaku pāri iepako ūdensdrošā maisā un liek galvenā nodalījuma apakšā.' },
+    { id: 'after-boots', chapter: '06', source: 'course', prompt: 'Kas pēc kursa kārtības nāk galvenajā nodalījumā tūlīt virs zābakiem?', correct: 'Rezerves formas tērps', wrong: ['Gore-Tex jaka un bikses', 'Sapiera lāpsta', 'Ēdiena katliņš'], explanation: 'Galvenajā nodalījumā no apakšas: zābaki ūdensdrošā maisā, rezerves formas tērps, silta laika jaka, Gore-Tex jaka un bikses.' },
+    { id: 'fleece', chapter: '06', source: 'course', prompt: 'Ko kursa sarakstā sauc par „lācīti”?', correct: 'Silta laika jaku', wrong: ['Guļammaisa pārvalku', 'Mazo patruļsomu', 'Silto apakšveļu'], explanation: '„Lācītis” ir silta laika jaka; to liek galvenajā nodalījumā virs rezerves formas tērpa.' },
+    { id: 'goretex-top', chapter: '06', source: 'course', prompt: 'Kāpēc Gore-Tex jaku un bikses liek galvenā nodalījuma augšā?', correct: 'Lai tās ātri paņemtu, ja sāk līt', wrong: ['Lai tās nesaspiestu pārējās mantas', 'Lai soma būtu smagāka augšdaļā', 'Lai tās izžūtu pēc mazgāšanas'], explanation: 'Lietus jaku un bikses liek augšā, lai tās ātri paņemtu, ja laikapstākļi strauji mainās.' },
+    { id: 'lid-pocket', chapter: '06', source: 'course', prompt: 'Kas pēc kursa kārtības atrodas mugursomas vāka kabatā?', correct: 'Katliņš, ēdamrīki un salvetes', wrong: ['Guļammaiss un olīvkrāsas striķis', 'Rezerves formas tērps un zeķes', 'Gore-Tex jaka un silta laika jaka'], explanation: 'Vāka kabatā liek ēdiena katliņu, ēdamrīkus, salvetes un tualetes papīru.' },
     // 07 · Sagatavošanās uzdevumam
     { id: 'imums', chapter: '07', source: 'atgadne', prompt: 'Ko nozīmē saīsinājums IMUMS?', correct: 'Ierocis, munīcija, uzkabe, maskēšanās, sakari', wrong: ['Instruktāža, maršruts, uzdevums, mērķis, signāli', 'Izlūkošana, manevrs, uguns, maskēšanās, sardze', 'Ierocis, medicīna, uzturs, mugursoma, somas'], explanation: 'IMUMS – pārbaudes secība pirms uzdevuma: ierocis, munīcija, uzkabe, maskēšanās, sakari.' },
     { id: 'imums-i', chapter: '07', source: 'atgadne', prompt: 'Ko pārbauda IMUMS solī „I”?', correct: 'Ieroča stāvokli un tā funkcionālo darbību', wrong: ['Individuālo medicīnas paketi un abus žņaugus', 'Izlūkošanas datus un maršruta karti', 'Instruktora izsniegto uzdevuma pavēli'], explanation: 'Solī „I” apskata stobra kanālu, pārbauda liesmu slāpētāja stiprinājumu un veic ieroča funkcionālo pārbaudi.' },

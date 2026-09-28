@@ -7,9 +7,10 @@
 export type Credit = {
   /** Author or owner, e.g. "Ministru kabinets" or a Wikimedia Commons user. */
   author: string;
-  /** Where the picture was published, e.g. "Wikimedia Commons". */
+  /** Where the picture was published, e.g. "Wikimedia Commons", or "kursa materiāls". */
   source: string;
-  url: string;
+  /** Page of the picture; course material has none. */
+  url?: string;
   licence: string;
   licenceUrl?: string;
   /** What was changed, e.g. "izgriezts un samazināts". */

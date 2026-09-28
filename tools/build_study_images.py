@@ -88,10 +88,51 @@ def erase_traced_lines(image: Image.Image, lines: list, keep: list) -> Image.Ima
     return Image.fromarray(cv2.inpaint(pixels, mask, 5, cv2.INPAINT_TELEA))
 
 
+def remove_markers(image: Image.Image, markers: list, radius: int) -> Image.Image:
+    """Paint out printed numbered circles.
+
+    Each marker is {"at": [x, y]} plus an optional way to rebuild what is under it:
+    "shift": [dx, dy] copies the disk from that offset (webbing a whole number of rows away);
+    "rows": p fills every pixel from the same column k·p rows away (k = ±1, ±2, ±3), never
+    from inside another circle. Anything left, and markers without either, are inpainted."""
+    pixels = np.array(image).astype(np.float32)
+    h, w = pixels.shape[:2]
+    yy, xx = np.mgrid[0:h, 0:w]
+    disks = [np.hypot(xx - m['at'][0], yy - m['at'][1]) <= radius + 1 for m in markers]
+    anywhere = np.logical_or.reduce(disks)
+    out = pixels.copy()
+    todo = np.zeros((h, w), np.uint8)
+    for marker, disk in zip(markers, disks):
+        ys, xs = np.nonzero(disk)
+        if 'shift' in marker:
+            dx, dy = marker['shift']
+            out[ys, xs] = pixels[ys + dy, xs + dx]
+        elif 'rows' in marker:
+            period = marker['rows']
+            for y, x in zip(ys, xs):
+                for k in (-1, 1, -2, 2, -3, 3):
+                    source_y = y + k * period
+                    if 0 <= source_y < h and not anywhere[source_y, x]:
+                        out[y, x] = pixels[source_y, x]
+                        break
+                else:
+                    todo[y, x] = 255
+        else:
+            todo[disk] = 255
+    result = out.clip(0, 255).astype(np.uint8)
+    return Image.fromarray(cv2.inpaint(result, todo, 6, cv2.INPAINT_TELEA))
+
+
 def build(entry: dict) -> tuple[Path, tuple[int, int]]:
-    source = CACHE / entry['cache']
-    fetch(entry['url'], source)
+    if entry.get('source'):
+        # Course material supplied by the trainee, kept in tools/study-sources/.
+        source = ROOT / entry['source']
+    else:
+        source = CACHE / entry['cache']
+        fetch(entry['url'], source)
     image = ImageOps.exif_transpose(Image.open(source)).convert('RGB')
+    if entry.get('remove_markers'):
+        image = remove_markers(image, entry['remove_markers'], entry.get('marker_radius', 17))
     if entry.get('rotate'):
         image = image.rotate(entry['rotate'], resample=Image.BICUBIC, expand=True, fillcolor=tuple(entry.get('fill', [255, 255, 255])))
     if entry.get('trace_lines'):
@@ -158,7 +199,8 @@ def main() -> None:
     for module, table in sizes.items():
         table = {name: size for name, size in sorted(table.items()) if name in known}
         path = ROOT / 'src' / 'study' / module / 'assets' / 'images.json'
-        path.write_text(json.dumps(table, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
+        # write_bytes: LF line endings on every platform, like the rest of the repository
+        path.write_bytes((json.dumps(table, ensure_ascii=False, indent=1) + '\n').encode('utf-8'))
 
 
 if __name__ == '__main__':
